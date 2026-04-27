@@ -1,9 +1,7 @@
-@extends('backend.master')
-
-@section('maincontent')
-@section('title')
-    {{ env('APP_NAME') }}- Subcategory
-@endsection
+<?php $__env->startSection('maincontent'); ?>
+<?php $__env->startSection('title'); ?>
+    <?php echo e(env('APP_NAME')); ?>- Subcategory
+<?php $__env->stopSection(); ?>
 <style>
     div#roleinfo_length {
         color: red;
@@ -54,7 +52,7 @@
             </div>
         </div>
 
-        {{-- create payment icon --}}
+        
         <div class="modal fade" id="mainSubcategory" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content bg-secondary rounded h-100">
@@ -66,7 +64,7 @@
                     <div class="modal-body">
 
                         <form name="form" id="AddSubcategory" enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="sub_category_name"
                                     id="sub_category_name" placeholder="Subcategory Name">
@@ -77,10 +75,10 @@
                                 <select name="category_id" id="category_id" class="form-select form-select-lg mb-3 text-white"
                                     aria-label=".form-select-lg example">
                                     <option value="">Choose Category</option>
-                                    @forelse ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                    @empty
-                                    @endforelse
+                                    <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                        <option value="<?php echo e($category->id); ?>"><?php echo e($category->category_name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                             <div class="mt-4 mb-4">
@@ -104,7 +102,7 @@
             </div>
         </div><!-- End popup Modal-->
 
-        {{-- edit payment icon --}}
+        
         <div class="modal fade" id="editmainSubcategory" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content bg-secondary rounded h-100">
@@ -116,7 +114,7 @@
                     <div class="modal-body">
 
                         <form name="form" id="EditSubcategory" enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="sub_category_name"
                                     id="sub_category_name" placeholder="Subcategory Name">
@@ -127,10 +125,10 @@
                                 <select name="category_id" id="category_id" class="form-select form-select-lg mb-3"
                                     aria-label=".form-select-lg example">
                                     <option value="">Choose Category</option>
-                                    @forelse ($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                    @empty
-                                    @endforelse
+                                    <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                        <option value="<?php echo e($category->id); ?>"><?php echo e($category->category_name); ?></option>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                             <div class="mt-4 mb-4">
@@ -159,7 +157,7 @@
                 </div>
             </div>
         </div><!-- End popup Modal-->
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
     </div>
 </div>
 
@@ -173,7 +171,7 @@
             ],
             processing: true,
             serverSide: true,
-            ajax: '{!! route('admin.subcategory.data') !!}',
+            ajax: '<?php echo route('admin.subcategory.data'); ?>',
             columns: [{
                     data: 'id'
                 }, {
@@ -222,7 +220,7 @@
 
             $.ajax({
                 type: 'POST',
-                uploadUrl: '{{ route('admin.subcategorys.store') }}',
+                uploadUrl: '<?php echo e(route('admin.subcategorys.store')); ?>',
                 processData: false,
                 contentType: false,
                 data: new FormData(this),
@@ -376,4 +374,6 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/backend/content/subcategory/index.blade.php ENDPATH**/ ?>

@@ -90,7 +90,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-6 d-none">
                             <div class="mb-3 form-group">
                                 <label for="ProductCategory" style="width: 100%;">Brand <span
                                         class="text-danger">*</span></label>

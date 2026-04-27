@@ -1,13 +1,11 @@
-@extends('backend.master')
-
-@section('maincontent')
+<?php $__env->startSection('maincontent'); ?>
     <div class="px-4 pt-4 container-fluid">
         <div class="pagetitle row">
             <div class="col-6">
-                <h1><a href="{{url('/admin/dashboard')}}">Dashboard</a></h1>
+                <h1><a href="<?php echo e(url('/admin/dashboard')); ?>">Dashboard</a></h1>
                 <nav>
                     <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/admin/dashboard')}}">Home</a></li>
+                    <li class="breadcrumb-item"><a href="<?php echo e(url('/admin/dashboard')); ?>">Home</a></li>
                     <li class="breadcrumb-item active">Main Products</li>
                     </ol>
                 </nav>
@@ -64,12 +62,13 @@
                                 <select class="form-control" id="category_id" style="background: black;"
                                     name="category_id" onchange="setsubcategory()" required>
                                     <option>Select Category</option>
-                                    @forelse ($categories as $category)
-                                        <option value="{{ $category->id }}">
-                                            {{ $category->category_name }}
+                                    <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                        <option value="<?php echo e($category->id); ?>">
+                                            <?php echo e($category->category_name); ?>
+
                                         </option>
-                                    @empty
-                                    @endforelse
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                         </div>
@@ -89,12 +88,13 @@
                                 <select class="form-control" id="brand_id" style="background: black;"
                                     name="brand_id">
                                     <option>Select Brand</option>
-                                    @forelse ($brands as $brand)
-                                        <option value="{{ $brand->id }}">
-                                            {{ $brand->brand_name }}
+                                    <?php $__empty_1 = true; $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                        <option value="<?php echo e($brand->id); ?>">
+                                            <?php echo e($brand->brand_name); ?>
+
                                         </option>
-                                    @empty
-                                    @endforelse
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                    <?php endif; ?>
                                 </select>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
         </div>
 
     </div>
-    <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
     <script>
 
         $(document).ready(function() {
@@ -195,13 +195,13 @@
 
                 $.ajax({
                     type: "POST",
-                    url: '{{url('admin_order/main-product/store')}}',
+                    url: '<?php echo e(url('admin_order/main-product/store')); ?>',
                     data: formData,
                     contentType: false,
                     processData: false,
                     success: function (response) {
                         toastr.success('Main product added successfully');
-                        window.location.href = "{{ url('mainproducts') }}";
+                        window.location.href = "<?php echo e(url('mainproducts')); ?>";
                     }
                 });
 
@@ -223,7 +223,7 @@
                 },
                 ajax: {
                     type:'GET',
-                    url: '{{url('admin_order/mini-products')}}',
+                    url: '<?php echo e(url('admin_order/mini-products')); ?>',
                     processResults: function (data) {
                         return {
                             results: data.data
@@ -329,4 +329,6 @@ a {
 </style>
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/backend/content/mainproduct/create.blade.php ENDPATH**/ ?>

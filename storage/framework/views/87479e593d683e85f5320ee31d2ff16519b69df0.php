@@ -1,9 +1,7 @@
-@extends('backend.master')
-
-@section('maincontent')
-    @section('title')
-        {{ env('APP_NAME') }}- Category
-    @endsection
+<?php $__env->startSection('maincontent'); ?>
+    <?php $__env->startSection('title'); ?>
+        <?php echo e(env('APP_NAME')); ?>- Category
+    <?php $__env->stopSection(); ?>
     <style>
         div#roleinfo_length {
             color: red;
@@ -54,7 +52,7 @@
                 </div>
             </div>
 
-            {{-- create payment icon --}}
+            
             <div class="modal fade" id="mainCategory" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="rounded modal-content bg-secondary h-100">
@@ -66,7 +64,7 @@
                         <div class="modal-body">
 
                             <form name="form" id="AddCategory" enctype="multipart/form-data">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <div class="mb-3 form-floating">
                                     <input type="text" class="form-control" name="category_name" id="category_name"
                                         placeholder="Category Name">
@@ -103,7 +101,7 @@
                 </div>
             </div><!-- End popup Modal-->
 
-            {{-- edit payment icon --}}
+            
             <div class="modal fade" id="editmainCategory" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="rounded modal-content bg-secondary h-100">
@@ -115,7 +113,7 @@
                         <div class="modal-body">
 
                             <form name="form" id="EditCategory" enctype="multipart/form-data">
-                                @csrf
+                                <?php echo csrf_field(); ?>
                                 <div class="mb-3 form-floating">
                                     <input type="text" class="form-control" name="category_name" id="category_name"
                                         placeholder="Category Name">
@@ -157,7 +155,7 @@
                     </div>
                 </div>
             </div><!-- End popup Modal-->
-            <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+            <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
         </div>
     </div>
 
@@ -171,7 +169,7 @@
                 ],
                 processing: true,
                 serverSide: true,
-                ajax: '{!! route('admin.category.data') !!}',
+                ajax: '<?php echo route('admin.category.data'); ?>',
                 columns: [{
                         data: 'id'
                     }, {
@@ -232,7 +230,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    uploadUrl: '{{ route('admin.categorys.store') }}',
+                    uploadUrl: '<?php echo e(route('admin.categorys.store')); ?>',
                     processData: false,
                     contentType: false,
                     data: new FormData(this),
@@ -427,4 +425,6 @@
         });
     </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/backend/content/category/index.blade.php ENDPATH**/ ?>
