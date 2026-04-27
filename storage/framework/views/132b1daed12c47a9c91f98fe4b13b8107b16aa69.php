@@ -158,7 +158,8 @@
             font-size: 14px;
             display: flex;
         }
-        .product-wishlist{
+
+        .product-wishlist {
             border: 1px solid #000;
             padding: 6px;
             border-radius: 5px;
@@ -219,7 +220,8 @@
                                             <?php if($productdetails->youtube_embade): ?>
                                                 <div class="items">
                                                     
-                                                    <iframe style="width:100%;height: 100% !important;aspect-ratio:1/1;border-radius: 4px;"
+                                                    <iframe
+                                                        style="width:100%;height: 100% !important;aspect-ratio:1/1;border-radius: 4px;"
                                                         src="https://www.youtube.com/embed/<?php echo e($productdetails->youtube_embade); ?>">
                                                     </iframe>
                                                 </div>
@@ -280,7 +282,7 @@
                                                         TK
                                                         <?php if(App\Models\Size::where('product_id', $productdetails->id)->first()->Discount > 0): ?>
                                                             &nbsp;<del class="old-product-price strong-400"
-                                                                style="color: #fe0909;font-size: 20px;"><?php echo e(round(App\Models\Size::where('product_id', $productdetails->id)->first()->RegularPrice)); ?></del>
+                                                                style="color: #fe0909;font-size: 20px;"><?php echo e(round(App\Models\Size::where('product_id', $productdetails->id)->first()->RegularPrice)); ?>TK</del>
                                                         <?php endif; ?>
                                                     </div>
                                                 <?php else: ?>
@@ -299,12 +301,12 @@
                                     </div>
 
                                     <div class="mt-2 mb-2 row">
-                                        <div class=" col-12 col-md-12 colorpart">
+                                        <!-- <div class=" col-12 col-md-12 colorpart">
                                             <div id="breaftext">
                                                 <?php echo $productdetails->ProductBreaf; ?>
 
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <?php if(empty(json_decode($singlemain->RelatedProductIds))): ?>
                                         <?php else: ?>
@@ -414,12 +416,14 @@
                                     <div class="text-center quantity-container info-container"
                                         style="width: 100%; float: left;">
 
-                                       <!-- responsive add-to-cart block -->
+                                        <!-- responsive add-to-cart block -->
                                         <div class="row align-items-center">
                                             <!-- Quantity (mobile: col-6, desktop: col-lg-4) -->
                                             <div class="order-1 my-2 col-6 col-lg-4">
-                                                <div class="pr-2 d-flex align-items-center" style="justify-content: start;padding-right: 4px;border:1px solid #000;">
-                                                    <button type="button" class="btn btn-sm" id="buttonminus" onclick="minus()"><i class="fa-solid fa-minus"></i></button>
+                                                <div class="pr-2 d-flex align-items-center"
+                                                    style="justify-content: start;padding-right: 4px;border:1px solid #000;">
+                                                    <button type="button" class="btn btn-sm" id="buttonminus"
+                                                        onclick="minus()"><i class="fa-solid fa-minus"></i></button>
 
                                                     <div class="mx-2 cart-quantity" style="height: 34px; min-width:70px;">
                                                         <div class="quant-input">
@@ -429,20 +433,24 @@
                                                         </div>
                                                     </div>
 
-                                                    <button type="button" class="btn btn-sm" id="buttonplus" onclick="plus()"><i class="fa-solid fa-plus"></i></button>
+                                                    <button type="button" class="btn btn-sm" id="buttonplus"
+                                                        onclick="plus()"><i class="fa-solid fa-plus"></i></button>
                                                 </div>
                                             </div>
 
                                             <!-- Buy Now (mobile: full width below, desktop: middle col) -->
                                             <div class="order-3 my-2 col-12 col-lg-6 order-lg-2">
-                                                <form name="form" action="<?php echo e(url('add-to-cart')); ?>" id="submitaddtocart" method="POST" enctype="multipart/form-data" style="text-align: center;">
+                                                <form name="form" action="<?php echo e(url('add-to-cart')); ?>" id="submitaddtocart"
+                                                    method="POST" enctype="multipart/form-data" style="text-align: center;">
                                                     <?php echo method_field('POST'); ?>
                                                     <?php echo csrf_field(); ?>
-                                                    <input type="hidden" name="color" id="product_colororder" value="<?php echo e($varients[0]->color); ?>">
+                                                    <input type="hidden" name="color" id="product_colororder"
+                                                        value="<?php echo e($varients[0]->color); ?>">
                                                     <input type="hidden" name="size" id="product_sizeordernew" value="">
                                                     <input type="hidden" name="sigment" id="product_sigmentorder" value="">
                                                     <input type="hidden" name="price" id="product_priceorder" value="">
-                                                    <input type="hidden" name="product_id" value="<?php echo e($productdetails->id); ?>" hidden>
+                                                    <input type="hidden" name="product_id" value="<?php echo e($productdetails->id); ?>"
+                                                        hidden>
                                                     <input type="hidden" name="qty" value="1" id="qtyoror">
 
                                                     <button type="submit"
@@ -457,9 +465,11 @@
                                             <div class="order-2 my-2 col-6 col-lg-2 order-lg-3">
                                                 <div class="d-flex justify-content-end">
                                                     <div class="product-wishlist">
-                                                        <form action="<?php echo e(route('wishlist.add')); ?>" method="POST" class="p-0 m-0">
+                                                        <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
+                                                            class="p-0 m-0">
                                                             <?php echo csrf_field(); ?>
-                                                            <input type="hidden" name="product_id" value="<?php echo e($singlemain->id); ?>">
+                                                            <input type="hidden" name="product_id"
+                                                                value="<?php echo e($singlemain->id); ?>">
 
                                                             <button type="submit" class="p-0 m-0 bg-transparent border-0">
                                                                 <?php
@@ -468,9 +478,11 @@
                                                                 ?>
 
                                                                 <?php if($inWishlist): ?>
-                                                                    <i class="fa-solid fa-heart fs-5" style="color: #120D3F"></i>
+                                                                    <i class="fa-solid fa-heart fs-5"
+                                                                        style="color: #120D3F"></i>
                                                                 <?php else: ?>
-                                                                    <i class="fa-regular fa-heart fs-5" style="color: #120D3F"></i>
+                                                                    <i class="fa-regular fa-heart fs-5"
+                                                                        style="color: #120D3F"></i>
                                                                 <?php endif; ?>
                                                             </button>
                                                         </form>
@@ -539,25 +551,96 @@
                     <div class="product-tabs inner-bottom-xs wow fadeInUp">
                         <div class="row">
                             <div class="col-sm-12">
-                                <ul id="product-tabs" class="nav nav-tabs nav-tab-cell" style="display: inline-flex;">
-                                    <li class="active"><a data-bs-toggle="tab" id="istteb"
-                                            href="#description">DESCRIPTION</a></li>
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" data-bs-toggle="tab" href="#short_desc">Short
+                                            Description</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-bs-toggle="tab" href="#full_desc">Description</a>
+                                    </li>
                                 </ul>
+
                                 <!-- /.nav-tabs #product-tabs -->
                             </div>
                             <div class="col-sm-12">
 
                                 <div class="tab-content">
 
-                                    <div id="description" class="tab-pane active">
-                                        <div class="product-tab">
-                                            <p class="text"><?php echo $productdetails->ProductDetails; ?></p>
-                                            
-                                        </div>
+                                    <div id="short_desc" class="tab-pane fade show active">
+                                        <p><?php echo $productdetails->ProductBreaf; ?></p>
                                     </div>
+
+                                    <div id="full_desc" class="tab-pane fade">
+                                        <p><?php echo $productdetails->ProductDetails; ?></p>
+                                    </div>
+
+                                </div>
+
+                                <!-- /.tab-content -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+
+                    <div class="product-tabs inner-bottom-xs wow fadeInUp d-none">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ul id="product-tabs" class="nav nav-tabs nav-tab-cell"
+                                    style="display: flex;justify-content: space-between;">
+                                    <li class="active"><a data-bs-toggle="tab" id="istteb" href="#review"
+                                            style="margin-top: 10px;"> See Our
+                                            Products Review</a>
+                                    </li>
+                                    <?php if(
+                                            App\Models\Orderproduct::where('product_id', $productdetails->id)
+                                                ->whereHas('orders', function ($query) {
+                                                    $query->where('user_id', Auth::id());
+                                                })
+                                                ->first()
+                                        ): ?>
+                                        <?php if(auth()->guard()->check()): ?>
+                                            <li>
+                                                <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                    Leave Review
+                                                </button>
+                                            </li>
+                                        <?php else: ?>
+                                            <li>
+                                                <a class="btn btn-info" href="<?php echo e(url('login')); ?>">
+                                                    Leave Reviews
+                                                </a>
+                                            </li>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                </ul>
+                                <!-- /.nav-tabs #product-tabs -->
+                            </div>
+                            <div class="col-sm-12">
+
+                                <div class="tab-content ">
                                     <!-- /.tab-pane -->
 
+                                    <div id="review" class="tab-pane active show">
+                                        <div class="product-tab">
 
+                                            <div class="product-reviews">
+
+                                                <div class="row">
+                                                    <div class="col-lg-7 col-12">
+                                                        <div class="review" id="reviewload">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.reviews -->
+                                            </div>
+
+                                        </div>
+                                        <!-- /.product-tab -->
+                                    </div>
+                                    <!-- /.tab-pane -->
 
                                 </div>
                                 <!-- /.tab-content -->
@@ -567,125 +650,56 @@
                         <!-- /.row -->
                     </div>
 
-                    <div class="product-tabs inner-bottom-xs wow fadeInUp">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <ul id="product-tabs" class="nav nav-tabs nav-tab-cell"
-                                style="display: flex;justify-content: space-between;">
-                                <li class="active"><a data-bs-toggle="tab" id="istteb" href="#review"
-                                        style="margin-top: 10px;"> See Our
-                                        Products Review</a>
-                                </li>
-                                <?php if(
-                                    App\Models\Orderproduct::where('product_id', $productdetails->id)
-                                        ->whereHas('orders', function ($query) {
-                                            $query->where('user_id', Auth::id());
-                                        })
-                                        ->first()
-                                ): ?>
-                                    <?php if(auth()->guard()->check()): ?>
-                                        <li>
-                                            <button class="btn btn-info" data-bs-toggle="modal"
-                                                data-bs-target="#exampleModal">
-                                                Leave Review
-                                            </button>
-                                        </li>
-                                    <?php else: ?>
-                                        <li>
-                                            <a class="btn btn-info" href="<?php echo e(url('login')); ?>">
-                                                Leave Reviews
-                                            </a>
-                                        </li>
-                                    <?php endif; ?>
-                                <?php endif; ?>
-                            </ul>
-                            <!-- /.nav-tabs #product-tabs -->
-                        </div>
-                        <div class="col-sm-12">
 
-                            <div class="tab-content ">
-                                <!-- /.tab-pane -->
-
-                                <div id="review" class="tab-pane active show">
-                                    <div class="product-tab">
-
-                                        <div class="product-reviews">
-
-                                            <div class="row">
-                                                <div class="col-lg-7 col-12">
-                                                    <div class="review" id="reviewload">
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- /.reviews -->
-                                        </div>
-
-                                    </div>
-                                    <!-- /.product-tab -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="m-0 modal-title">Give Rating And Review</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
-                                <!-- /.tab-pane -->
-
-                            </div>
-                            <!-- /.tab-content -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                </div>
-
-
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="m-0 modal-title">Give Rating And Review</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form name="form" id="AddReview" enctype="multipart/form-data">
-                                    <?php echo csrf_field(); ?>
-                                    <div class="mb-3 form-group">
-                                        <div class="star">
-                                            <span class="fas fa-star" onclick="checked('1')" id="checked1"></span>
-                                            <span class="fas fa-star" onclick="checked('2')" id="checked2"></span>
-                                            <span class="fas fa-star" onclick="checked('3')" id="checked3"></span>
-                                            <span class="fas fa-star" onclick="checked('4')" id="checked4"></span>
-                                            <span class="fas fa-star" onclick="checked('5')" id="checked5"></span>
+                                <div class="modal-body">
+                                    <form name="form" id="AddReview" enctype="multipart/form-data">
+                                        <?php echo csrf_field(); ?>
+                                        <div class="mb-3 form-group">
+                                            <div class="star">
+                                                <span class="fas fa-star" onclick="checked('1')" id="checked1"></span>
+                                                <span class="fas fa-star" onclick="checked('2')" id="checked2"></span>
+                                                <span class="fas fa-star" onclick="checked('3')" id="checked3"></span>
+                                                <span class="fas fa-star" onclick="checked('4')" id="checked4"></span>
+                                                <span class="fas fa-star" onclick="checked('5')" id="checked5"></span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <input type="hidden" value="<?php echo e($productdetails->id); ?>" name="product_id"
-                                        id="product_id">
-                                    <div class="mb-3 form-group">
-                                        <label for="floatingInput">Message</label>
-                                        <textarea class="form-group" name="messages" id="messages"></textarea>
-                                    </div>
-                                    <input type="hidden" name="rating" id="rating">
-                                    <?php if(Auth::id()): ?>
-                                        <input type="hidden" value="<?php echo e(Auth::id()); ?>" name="user_id"
-                                            id="user_id">
-                                    <?php else: ?>
-                                    <?php endif; ?>
-                                    <div class="mt-4 mb-4">
-                                        <input class="form-control form-control-lg" name="file" id="file"
-                                            type="file">
-                                    </div>
-                                    <br>
-                                    <div class="mt-2 form-group" style="text-align: right">
-                                        <div class="submitBtnSCourse">
-                                            <button type="submit" name="btn" data-bs-dismiss="modal"
-                                                class="btn btn-dark btn-block" style="float: left">Close</button>
-                                            <button type="submit" name="btn"
-                                                class="btn btn-primary AddCourierBtn btn-block">Save</button>
+                                        <input type="hidden" value="<?php echo e($productdetails->id); ?>" name="product_id"
+                                            id="product_id">
+                                        <div class="mb-3 form-group">
+                                            <label for="floatingInput">Message</label>
+                                            <textarea class="form-group" name="messages" id="messages"></textarea>
                                         </div>
-                                    </div>
-                                </form>
+                                        <input type="hidden" name="rating" id="rating">
+                                        <?php if(Auth::id()): ?>
+                                            <input type="hidden" value="<?php echo e(Auth::id()); ?>" name="user_id" id="user_id">
+                                        <?php else: ?>
+                                        <?php endif; ?>
+                                        <div class="mt-4 mb-4">
+                                            <input class="form-control form-control-lg" name="file" id="file" type="file">
+                                        </div>
+                                        <br>
+                                        <div class="mt-2 form-group" style="text-align: right">
+                                            <div class="submitBtnSCourse">
+                                                <button type="submit" name="btn" data-bs-dismiss="modal"
+                                                    class="btn btn-dark btn-block" style="float: left">Close</button>
+                                                <button type="submit" name="btn"
+                                                    class="btn btn-primary AddCourierBtn btn-block">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
 
                 </div>
@@ -944,105 +958,80 @@
                                         <div class="products best-product">
                                             <div class="product">
                                                 <div class="product-micro">
-                                                    <div class="row product-micro-row">
-                                                        <div class="col-12">
-                                                            <div class="product-image" style="position: relative;">
-                                                                <div class="text-center image">
-                                                                    <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
-                                                                        <div class="frs_discount">
-                                                                            <span>
-                                                                                <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%<br>
-                                                                                <span class="pip_pip_1s">ছাড়</span> </span>
-                                                                        </div>
-                                                                    <?php endif; ?>
-                                                                    <a
-                                                                        href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
-                                                                        <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
-                                                                            alt="<?php echo e($promotional->ProductName); ?>"
-                                                                            id="featureimagess">
-                                                                    </a>
+                                                <div class="row product-micro-row">
+                                                    <div class="col-12">
+                                                        <div class="product-image" style="position: relative;">
+                                                            <div class="text-center image">
+                                                                <div class="wishlist-eye-btn">
+                                                                    <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
+                                                                        class="p-0 m-0">
+                                                                        <?php echo csrf_field(); ?>
+                                                                        <input type="hidden" name="product_id"
+                                                                            value="<?php echo e($promotional->id); ?>">
+
+                                                                        <button type="submit">
+                                                                            <?php
+                                                                                $wishlist = session()->get('wishlist', []);
+                                                                                $inWishlist = in_array($promotional->id, $wishlist);
+                                                                            ?>
+
+                                                                            <?php if($inWishlist): ?>
+                                                                                <i class="fa-solid fa-heart fs-5"
+                                                                                    style="font-size: 18px;color:black;"></i>
+                                                                            <?php else: ?>
+                                                                                <i class="fa-regular fa-heart fs-5"
+                                                                                    style="font-size: 18px;color:black;"></i>
+                                                                            <?php endif; ?>
+                                                                        </button><br>
+                                                                    </form>
+                                                                    <button class="quick-shop-btn" type="button"
+                                                                        data-product-id="<?php echo e($promotional->id); ?>">
+                                                                        <i class="fa-regular fa-eye"
+                                                                            style="font-size: 18px;color:black;"></i>
+                                                                    </button>
                                                                 </div>
+                                                                <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
+                                                                    <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
+                                                                        style="padding:4px;">
+                                                                </a>
+
+                                                                
                                                             </div>
-                                                            <!-- /.product-image -->
                                                         </div>
-                                                        <!-- /.col -->
-                                                        <div class="col-12">
-                                                            <div class="p-2 infofe p-md-2"
-                                                                style="padding-bottom: 4px !important;background: white;">
-                                                                <div class="product-info">
-                                                                    <h2 class="name text-truncate" id="f_name"><a
-                                                                            href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>"
-                                                                            id="f_pro_name"><?php echo e($promotional->ProductName); ?></a>
-                                                                    </h2>
-                                                                </div>
-
-
-                                                                <div class="d-flex" style="justify-content:space-between">
-                                                                    <div class="star" style="padding-top: 5px;">
-                                                                        <span
-                                                                            style="font-weight: bold;color:black;font-size:10px">(<?php echo e(App\Models\Review::where('product_id', $promotional->id)->get()->count()); ?>)</span>
-                                                                        <?php if(intval($review) == 1): ?>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                        <?php elseif(intval($review) == 2): ?>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                        <?php elseif(intval($review) == 3): ?>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                        <?php elseif(intval($review) == 4): ?>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star"></span>
-                                                                        <?php elseif(intval($review) == 5): ?>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                        <?php else: ?>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                            <span class="fas fa-star" id="checked"></span>
-                                                                        <?php endif; ?>
-                                                                    </div>
-
-                                                                </div>
-
-                                                                <div class="price-box">
-                                                                    <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
-                                                                        <del class="old-product-price strong-400">৳
-                                                                            <?php echo e(round($firstpro->sizes[0]->RegularPrice)); ?></del>
-                                                                    <?php endif; ?>
-                                                                    <span class="product-price strong-600">৳
-                                                                        <?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
-                                                                </div>
-
-                                                            </div>
-                                                            <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
-                                                                <button class="mb-0 btn btn-danger btn-sm btn-block"
-                                                                    style="width: 100%;border-radius: 0%;" id="purcheseBtn">অর্ডার
-                                                                    করুন</button>
-                                                            </a>
-
-                                                        </div>
-                                                        <!-- /.col -->
+                                                        <!-- /.product-image -->
                                                     </div>
-                                                    <!-- /.product-micro-row -->
+                                                    <!-- /.col -->
+                                                    <div class="col-12">
+                                                        <div class="p-2 infofe p-md-2"
+                                                            style="padding-bottom: 4px !important;background: white;">
+                                                            <div class="product-info text-center">
+                                                                <h2 class="name text-truncate" id="f_name"><a
+                                                                        href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>"
+                                                                        id="f_pro_name"><?php echo e($promotional->ProductName); ?></a>
+                                                                </h2>
+                                                            </div>
+
+                                                            <div class="price-box text-center" style="padding: 8px 0;">
+                                                                <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
+                                                                    <del class="old-product-price strong-400"
+                                                                        style="color:#db4444">৳<?php echo e(round($firstpro->sizes[0]->RegularPrice)); ?></del>
+                                                                <?php endif; ?>
+                                                                <span class="product-price strong-600"
+                                                                    style="color:black;margin-left:7px;">৳<?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
+                                                            </div>
+
+                                                        </div>
+                                                        <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
+                                                            <button class="mb-0 btn btn-danger btn-sm btn-block"
+                                                                style="width: 100%;border-radius: 4px;padding: 8px 0; "
+                                                                id="purcheseBtn">অর্ডার করুন</button>
+                                                        </a>
+
+                                                    </div>
+                                                    <!-- /.col -->
                                                 </div>
+                                                <!-- /.product-micro-row -->
+                                            </div>
                                                 <!-- /.product-micro -->
 
                                             </div>
@@ -1395,5 +1384,4 @@
     </script>
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('webview.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/webview/content/product/details.blade.php ENDPATH**/ ?>
