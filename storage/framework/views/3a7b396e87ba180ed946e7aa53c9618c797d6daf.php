@@ -175,7 +175,7 @@
     <div class="container p-0">
         <div class="row">
             <!-- Categories -->
-            <div class="p-0 mb-3 col-lg-2 col-12 d-sm-none" style="border-right: 1px solid #ddd">
+            <div class="p-0 mb-3 col-lg-2 col-12 d-none" style="border-right: 1px solid #ddd">
                 <!-- <div class="category-title">
                         <h5 class="m-0 text-white fw-bold">Categories</h5>
                     </div> -->
@@ -221,7 +221,7 @@
             </div>
 
             <!-- Banner  -->
-            <div class="mb-3 col-lg-10 col-12" style="padding-left:20px;margin-top:20px">
+            <div class="mb-3 col-lg-12 col-12" style="padding-left:20px;margin-top:20px">
                 <div class="owl-carousel owl-theme" id="slider">
                     <?php $__empty_1 = true; $__currentLoopData = $sliders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $slider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                         <div class="item" style="margin:0 !important;">
