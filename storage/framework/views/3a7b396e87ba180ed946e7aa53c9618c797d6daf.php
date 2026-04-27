@@ -240,48 +240,14 @@
     </div>
 
 
-    <!-- flash sale -->
+    <!-- New sale -->
     <div class="container">
         <?php if(count($bestselling) > 0): ?>
             <div class="pb-2 bg-white row">
                 <div class="col-12">
                     <div class="section-title">
-                        <div class="title-top">
-                            <span class="bar"></span>
-                            <span class="category-text">Todays </span>
-                        </div>
                         <div class="flash-wrapper">
-                            <h2 class="m-0 flashsale-main-title">Flash Sales</h2>
-
-                            <div class="flashsale-countdown">
-
-                                <div class="flashsale-time-box">
-                                    <span id="flashsale-days">00</span>
-                                    <small>Days</small>
-                                </div>
-
-                                <span class="flashsale-dot">:</span>
-
-                                <div class="flashsale-time-box">
-                                    <span id="flashsale-hours">00</span>
-                                    <small>Hours</small>
-                                </div>
-
-                                <span class="flashsale-dot">:</span>
-
-                                <div class="flashsale-time-box">
-                                    <span id="flashsale-minutes">00</span>
-                                    <small>Minutes</small>
-                                </div>
-
-                                <span class="flashsale-dot">:</span>
-
-                                <div class="flashsale-time-box">
-                                    <span id="flashsale-seconds">00</span>
-                                    <small>Seconds</small>
-                                </div>
-
-                            </div>
+                            <h2 class="m-0 flashsale-main-title">NEW ARRIVAL</h2>
                         </div>
                     </div>
                 </div>
@@ -302,7 +268,7 @@
 
                             ?>
                             <?php if(isset($firstpro)): ?>
-                                <div class="item border-animation" id="featuredproduct">
+                                <div class="item " id="featuredproduct">
                                     <div class="products best-product">
                                         <div class="product">
                                             <div class="product-micro">
@@ -310,14 +276,14 @@
                                                     <div class="col-12">
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
-                                                                <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
+                                                                <!-- <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
                                                                     <div class="frs_discount">
                                                                         <span> -
                                                                             <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
-                                                                            <!-- <span class="pip_pip_1s">ছাড়</span>  -->
+                                                                            
                                                                         </span>
                                                                     </div>
-                                                                <?php endif; ?>
+                                                                <?php endif; ?> -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
                                                                         class="p-0 m-0">
@@ -359,14 +325,14 @@
                                                     <div class="col-12">
                                                         <div class="p-2 infofe p-md-2"
                                                             style="padding-bottom: 4px !important;background: white;">
-                                                            <div class="product-info">
+                                                            <div class="product-info text-center">
                                                                 <h2 class="name text-truncate" id="f_name"><a
                                                                         href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>"
                                                                         id="f_pro_name"><?php echo e($promotional->ProductName); ?></a>
                                                                 </h2>
                                                             </div>
 
-                                                            <div class="price-box" style="padding-top: 5px;">
+                                                            <div class="price-box text-center" style="padding: 8px 0;">
                                                                 <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
                                                                     <del class="old-product-price strong-400"
                                                                         style="color:#db4444">৳<?php echo e(round($firstpro->sizes[0]->RegularPrice)); ?></del>
@@ -374,30 +340,13 @@
                                                                 <span class="product-price strong-600"
                                                                     style="color:black;margin-left:7px;">৳<?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
                                                             </div>
-
-                                                            <div class="d-flex" style="justify-content:space-between">
-                                                                <div class="star" style="padding-top: 5px;">
-
-                                                                    <span class="fas fa-star" id="checked"></span>
-                                                                    <span class="fas fa-star" id="checked"></span>
-                                                                    <span class="fas fa-star" id="checked"></span>
-                                                                    <span class="fas fa-star" id="checked"></span>
-                                                                    <span class="fas fa-star" id="checked"></span>
-                                                                    <span
-                                                                        style="font-weight: bold;color:black;font-size:12px">(<?php echo e(App\Models\Review::where('product_id', $promotional->id)->get()->count()); ?>)</span>
-
-                                                                </div>
-
-                                                            </div>
-
-
-
+                                                            
                                                         </div>
-                                                        <!-- <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
+                                                        <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
                                                             <button class="mb-0 btn btn-danger btn-sm btn-block"
-                                                                style="width: 100%;border-radius: 0%;"
+                                                                style="width: 100%;border-radius: 4px;padding: 8px 0; "
                                                                 id="purcheseBtn">অর্ডার করুন</button>
-                                                        </a> -->
+                                                        </a>
 
                                                     </div>
                                                     <!-- /.col -->
@@ -416,12 +365,12 @@
 
                 </div>
             </div>
-            <div class="text-center" style="margin-top:30px">
+            <!-- <div class="text-center" style="margin-top:30px">
                 <a href="<?php echo e(url('best/products')); ?>"
                     style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
                     View All Products
                 </a>
-            </div>
+            </div> -->
 
         <?php else: ?>
         <?php endif; ?>

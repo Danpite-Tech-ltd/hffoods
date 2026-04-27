@@ -138,15 +138,27 @@
 }
 /* ======= flash sale ========== */
 .flash-wrapper{
-    display:flex;
-    align-items:center;
-    margin:20px 0;
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.flash-wrapper::before,
+.flash-wrapper::after{
+    content: "";
+    flex: 1;
+    height: 2px;
+    background: #ddd;
 }
 
 .flashsale-main-title{
-    font-size:40px;
-    font-weight:700;
+    padding: 0 15px;
+    font-size: 24px;
+    font-weight: 600;
+
 }
+
+
 
 .flashsale-countdown{
     display:flex;
@@ -177,7 +189,7 @@
 }
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
-    .flash-wrapper {
+    /* .flash-wrapper {
         flex-direction: column;
         align-items: flex-start;
         margin: 10px 0;
@@ -186,7 +198,7 @@
     .flashsale-main-title {
         font-size: 28px;
         margin-bottom: 10px;
-    }
+    } */
 
     .flashsale-countdown {
         flex-wrap: wrap;
