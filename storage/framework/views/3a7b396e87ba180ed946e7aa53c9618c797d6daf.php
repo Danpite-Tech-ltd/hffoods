@@ -177,8 +177,8 @@
             <!-- Categories -->
             <div class="p-0 mb-3 col-lg-2 col-12 d-none" style="border-right: 1px solid #ddd">
                 <!-- <div class="category-title">
-                            <h5 class="m-0 text-white fw-bold">Categories</h5>
-                        </div> -->
+                                <h5 class="m-0 text-white fw-bold">Categories</h5>
+                            </div> -->
                 <div class="category-list">
                     <ul class="p-0 m-0 list-unstyled">
                         <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -277,13 +277,13 @@
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
                                                                 <!-- <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
-                                                                                    <div class="frs_discount">
-                                                                                        <span> -
-                                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
+                                                                                                    <div class="frs_discount">
+                                                                                                        <span> -
+                                                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
 
-                                                                                        </span>
-                                                                                    </div>
-                                                                                <?php endif; ?> -->
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                <?php endif; ?> -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
                                                                         class="p-0 m-0">
@@ -367,11 +367,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                        <a href="<?php echo e(url('best/products')); ?>"
-                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                            View All Products
-                        </a>
-                    </div> -->
+                                <a href="<?php echo e(url('best/products')); ?>"
+                                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                                    View All Products
+                                </a>
+                            </div> -->
 
         <?php else: ?>
         <?php endif; ?>
@@ -414,13 +414,13 @@
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
                                                                 <!-- <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
-                                                                                    <div class="frs_discount">
-                                                                                        <span> -
-                                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
+                                                                                                    <div class="frs_discount">
+                                                                                                        <span> -
+                                                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
 
-                                                                                        </span>
-                                                                                    </div>
-                                                                                <?php endif; ?> -->
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                <?php endif; ?> -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
                                                                         class="p-0 m-0">
@@ -504,11 +504,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                        <a href="<?php echo e(url('best/products')); ?>"
-                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                            View All Products
-                        </a>
-                    </div> -->
+                                <a href="<?php echo e(url('best/products')); ?>"
+                                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                                    View All Products
+                                </a>
+                            </div> -->
 
         <?php else: ?>
         <?php endif; ?>
@@ -552,8 +552,8 @@
                                                         <div class="col-12">
                                                             <div class="product-image" style="position: relative;">
                                                                 <div class="text-center image">
-                                                                    
-                                                                    
+
+
                                                                     <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
                                                                         <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
                                                                             style="padding:4px;">
@@ -610,11 +610,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                        <a href="<?php echo e(url('best/products')); ?>"
-                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                            View All Products
-                        </a>
-                    </div> -->
+                                <a href="<?php echo e(url('best/products')); ?>"
+                                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                                    View All Products
+                                </a>
+                            </div> -->
 
         <?php else: ?>
         <?php endif; ?>
@@ -623,39 +623,55 @@
 
     <!-- Categories -->
     <!-- <div class="container p-0 my-2">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <div class="title-top">
-                            <span class="bar"></span>
-                            <span class="category-text">Categories</span>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <div class="title-top">
+                                <span class="bar"></span>
+                                <span class="category-text">Categories</span>
+                            </div>
+
+                            <h2 class="main-title">Browse By Category</h2>
                         </div>
 
-                        <h2 class="main-title">Browse By Category</h2>
-                    </div>
+                        <div class="owl-carousel " id="categorySlide">
+                            <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                                <div class="item">
+                                    <a href="<?php echo e(url('products/category/' . $category->slug)); ?>">
+                                        <div id="cath" style="border: 1px solid #000;border-radius:5px">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="<?php echo e(asset($category->category_icon)); ?>" id="catimg">
+                                            </div>
 
-                    <div class="owl-carousel " id="categorySlide">
-                        <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                            <div class="item">
-                                <a href="<?php echo e(url('products/category/' . $category->slug)); ?>">
-                                    <div id="cath" style="border: 1px solid #000;border-radius:5px">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="<?php echo e(asset($category->category_icon)); ?>" id="catimg">
+                                            <p id="catp" style="font-weight:bold;"><?php echo e($category->category_name); ?></p>
                                         </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
-                                        <p id="catp" style="font-weight:bold;"><?php echo e($category->category_name); ?></p>
-                                    </div>
-                                </a>
-                            </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-
-                        <?php endif; ?>
+                            <?php endif; ?>
+                        </div>
                     </div>
                 </div>
+            </div> -->
+
+    <!-- Review -->
+    <section class="container">
+        <div class="section-title">
+            <div class="flash-wrapper">
+                <h2 class="m-0 flashsale-main-title" style="font-size:36px">Reviews</h2>
             </div>
-        </div> -->
+        </div>
+        <div class="owl-carousel " id="reviewSlide">
+            <?php $__empty_1 = true; $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                <div class="item">
+                    <img src="<?php echo e(asset($brand->brand_icon)); ?>" style="width:100%;">
+                </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
-
+            <?php endif; ?>
+        </div>
+    </section>
 
 
     <?php if(Auth::id()): ?>

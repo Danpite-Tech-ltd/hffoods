@@ -197,6 +197,7 @@ class WebviewController extends Controller
     public function mainview()
     {
         $categories = Category::with('subcategories')->where('status', 'Active')->get();
+        $brands = Brand::where('status', 'Active')->get();
         $sliders = Slider::where('status', 'Active')->select('id', 'slider_btn_link', 'slider_title', 'slider_image')->get();
         $adds = Addbanner::where('status', 'Active')->whereIn('id', ['1', '2'])->select('id', 'add_link', 'add_image', 'status')->get();
         $addbottoms = Addbanner::where('status', 'Active')->whereIn('id', ['3', '4'])->select('id', 'add_link', 'add_image', 'status')->get();
@@ -219,7 +220,7 @@ class WebviewController extends Controller
                 ->get();
         });
 
-        return view('webview.content.maincontent', ['video_galleries' => $video_galleries, 'categories' => $categories, 'sliders' => $sliders, 'adds' => $adds, 'addbottoms' => $addbottoms, 'topproducts' => $topproducts, 'categoryproducts' => $categoryproducts, 'bestselling' => $bestselling, 'our_products' => $our_products, 'allProducts' => $allProducts]);
+        return view('webview.content.maincontent', ['video_galleries' => $video_galleries, 'categories' => $categories, 'sliders' => $sliders, 'adds' => $adds, 'addbottoms' => $addbottoms, 'topproducts' => $topproducts, 'categoryproducts' => $categoryproducts, 'bestselling' => $bestselling, 'our_products' => $our_products, 'allProducts' => $allProducts, 'brands' => $brands]);
     }
 
     public function productdetailsnew($slug)

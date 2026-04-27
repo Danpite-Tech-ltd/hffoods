@@ -179,8 +179,8 @@
             <!-- Categories -->
             <div class="p-0 mb-3 col-lg-2 col-12 d-none" style="border-right: 1px solid #ddd">
                 <!-- <div class="category-title">
-                            <h5 class="m-0 text-white fw-bold">Categories</h5>
-                        </div> -->
+                                <h5 class="m-0 text-white fw-bold">Categories</h5>
+                            </div> -->
                 <div class="category-list">
                     <ul class="p-0 m-0 list-unstyled">
                         @forelse ($categories as $category)
@@ -278,13 +278,13 @@
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
                                                                 <!-- @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                                                    <div class="frs_discount">
-                                                                                        <span> -
-                                                                                            {{ ($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0 }}%
+                                                                                                    <div class="frs_discount">
+                                                                                                        <span> -
+                                                                                                            {{ ($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0 }}%
 
-                                                                                        </span>
-                                                                                    </div>
-                                                                                @endif -->
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                @endif -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="{{ route('wishlist.add') }}" method="POST"
                                                                         class="p-0 m-0">
@@ -372,11 +372,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                        <a href="{{ url('best/products') }}"
-                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                            View All Products
-                        </a>
-                    </div> -->
+                                <a href="{{ url('best/products') }}"
+                                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                                    View All Products
+                                </a>
+                            </div> -->
 
         @else
         @endif
@@ -419,13 +419,13 @@
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
                                                                 <!-- @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                                                    <div class="frs_discount">
-                                                                                        <span> -
-                                                                                            {{ ($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0 }}%
+                                                                                                    <div class="frs_discount">
+                                                                                                        <span> -
+                                                                                                            {{ ($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0 }}%
 
-                                                                                        </span>
-                                                                                    </div>
-                                                                                @endif -->
+                                                                                                        </span>
+                                                                                                    </div>
+                                                                                                @endif -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="{{ route('wishlist.add') }}" method="POST"
                                                                         class="p-0 m-0">
@@ -513,11 +513,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                        <a href="{{ url('best/products') }}"
-                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                            View All Products
-                        </a>
-                    </div> -->
+                                <a href="{{ url('best/products') }}"
+                                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                                    View All Products
+                                </a>
+                            </div> -->
 
         @else
         @endif
@@ -561,8 +561,8 @@
                                                         <div class="col-12">
                                                             <div class="product-image" style="position: relative;">
                                                                 <div class="text-center image">
-                                                                    
-                                                                    
+
+
                                                                     <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
                                                                         <img src="{{ asset($promotional->ProductImage) }}"
                                                                             style="padding:4px;">
@@ -623,11 +623,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                        <a href="{{ url('best/products') }}"
-                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                            View All Products
-                        </a>
-                    </div> -->
+                                <a href="{{ url('best/products') }}"
+                                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                                    View All Products
+                                </a>
+                            </div> -->
 
         @else
         @endif
@@ -636,39 +636,55 @@
 
     <!-- Categories -->
     <!-- <div class="container p-0 my-2">
-            <div class="row">
-                <div class="col-12">
-                    <div class="section-title">
-                        <div class="title-top">
-                            <span class="bar"></span>
-                            <span class="category-text">Categories</span>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <div class="title-top">
+                                <span class="bar"></span>
+                                <span class="category-text">Categories</span>
+                            </div>
+
+                            <h2 class="main-title">Browse By Category</h2>
                         </div>
 
-                        <h2 class="main-title">Browse By Category</h2>
-                    </div>
+                        <div class="owl-carousel " id="categorySlide">
+                            @forelse ($categories as $category)
+                                <div class="item">
+                                    <a href="{{ url('products/category/' . $category->slug) }}">
+                                        <div id="cath" style="border: 1px solid #000;border-radius:5px">
+                                            <div class="d-flex justify-content-center">
+                                                <img src="{{ asset($category->category_icon) }}" id="catimg">
+                                            </div>
 
-                    <div class="owl-carousel " id="categorySlide">
-                        @forelse ($categories as $category)
-                            <div class="item">
-                                <a href="{{ url('products/category/' . $category->slug) }}">
-                                    <div id="cath" style="border: 1px solid #000;border-radius:5px">
-                                        <div class="d-flex justify-content-center">
-                                            <img src="{{ asset($category->category_icon) }}" id="catimg">
+                                            <p id="catp" style="font-weight:bold;">{{ $category->category_name }}</p>
                                         </div>
+                                    </a>
+                                </div>
+                            @empty
 
-                                        <p id="catp" style="font-weight:bold;">{{ $category->category_name }}</p>
-                                    </div>
-                                </a>
-                            </div>
-                        @empty
-
-                        @endforelse
+                            @endforelse
+                        </div>
                     </div>
                 </div>
+            </div> -->
+
+    <!-- Review -->
+    <section class="container">
+        <div class="section-title">
+            <div class="flash-wrapper">
+                <h2 class="m-0 flashsale-main-title" style="font-size:36px">Reviews</h2>
             </div>
-        </div> -->
+        </div>
+        <div class="owl-carousel " id="reviewSlide">
+            @forelse ($brands as $brand)
+                <div class="item">
+                    <img src="{{ asset($brand->brand_icon) }}" style="width:100%;">
+                </div>
+            @empty
 
-
+            @endforelse
+        </div>
+    </section>
 
 
     @if (Auth::id())
