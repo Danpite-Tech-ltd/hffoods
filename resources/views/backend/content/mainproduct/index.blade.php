@@ -72,8 +72,8 @@
                                 <th>Name</th>
                                 <th>Category</th>
                                 <th>Position</th>
-                                <th>Flashsale</th>
-                                <th>Best Selling</th>
+                                <th>Top Selling</th>
+                                <th>New Arrival</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>

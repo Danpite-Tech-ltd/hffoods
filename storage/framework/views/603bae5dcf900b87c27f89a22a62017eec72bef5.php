@@ -1,9 +1,7 @@
-@extends('backend.master')
-
-@section('maincontent')
-@section('title')
-    {{ env('APP_NAME') }}- Brands
-@endsection
+<?php $__env->startSection('maincontent'); ?>
+<?php $__env->startSection('title'); ?>
+    <?php echo e(env('APP_NAME')); ?>- Brands
+<?php $__env->stopSection(); ?>
 <style>
     div#roleinfo_length {
         color: red;
@@ -24,11 +22,11 @@
         <div class="col-sm-12 col-md-12 col-xl-12">
             <div class="h-100 bg-secondary rounded p-4 pb-0">
                 <div class="d-flex align-items-center justify-content-between" style="width: 50%;float:left;">
-                    <h6 class="mb-0">Review List</h6>
+                    <h6 class="mb-0">Review Icon List</h6>
                 </div>
                 <div class="" style="width: 50%;float:left;">
                     <a type="button" data-bs-toggle="modal" data-bs-target="#mainBrand" class="btn btn-primary m-2"
-                        style="float: right"> + Create Review</a>
+                        style="float: right"> + Create Review Icon</a>
                 </div>
             </div>
         </div>
@@ -54,7 +52,7 @@
             </div>
         </div>
 
-        {{-- create payment icon --}}
+        
         <div class="modal fade" id="mainBrand" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content bg-secondary rounded h-100">
@@ -66,7 +64,7 @@
                     <div class="modal-body">
 
                         <form name="form" id="AddBrand" enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="brand_name" id="brand_name"
                                     placeholder="Review Name">
@@ -94,7 +92,7 @@
             </div>
         </div><!-- End popup Modal-->
 
-        {{-- edit payment icon --}}
+        
         <div class="modal fade" id="editmainBrand" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content bg-secondary rounded h-100">
@@ -106,7 +104,7 @@
                     <div class="modal-body">
 
                         <form name="form" id="EditBrand" enctype="multipart/form-data">
-                            @csrf
+                            <?php echo csrf_field(); ?>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" name="brand_name" id="brand_name"
                                     placeholder="Review Name">
@@ -140,7 +138,7 @@
                 </div>
             </div>
         </div><!-- End popup Modal-->
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
     </div>
 </div>
 
@@ -154,7 +152,7 @@
             ],
             processing: true,
             serverSide: true,
-            ajax: '{!! route('admin.brand.data') !!}',
+            ajax: '<?php echo route('admin.brand.data'); ?>',
             columns: [{
                     data: 'id'
                 }, {
@@ -200,7 +198,7 @@
 
             $.ajax({
                 type: 'POST',
-                uploadUrl: '{{ route('admin.brands.store') }}',
+                uploadUrl: '<?php echo e(route('admin.brands.store')); ?>',
                 processData: false,
                 contentType: false,
                 data: new FormData(this),
@@ -358,4 +356,6 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/backend/content/brand/index.blade.php ENDPATH**/ ?>

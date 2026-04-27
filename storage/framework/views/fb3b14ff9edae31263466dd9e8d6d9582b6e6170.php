@@ -44,7 +44,7 @@ $admin = App\Models\Admin::where('id', Auth::guard('admin')->user()->id)->first(
                     <div class="bg-transparent border-0 dropdown-menu">
                         <a href="<?php echo e(route('admin.categorys.index')); ?>" class="dropdown-item">Category</a>
                         <a href="<?php echo e(route('admin.subcategorys.index')); ?>" class="dropdown-item">Sub Category</a>
-                        <a href="<?php echo e(route('admin.brands.index')); ?>" class="dropdown-item">Brand</a>
+                        <!-- <a href="<?php echo e(route('admin.brands.index')); ?>" class="dropdown-item">Brand</a> -->
                         <a href="<?php echo e(route('admin.attrvalues.index')); ?>" class="dropdown-item">Size & Sigment</a>
                         <a href="<?php echo e(route('admin.products.index')); ?>" class="dropdown-item">Single Products</a>
                         <a href="<?php echo e(route('mainproducts.index')); ?>" class="dropdown-item">Varient Products</a>
@@ -87,7 +87,7 @@ $admin = App\Models\Admin::where('id', Auth::guard('admin')->user()->id)->first(
                         <a href="<?php echo e(route('admin.blogs.index')); ?>" class="dropdown-item">Blog</a>
                         <a href="<?php echo e(route('admin.sliders.index')); ?>" class="dropdown-item">Sliders</a>
                         <a href="<?php echo e(route('admin.addbanners.index')); ?>" class="dropdown-item">Adds</a>
-                        <a href="<?php echo e(route('admin.menus.index')); ?>" class="dropdown-item">Youtube Gallery</a>
+                        <a href="<?php echo e(route('admin.menus.index')); ?>" class="dropdown-item d-none">Youtube Gallery</a>
                         <a href="<?php echo e(url('admin/information/about_us')); ?>" class="dropdown-item">About Us</a>
                         <a href="<?php echo e(url('admin/information/contact_us')); ?>" class="dropdown-item">Contact Us</a>
                         <a href="<?php echo e(url('admin/information/faq')); ?>" class="dropdown-item">FAQ</a>
@@ -113,8 +113,9 @@ $admin = App\Models\Admin::where('id', Auth::guard('admin')->user()->id)->first(
                         
                         <a href="<?php echo e(route('payments.index')); ?>" class="dropdown-item">Payment</a>
                         <a href="<?php echo e(route('paymenttypes.index')); ?>" class="dropdown-item">Payment Method</a>
-                        <a href="<?php echo e(route('admin.coupons.index')); ?>" class="dropdown-item">Coupons</a>
-                        <a href="<?php echo e(route('admin.reviews.index')); ?>" class="dropdown-item">Reviews</a>
+                        <a href="<?php echo e(route('admin.coupons.index')); ?>" class="dropdown-item d-none">Coupons</a>
+                        <!-- <a href="<?php echo e(route('admin.reviews.index')); ?>" class="dropdown-item">Reviews</a> -->
+                         <a href="<?php echo e(route('admin.brands.index')); ?>" class="dropdown-item">Brand</a>
                     </div>
                 </div>
 

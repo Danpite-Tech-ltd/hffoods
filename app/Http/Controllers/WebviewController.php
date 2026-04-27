@@ -197,12 +197,14 @@ class WebviewController extends Controller
     public function mainview()
     {
         $categories = Category::with('subcategories')->where('status', 'Active')->get();
+        $brands = Brand::where('status', 'Active')->get();
         $sliders = Slider::where('status', 'Active')->select('id', 'slider_btn_link', 'slider_title', 'slider_image')->get();
         $adds = Addbanner::where('status', 'Active')->whereIn('id', ['1', '2'])->select('id', 'add_link', 'add_image', 'status')->get();
         $addbottoms = Addbanner::where('status', 'Active')->whereIn('id', ['3', '4'])->select('id', 'add_link', 'add_image', 'status')->get();
 
         $topproducts = Mainproduct::where('status', 'Active')->where('top_rated', '1')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->latest()->get();
         $bestselling = Mainproduct::where('status', 'Active')->where('bestselling', '1')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->latest()->get();
+        $allProducts = Mainproduct::where('status', 'Active')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->latest()->get();
 
         $our_products = Mainproduct::where('status', 'Active')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->inRandomOrder()->take(8)->get();
 
@@ -218,7 +220,7 @@ class WebviewController extends Controller
                 ->get();
         });
 
-        return view('webview.content.maincontent', ['video_galleries' => $video_galleries, 'categories' => $categories, 'sliders' => $sliders, 'adds' => $adds, 'addbottoms' => $addbottoms, 'topproducts' => $topproducts, 'categoryproducts' => $categoryproducts, 'bestselling' => $bestselling, 'our_products' => $our_products]);
+        return view('webview.content.maincontent', ['video_galleries' => $video_galleries, 'categories' => $categories, 'sliders' => $sliders, 'adds' => $adds, 'addbottoms' => $addbottoms, 'topproducts' => $topproducts, 'categoryproducts' => $categoryproducts, 'bestselling' => $bestselling, 'our_products' => $our_products, 'allProducts' => $allProducts, 'brands' => $brands]);
     }
 
     public function productdetailsnew($slug)
@@ -662,7 +664,7 @@ class WebviewController extends Controller
             ->paginate(12)
             ->withQueryString();
 
-        $subcategories = Subcategory::where('status', 'Active')->get();
+        $subcategories = Subcategory::where('category_id', $categorysingle->id)->where('status', 'Active')->get();
 
         return view('webview.content.product.category', compact('categoryproducts', 'subcategories', 'categorysingle'));
         // $categoryproducts = Mainproduct::where('status', 'Active')->where('category_id', $categorysingle->id)->orderByRaw('ISNULL(`position`), `position` ASC')->latest()->paginate(12);

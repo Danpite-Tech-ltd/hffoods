@@ -1,9 +1,7 @@
-@extends('backend.master')
-
-@section('maincontent')
-@section('title')
-    {{ env('APP_NAME') }}- Brands
-@endsection
+<?php $__env->startSection('maincontent'); ?>
+<?php $__env->startSection('title'); ?>
+    <?php echo e(env('APP_NAME')); ?>- Menu
+<?php $__env->stopSection(); ?>
 <style>
     div#roleinfo_length {
         color: red;
@@ -24,11 +22,11 @@
         <div class="col-sm-12 col-md-12 col-xl-12">
             <div class="h-100 bg-secondary rounded p-4 pb-0">
                 <div class="d-flex align-items-center justify-content-between" style="width: 50%;float:left;">
-                    <h6 class="mb-0">Review List</h6>
+                    <h6 class="mb-0">Youtube Gallery List</h6>
                 </div>
                 <div class="" style="width: 50%;float:left;">
-                    <a type="button" data-bs-toggle="modal" data-bs-target="#mainBrand" class="btn btn-primary m-2"
-                        style="float: right"> + Create Review</a>
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#mainMenu" class="btn btn-primary m-2"
+                        style="float: right"> + Create Youtube Gallery</a>
                 </div>
             </div>
         </div>
@@ -36,12 +34,13 @@
         <div class="col-sm-12 col-md-12 col-xl-12">
             <div class="bg-secondary rounded h-100 p-4">
                 <div class="data-tables">
-                    <table class="table table-dark" id="brandinfo" width="100%" style="text-align: center;">
+                    <table class="table table-dark" id="menuinfo" width="100%" style="text-align: center;">
                         <thead class="thead-light">
                             <tr>
                                 <th>SL</th>
-                                <th>Icon</th>
-                                <th>Name</th>
+                                <th>Vedio</th>
+                                <th>Embade Code</th> 
+                                <th>Title</th>
                                 <th>status</th>
                                 <th>Action</th>
                             </tr>
@@ -54,29 +53,29 @@
             </div>
         </div>
 
-        {{-- create payment icon --}}
-        <div class="modal fade" id="mainBrand" tabindex="-1">
+        
+        <div class="modal fade" id="mainMenu" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content bg-secondary rounded h-100">
                     <div class="modal-header">
-                        <h5 class="modal-title" style="color: red;">Create New Review</h5>
+                        <h5 class="modal-title" style="color: red;">Create New Youtube Gallery</h5>
                         <button type="button" class="btn-dark btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                        <form name="form" id="AddBrand" enctype="multipart/form-data">
-                            @csrf
+                        <form name="form" id="AddMenu" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="brand_name" id="brand_name"
-                                    placeholder="Review Name">
-                                <label for="floatingInput">Review Name</label>
+                                <input type="text" class="form-control" name="menu_name" id="menu_name"
+                                    placeholder="Title">
+                                <label for="floatingInput">Title</label>
                             </div>
-
-                            <div class="mt-4 mb-4">
-                                <input class="form-control form-control-lg bg-dark" name="brand_icon" id="brand_icon"
-                                    type="file">
-                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="menu_banner" id="menu_banner"
+                                    placeholder="Youtube Embade Code">
+                                <label for="floatingInput">Youtube Embade Code</label>
+                            </div> 
                             <br>
                             <div class="form-group mt-2" style="text-align: right">
                                 <div class="submitBtnSCourse">
@@ -94,36 +93,31 @@
             </div>
         </div><!-- End popup Modal-->
 
-        {{-- edit payment icon --}}
-        <div class="modal fade" id="editmainBrand" tabindex="-1">
+        
+        <div class="modal fade" id="editmainMenu" tabindex="-1">
             <div class="modal-dialog">
                 <div class="modal-content bg-secondary rounded h-100">
                     <div class="modal-header">
-                        <h5 class="modal-title" style="color: red;">Edit Review</h5>
+                        <h5 class="modal-title" style="color: red;">Edit Menu</h5>
                         <button type="button" class="btn-dark btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
 
-                        <form name="form" id="EditBrand" enctype="multipart/form-data">
-                            @csrf
+                        <form name="form" id="EditMenu" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" name="brand_name" id="brand_name"
-                                    placeholder="Review Name">
-                                <label for="floatingInput">Review Name</label>
+                                <input type="text" class="form-control" name="menu_name" id="menu_name"
+                                    placeholder="Title">
+                                <label for="floatingInput">Title</label>
                             </div>
 
-                            <div class="mt-4 mb-4">
-                                <input class="form-control form-control-lg bg-dark" name="brand_icon" id="brand_icon"
-                                    type="file">
-                            </div>
-                            <input type="text" name="brand_id" id="brand_id" hidden>
-
-                            <div class="m-3 ms-0 mb-0"
-                                style="text-align: center;height: 100px;margin-top:20px !important">
-                                <h4 style="width:30%;float: left;text-align: left;">Icon : </h4>
-                                <div id="previmg" style="float: left;"></div>
-                            </div>
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" name="menu_banner" id="menu_banner"
+                                    placeholder="Youtube Embade Code">
+                                <label for="floatingInput">Youtube Embade Code</label>
+                            </div> 
+                            <input type="text" name="menu_id" id="menu_id" hidden> 
                             <br>
                             <div class="form-group mt-2" style="text-align: right">
                                 <div class="submitBtnSCourse">
@@ -140,7 +134,7 @@
                 </div>
             </div>
         </div><!-- End popup Modal-->
-        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
     </div>
 </div>
 
@@ -148,34 +142,37 @@
     $(document).ready(function() {
         var token = $("input[name='_token']").val();
 
-        var brandinfo = $('#brandinfo').DataTable({
+        var menuinfo = $('#menuinfo').DataTable({
             order: [
                 [0, 'desc']
             ],
             processing: true,
             serverSide: true,
-            ajax: '{!! route('admin.brand.data') !!}',
+            ajax: '<?php echo route('admin.menu.data'); ?>',
             columns: [{
                     data: 'id'
                 }, {
-                    data: 'brand_icon',
-                    name: 'brand_icon',
+                    data: 'menu_banner',
+                    name: 'menu_banner', 
                     render: function(data, type, full, meta) {
-                        return "<img src=../" + data + " height=\"40\" alt='No Image'/>";
+                        return '<iframe width="150px" height="100" src="https://www.youtube.com/embed/'+ data +'" > </iframe>';
                     }
                 },
                 {
-                    data: 'brand_name'
+                    data: 'menu_banner'
+                },
+                {
+                    data: 'menu_name'
                 },
                 {
                     "data": null,
                     render: function(data) {
 
                         if (data.status === 'Active') {
-                            return '<button type="button" class="btn btn-success btn-sm btn-status" data-status="Inactive" id="brandstatusBtn" data-id="' +
+                            return '<button type="button" class="btn btn-success btn-sm btn-status" data-status="Inactive" id="menustatusBtn" data-id="' +
                                 data.id + '">Active</button>';
                         } else {
-                            return '<button type="button" class="btn btn-warning btn-sm btn-status" data-status="Active" id="brandstatusBtn" data-id="' +
+                            return '<button type="button" class="btn btn-warning btn-sm btn-status" data-status="Active" id="menustatusBtn" data-id="' +
                                 data.id + '" >Inactive</button>';
                         }
 
@@ -193,27 +190,27 @@
         });
 
 
-        //add brand
+        //add menu
 
-        $('#AddBrand').submit(function(e) {
+        $('#AddMenu').submit(function(e) {
             e.preventDefault();
 
             $.ajax({
                 type: 'POST',
-                uploadUrl: '{{ route('admin.brands.store') }}',
+                uploadUrl: '<?php echo e(route('admin.menus.store')); ?>',
                 processData: false,
                 contentType: false,
                 data: new FormData(this),
 
                 success: function(data) {
-                    $('#brand_name').val('');
-                    $('#brand_icon').val('');
+                    $('#menu_name').val('');
+                    $('#menu_banner').val('');
 
                     swal({
                         title: "Success!",
                         icon: "success",
                     });
-                    brandinfo.ajax.reload();
+                    menuinfo.ajax.reload();
                 },
                 error: function(error) {
                     console.log('error');
@@ -221,25 +218,21 @@
             });
         });
 
-        //edit brand
-        $(document).on('click', '#editBrandBtn', function() {
-            let brandId = $(this).data('id');
+        //edit menu
+        $(document).on('click', '#editMenuBtn', function() {
+            let menuId = $(this).data('id');
 
             $.ajax({
                 type: 'GET',
-                url: 'brands/' + brandId + '/edit',
+                url: 'menus/' + menuId + '/edit',
 
                 success: function(data) {
-                    $('#EditBrand').find('#brand_name').val(data
-                        .brand_name);
-                    $('#EditBrand').find('#brand_id').val(data.id);
+                    $('#EditMenu').find('#menu_name').val(data.menu_name);
+                    $('#EditMenu').find('#menu_banner').val(data.menu_banner);
+                    $('#EditMenu').find('#menu_id').val(data.id);
 
-                    $('#previmg').html('');
-                    $('#previmg').append(`
-                        <img  src="../` + data.brand_icon + `" alt = "" style="height: 80px" />
-                    `);
-
-                    $('#EditBrand').attr('data-id', data.id);
+                     
+                    $('#EditMenu').attr('data-id', data.id);
                 },
                 error: function(error) {
                     console.log('error');
@@ -248,24 +241,23 @@
             });
         });
 
-        //update brand
-        $('#EditBrand').submit(function(e) {
+        //update menu
+        $('#EditMenu').submit(function(e) {
             e.preventDefault();
-            let brandId = $('#brand_id').val();
+            let menuId = $('#menu_id').val();
 
             $.ajax({
                 type: 'POST',
-                url: 'brand/' + brandId,
+                url: 'menu/' + menuId,
                 processData: false,
                 contentType: false,
                 data: new FormData(this),
 
                 success: function(data) {
-                    $('#EditBrand').find('#brand_name').val('');
-                    $('#previmg').html('');
-
+                    $('#EditMenu').find('#menu_name').val(''); 
+                    $('#EditMenu').find('#menu_banner').val(''); 
                     swal({
-                        title: "Brand update successfully !",
+                        title: "Youtube Gallery update successfully !",
                         icon: "success",
                         showCancelButton: true,
                         focusConfirm: false,
@@ -273,7 +265,7 @@
                         confirmButtonText: "Yes",
                         cancelButtonText: "No",
                     });
-                    brandinfo.ajax.reload();
+                    menuinfo.ajax.reload();
 
                 },
                 error: function(error) {
@@ -282,10 +274,10 @@
             });
         });
 
-        // delete brand
+        // delete menu
 
-        $(document).on('click', '#deleteBrandBtn', function() {
-            let brandId = $(this).data('id');
+        $(document).on('click', '#deleteMenuBtn', function() {
+            let menuId = $(this).data('id');
             swal({
                     title: "Are you sure?",
                     text: "Once deleted, you will not be able to recover this !",
@@ -297,15 +289,15 @@
                     if (willDelete) {
                         $.ajax({
                             type: 'DELETE',
-                            url: 'brands/' + brandId,
+                            url: 'menus/' + menuId,
                             data: {
                                 '_token': token
                             },
                             success: function(data) {
-                                swal("Brand has been deleted!", {
+                                swal("Youtube Gallery has been deleted!", {
                                     icon: "success",
                                 });
-                                brandinfo.ajax.reload();
+                                menuinfo.ajax.reload();
                             },
                             error: function(error) {
                                 console.log('error');
@@ -323,16 +315,16 @@
 
         // status update
 
-        $(document).on('click', '#brandstatusBtn', function() {
-            let brandId = $(this).data('id');
-            let brandStatus = $(this).data('status');
+        $(document).on('click', '#menustatusBtn', function() {
+            let menuId = $(this).data('id');
+            let menuStatus = $(this).data('status');
 
             $.ajax({
                 type: 'PUT',
-                url: 'brand/status',
+                url: 'menu/status',
                 data: {
-                    brand_id: brandId,
-                    status: brandStatus,
+                    menu_id: menuId,
+                    status: menuStatus,
                     '_token': token
                 },
 
@@ -346,7 +338,7 @@
                         confirmButtonText: "Yes",
                         cancelButtonText: "No",
                     });
-                    brandinfo.ajax.reload();
+                    menuinfo.ajax.reload();
                 },
                 error: function(error) {
                     console.log('error');
@@ -358,4 +350,6 @@
     });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('backend.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/backend/content/menu/index.blade.php ENDPATH**/ ?>

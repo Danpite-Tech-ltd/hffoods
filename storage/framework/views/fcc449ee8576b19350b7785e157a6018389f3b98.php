@@ -1,10 +1,8 @@
-@extends('webview.master')
+<?php $__env->startSection('maincontent'); ?>
+<?php $__env->startSection('title'); ?>
+    <?php echo e(env('APP_NAME')); ?>- Category Product
+<?php $__env->stopSection(); ?>
 
-@section('maincontent')
-@section('title')
-    {{ env('APP_NAME') }}- Category Product
-@endsection
-{{-- category slug --}}
 <style>
     .product{
             margin-top: 4px !important;
@@ -72,7 +70,7 @@
                         <ul class="mb-0 list-inline list-unstyled">
                             <li style="list-style:none;font-size:12px;color:#888;">
 
-                                <a href="{{ url('/') }}"
+                                <a href="<?php echo e(url('/')); ?>"
                                 style="text-decoration:none;color:#888;padding-right:6px;text-transform:capitalize;">
                                 Home
                                 </a>
@@ -124,22 +122,24 @@
                 <h3 class="m-0 mb-2">Shop by Subategory</h3>
 
                 <form method="GET" id="subcategoryForm">
-                    @foreach ($subcategories as $subcategory)
+                    <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div>
                             <input
                                 type="checkbox"
-                                id="subcat{{ $subcategory->id }}"
+                                id="subcat<?php echo e($subcategory->id); ?>"
                                 name="subcategory[]"
-                                value="{{ $subcategory->id }}"
+                                value="<?php echo e($subcategory->id); ?>"
                                 onchange="document.getElementById('subcategoryForm').submit()"
-                                {{ in_array($subcategory->id, request('subcategory', [])) ? 'checked' : '' }}
+                                <?php echo e(in_array($subcategory->id, request('subcategory', [])) ? 'checked' : ''); ?>
+
                             >
 
-                            <label for="subcat{{ $subcategory->id }}" style="cursor:pointer;">
-                                {{ $subcategory->sub_category_name }}
+                            <label for="subcat<?php echo e($subcategory->id); ?>" style="cursor:pointer;">
+                                <?php echo e($subcategory->sub_category_name); ?>
+
                             </label>
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </form>
 
             </div>
@@ -147,37 +147,38 @@
             <!-- <div class="shop-category-box">
                 <h3 class="m-0 mb-2">Price</h3>
                 <form method="GET" id="priceForm">
-                    <input type="number" name="min_price" placeholder="Min Price" value="{{ request('min_price') }}" class="mb-2 form-control">
-                    <input type="number" name="max_price" placeholder="Max Price" value="{{ request('max_price') }}" class="mb-2 form-control">
+                    <input type="number" name="min_price" placeholder="Min Price" value="<?php echo e(request('min_price')); ?>" class="mb-2 form-control">
+                    <input type="number" name="max_price" placeholder="Max Price" value="<?php echo e(request('max_price')); ?>" class="mb-2 form-control">
                     <button type="submit" class="btn btn-primary w-100"> Apply Filter </button>
                 </form>
             </div> -->
 
             <!-- <div class="shop-category-box">
                 <h3 class="m-0 mb-2">Shop by Brand</h3>
-                @php
+                <?php
                     $brands = App\Models\Brand::where('status', 'Active')->get();
-                @endphp
+                ?>
 
                 <form method="GET" id="brandForm">
-                    <input type="hidden" name="category" value="{{ request('category') }}">
-                    @foreach ($brands as $brand)
+                    <input type="hidden" name="category" value="<?php echo e(request('category')); ?>">
+                    <?php $__currentLoopData = $brands; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $brand): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <div>
                             <input
                                 type="checkbox"
-                                id="brand{{ $brand->id }}"
+                                id="brand<?php echo e($brand->id); ?>"
                                 name="brand[]"
-                                value="{{ $brand->id }}"
+                                value="<?php echo e($brand->id); ?>"
 
                                 onchange="document.getElementById('brandForm').submit()"
 
-                                {{ in_array($brand->id, request('brand', [])) ? 'checked' : '' }}>
+                                <?php echo e(in_array($brand->id, request('brand', [])) ? 'checked' : ''); ?>>
 
-                            <label for="brand{{ $brand->id }}" style="cursor:pointer;">
-                                {{ $brand->brand_name }}
+                            <label for="brand<?php echo e($brand->id); ?>" style="cursor:pointer;">
+                                <?php echo e($brand->brand_name); ?>
+
                             </label>
                         </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                 </form>
 
@@ -190,35 +191,35 @@
         <div class="col-12 col-lg-9">
             <div style="display: flex;align-items: center;justify-content: space-between;">
                 <div style="text-align:left;font-size:14px;color:#666;font-weight:500;margin:20px 0;">
-                    Showing {{ $categoryproducts->firstItem() }}–{{ $categoryproducts->lastItem() }} of {{ $categoryproducts->total() }} results
+                    Showing <?php echo e($categoryproducts->firstItem()); ?>–<?php echo e($categoryproducts->lastItem()); ?> of <?php echo e($categoryproducts->total()); ?> results
                 </div>
                 <form method="GET" id="filterForm" style="margin-bottom:0">
-                    <input type="hidden" name="category" value="{{ request('category') }}">
+                    <input type="hidden" name="category" value="<?php echo e(request('category')); ?>">
                     <select name="filter" class="w-auto form-select d-inline"
                         onchange="document.getElementById('filterForm').submit()">
                         <option value="">Filter</option>
 
-                        <option value="latest" {{ request('filter') == 'latest' ? 'selected' : '' }}>
+                        <option value="latest" <?php echo e(request('filter') == 'latest' ? 'selected' : ''); ?>>
                             Latest Product
                         </option>
 
-                        <option value="oldest" {{ request('filter') == 'oldest' ? 'selected' : '' }}>
+                        <option value="oldest" <?php echo e(request('filter') == 'oldest' ? 'selected' : ''); ?>>
                             Oldest Product
                         </option>
 
-                        <option value="low_to_high" {{ request('filter') == 'low_to_high' ? 'selected' : '' }}>
+                        <option value="low_to_high" <?php echo e(request('filter') == 'low_to_high' ? 'selected' : ''); ?>>
                             Price Low → High
                         </option>
 
-                        <option value="high_to_low" {{ request('filter') == 'high_to_low' ? 'selected' : '' }}>
+                        <option value="high_to_low" <?php echo e(request('filter') == 'high_to_low' ? 'selected' : ''); ?>>
                             Price High → Low
                         </option>
 
-                        <option value="a_to_z" {{ request('filter') == 'a_to_z' ? 'selected' : '' }}>
+                        <option value="a_to_z" <?php echo e(request('filter') == 'a_to_z' ? 'selected' : ''); ?>>
                             A → Z
                         </option>
 
-                        <option value="z_to_a" {{ request('filter') == 'z_to_a' ? 'selected' : '' }}>
+                        <option value="z_to_a" <?php echo e(request('filter') == 'z_to_a' ? 'selected' : ''); ?>>
                             Z → A
                         </option>
                     </select>
@@ -228,8 +229,8 @@
             <!-- /.container -->
             <div class="pt-2 pb-2 row" id="cateoryPro" style="background: white;">
 
-                @forelse ($categoryproducts as $promotional)
-                    @php
+                <?php $__empty_1 = true; $__currentLoopData = $categoryproducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $promotional): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                    <?php
                         $firstpro = App\Models\Product::with([
                             'sizes' => function ($query) {
                                 $query
@@ -241,8 +242,8 @@
                             ->select('id', 'ProductName')
                             ->first();
 
-                    @endphp
-                    @if (isset($firstpro))
+                    ?>
+                    <?php if(isset($firstpro)): ?>
                                 <div class="col-6 col-md-4" style="margin-top:10px;">
                                     <div class="item" id="featuredproduct">
                                         <div class="products best-product">
@@ -254,16 +255,12 @@
                                                                 <div class="text-center image">
 
 
-                                                                    <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                                        <img src="{{ asset($promotional->ProductImage) }}"
+                                                                    <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
+                                                                        <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
                                                                             style="padding:4px;">
                                                                     </a>
 
-                                                                    {{-- <form>
-                                                                        <button class="addtocartbtn">
-                                                                            Add To Cart
-                                                                        </button>
-                                                                    </form> --}}
+                                                                    
                                                                 </div>
                                                             </div>
                                                             <!-- /.product-image -->
@@ -274,22 +271,22 @@
                                                                 style="padding-bottom: 4px !important;background: white;">
                                                                 <div class="product-info text-center">
                                                                     <h2 class="name text-truncate" id="f_name"><a
-                                                                            href="{{ url('view-product/' . $promotional->ProductSlug) }}"
-                                                                            id="f_pro_name">{{ $promotional->ProductName }}</a>
+                                                                            href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>"
+                                                                            id="f_pro_name"><?php echo e($promotional->ProductName); ?></a>
                                                                     </h2>
                                                                 </div>
 
                                                                 <div class="price-box text-center" style="padding: 8px 0;">
-                                                                    @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
+                                                                    <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
                                                                         <del class="old-product-price strong-400"
-                                                                            style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
-                                                                    @endif
+                                                                            style="color:#db4444">৳<?php echo e(round($firstpro->sizes[0]->RegularPrice)); ?></del>
+                                                                    <?php endif; ?>
                                                                     <span class="product-price strong-600"
-                                                                        style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
+                                                                        style="color:black;margin-left:7px;">৳<?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
                                                                 </div>
 
                                                             </div>
-                                                            <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                            <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
                                                                 <button class="mb-0 btn btn-danger btn-sm btn-block"
                                                                     style="width: 100%;border-radius: 4px;padding: 8px 0; "
                                                                     id="purcheseBtn">অর্ডার করুন</button>
@@ -306,46 +303,46 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endif
-                @empty
-                @endforelse
+                            <?php endif; ?>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                <?php endif; ?>
             </div>
-            @if ($categoryproducts->hasPages())
+            <?php if($categoryproducts->hasPages()): ?>
             <div class="pagination-wrapper">
                 <ul class="pagination">
 
-                    {{-- Previous --}}
-                    @if ($categoryproducts->onFirstPage())
+                    
+                    <?php if($categoryproducts->onFirstPage()): ?>
                         <li class="disabled"><span>«</span></li>
-                    @else
+                    <?php else: ?>
                         <li>
-                            <a href="{{ $categoryproducts->previousPageUrl() }}">«</a>
+                            <a href="<?php echo e($categoryproducts->previousPageUrl()); ?>">«</a>
                         </li>
-                    @endif
+                    <?php endif; ?>
 
-                    {{-- Page Numbers --}}
-                    @for ($i = 1; $i <= $categoryproducts->lastPage(); $i++)
-                        @if ($i == $categoryproducts->currentPage())
-                            <li class="active"><span>{{ $i }}</span></li>
-                        @else
+                    
+                    <?php for($i = 1; $i <= $categoryproducts->lastPage(); $i++): ?>
+                        <?php if($i == $categoryproducts->currentPage()): ?>
+                            <li class="active"><span><?php echo e($i); ?></span></li>
+                        <?php else: ?>
                             <li>
-                                <a href="{{ $categoryproducts->url($i) }}">{{ $i }}</a>
+                                <a href="<?php echo e($categoryproducts->url($i)); ?>"><?php echo e($i); ?></a>
                             </li>
-                        @endif
-                    @endfor
+                        <?php endif; ?>
+                    <?php endfor; ?>
 
-                    {{-- Next --}}
-                    @if ($categoryproducts->hasMorePages())
+                    
+                    <?php if($categoryproducts->hasMorePages()): ?>
                         <li>
-                            <a href="{{ $categoryproducts->nextPageUrl() }}">»</a>
+                            <a href="<?php echo e($categoryproducts->nextPageUrl()); ?>">»</a>
                         </li>
-                    @else
+                    <?php else: ?>
                         <li class="disabled"><span>»</span></li>
-                    @endif
+                    <?php endif; ?>
 
                 </ul>
             </div>
-        @endif
+        <?php endif; ?>
         </div>
 
     </div>
@@ -360,7 +357,7 @@
             $('#quickShopModal').modal('show');
 
             $.ajax({
-                url: '{{url("quick-shop")}}/' + productId, // your route
+                url: '<?php echo e(url("quick-shop")); ?>/' + productId, // your route
                 type: 'GET',
                 success: function (response) {
                     $('#quickShopModalBody').html(response);
@@ -392,4 +389,6 @@ document.querySelectorAll('.wishlist-form').forEach(function (form) {
 </script> -->
 
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('webview.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/webview/product.blade.php ENDPATH**/ ?>

@@ -515,6 +515,50 @@
                     }
                 }
             });
+            $('#topsaleofferSlide').owlCarousel({
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                lazyLoad: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                nav: true,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 2,
+                    },
+                    600: {
+                        items: 2,
+                    },
+                    1000: {
+                        items: 4,
+                    }
+                }
+            });
+            $('#reviewSlide').owlCarousel({
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                lazyLoad: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+                responsiveClass: true,
+                nav: true,
+                dots: false,
+                responsive: {
+                    0: {
+                        items: 1,
+                    },
+                    600: {
+                        items: 1,
+                    },
+                    1000: {
+                        items: 3,
+                    }
+                }
+            });
 
 
 
