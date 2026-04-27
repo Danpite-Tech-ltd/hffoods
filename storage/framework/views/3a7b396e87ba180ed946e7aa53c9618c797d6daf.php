@@ -177,8 +177,8 @@
             <!-- Categories -->
             <div class="p-0 mb-3 col-lg-2 col-12 d-none" style="border-right: 1px solid #ddd">
                 <!-- <div class="category-title">
-                        <h5 class="m-0 text-white fw-bold">Categories</h5>
-                    </div> -->
+                            <h5 class="m-0 text-white fw-bold">Categories</h5>
+                        </div> -->
                 <div class="category-list">
                     <ul class="p-0 m-0 list-unstyled">
                         <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
@@ -277,13 +277,13 @@
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
                                                                 <!-- <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
-                                                                    <div class="frs_discount">
-                                                                        <span> -
-                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
-                                                                            
-                                                                        </span>
-                                                                    </div>
-                                                                <?php endif; ?> -->
+                                                                                    <div class="frs_discount">
+                                                                                        <span> -
+                                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
+
+                                                                                        </span>
+                                                                                    </div>
+                                                                                <?php endif; ?> -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
                                                                         class="p-0 m-0">
@@ -313,7 +313,8 @@
                                                                     </button>
                                                                 </div>
                                                                 <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
-                                                                    <img src="<?php echo e(asset($promotional->ProductImage)); ?>" style="padding:4px;">
+                                                                    <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
+                                                                        style="padding:4px;">
                                                                 </a>
 
                                                                 
@@ -340,7 +341,7 @@
                                                                 <span class="product-price strong-600"
                                                                     style="color:black;margin-left:7px;">৳<?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
                                                             </div>
-                                                            
+
                                                         </div>
                                                         <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
                                                             <button class="mb-0 btn btn-danger btn-sm btn-block"
@@ -366,11 +367,11 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                <a href="<?php echo e(url('best/products')); ?>"
-                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                    View All Products
-                </a>
-            </div> -->
+                        <a href="<?php echo e(url('best/products')); ?>"
+                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                            View All Products
+                        </a>
+                    </div> -->
 
         <?php else: ?>
         <?php endif; ?>
@@ -413,13 +414,13 @@
                                                         <div class="product-image" style="position: relative;">
                                                             <div class="text-center image">
                                                                 <!-- <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
-                                                                    <div class="frs_discount">
-                                                                        <span> -
-                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
-                                                                            
-                                                                        </span>
-                                                                    </div>
-                                                                <?php endif; ?> -->
+                                                                                    <div class="frs_discount">
+                                                                                        <span> -
+                                                                                            <?php echo e(($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0); ?>%
+
+                                                                                        </span>
+                                                                                    </div>
+                                                                                <?php endif; ?> -->
                                                                 <div class="wishlist-eye-btn">
                                                                     <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"
                                                                         class="p-0 m-0">
@@ -449,7 +450,8 @@
                                                                     </button>
                                                                 </div>
                                                                 <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
-                                                                    <img src="<?php echo e(asset($promotional->ProductImage)); ?>" style="padding:4px;">
+                                                                    <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
+                                                                        style="padding:4px;">
                                                                 </a>
 
                                                                 
@@ -476,7 +478,7 @@
                                                                 <span class="product-price strong-600"
                                                                     style="color:black;margin-left:7px;">৳<?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
                                                             </div>
-                                                            
+
                                                         </div>
                                                         <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
                                                             <button class="mb-0 btn btn-danger btn-sm btn-block"
@@ -502,11 +504,117 @@
                 </div>
             </div>
             <!-- <div class="text-center" style="margin-top:30px">
-                <a href="<?php echo e(url('best/products')); ?>"
-                    style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
-                    View All Products
-                </a>
-            </div> -->
+                        <a href="<?php echo e(url('best/products')); ?>"
+                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                            View All Products
+                        </a>
+                    </div> -->
+
+        <?php else: ?>
+        <?php endif; ?>
+    </div>
+
+
+    <!-- All Product -->
+    <div class="container">
+        <?php if(count($allProducts) > 0): ?>
+            <div class="pb-2 bg-white row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <div class="flash-wrapper">
+                            <h2 class="m-0 flashsale-main-title">সকল পণ্য</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="row">
+                        <?php $__empty_1 = true; $__currentLoopData = $allProducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $promotional): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <?php
+                                $firstpro = App\Models\Product::with([
+                                    'sizes' => function ($query) {
+                                        $query
+                                            ->select('id', 'product_id', 'Discount', 'RegularPrice', 'SalePrice')
+                                            ->take(1);
+                                    },
+                                ])
+                                    ->where('id', json_decode($promotional->RelatedProductIds)[0]->productID)
+                                    ->select('id', 'ProductName')
+                                    ->first();
+
+                            ?>
+                            <?php if(isset($firstpro)): ?>
+                                <div class="col-6 col-md-3" style="margin-top:10px;">
+                                    <div class="item" id="featuredproduct">
+                                        <div class="products best-product">
+                                            <div class="product">
+                                                <div class="product-micro">
+                                                    <div class="row product-micro-row">
+                                                        <div class="col-12">
+                                                            <div class="product-image" style="position: relative;">
+                                                                <div class="text-center image">
+                                                                    
+                                                                    
+                                                                    <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
+                                                                        <img src="<?php echo e(asset($promotional->ProductImage)); ?>"
+                                                                            style="padding:4px;">
+                                                                    </a>
+
+                                                                    
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.product-image -->
+                                                        </div>
+                                                        <!-- /.col -->
+                                                        <div class="col-12">
+                                                            <div class="p-2 infofe p-md-2"
+                                                                style="padding-bottom: 4px !important;background: white;">
+                                                                <div class="product-info text-center">
+                                                                    <h2 class="name text-truncate" id="f_name"><a
+                                                                            href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>"
+                                                                            id="f_pro_name"><?php echo e($promotional->ProductName); ?></a>
+                                                                    </h2>
+                                                                </div>
+
+                                                                <div class="price-box text-center" style="padding: 8px 0;">
+                                                                    <?php if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice): ?>
+                                                                        <del class="old-product-price strong-400"
+                                                                            style="color:#db4444">৳<?php echo e(round($firstpro->sizes[0]->RegularPrice)); ?></del>
+                                                                    <?php endif; ?>
+                                                                    <span class="product-price strong-600"
+                                                                        style="color:black;margin-left:7px;">৳<?php echo e(round($firstpro->sizes[0]->SalePrice)); ?></span>
+                                                                </div>
+
+                                                            </div>
+                                                            <a href="<?php echo e(url('view-product/' . $promotional->ProductSlug)); ?>">
+                                                                <button class="mb-0 btn btn-danger btn-sm btn-block"
+                                                                    style="width: 100%;border-radius: 4px;padding: 8px 0; "
+                                                                    id="purcheseBtn">অর্ডার করুন</button>
+                                                            </a>
+
+                                                        </div>
+                                                        <!-- /.col -->
+                                                    </div>
+                                                    <!-- /.product-micro-row -->
+                                                </div>
+                                                <!-- /.product-micro -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+            </div>
+            <!-- <div class="text-center" style="margin-top:30px">
+                        <a href="<?php echo e(url('best/products')); ?>"
+                            style="padding:15px 35px;color:white;font-weight:bold;font-size:15px;background:#db4444;border-radius:4px">
+                            View All Products
+                        </a>
+                    </div> -->
 
         <?php else: ?>
         <?php endif; ?>
@@ -515,88 +623,39 @@
 
     <!-- Categories -->
     <!-- <div class="container p-0 my-2">
-        <div class="row">
-            <div class="col-12">
-                <div class="section-title">
-                    <div class="title-top">
-                        <span class="bar"></span>
-                        <span class="category-text">Categories</span>
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <div class="title-top">
+                            <span class="bar"></span>
+                            <span class="category-text">Categories</span>
+                        </div>
+
+                        <h2 class="main-title">Browse By Category</h2>
                     </div>
 
-                    <h2 class="main-title">Browse By Category</h2>
-                </div>
+                    <div class="owl-carousel " id="categorySlide">
+                        <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
+                            <div class="item">
+                                <a href="<?php echo e(url('products/category/' . $category->slug)); ?>">
+                                    <div id="cath" style="border: 1px solid #000;border-radius:5px">
+                                        <div class="d-flex justify-content-center">
+                                            <img src="<?php echo e(asset($category->category_icon)); ?>" id="catimg">
+                                        </div>
 
-                <div class="owl-carousel " id="categorySlide">
-                    <?php $__empty_1 = true; $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                        <div class="item">
-                            <a href="<?php echo e(url('products/category/' . $category->slug)); ?>">
-                                <div id="cath" style="border: 1px solid #000;border-radius:5px">
-                                    <div class="d-flex justify-content-center">
-                                        <img src="<?php echo e(asset($category->category_icon)); ?>" id="catimg">
+                                        <p id="catp" style="font-weight:bold;"><?php echo e($category->category_name); ?></p>
                                     </div>
+                                </a>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
 
-                                    <p id="catp" style="font-weight:bold;"><?php echo e($category->category_name); ?></p>
-                                </div>
-                            </a>
-                        </div>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-
-                    <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div> -->
+        </div> -->
 
 
-
-    <style>
-  .features-section { background: #fff; padding: 50px 20px; }
-  .feature-icon-wrap {
-    width: 70px; height: 70px;
-    border-radius: 50%;
-    border: 2px solid #ccc;
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px;
-    background: #111;
-    transition: background .3s;
-  }
-  .feature-icon-wrap i { font-size: 26px; color: #fff; }
-  .feature-item:hover .feature-icon-wrap { background: #333; }
-  .feature-title { font-size: 14px; font-weight: 800; letter-spacing: .5px; text-transform: uppercase; color: #111; margin-bottom: 8px; }
-  .feature-desc { font-size: 13px; color: #888; margin: 0; }
-</style>
-
-<section class="features-section">
-  <div class="container">
-    <div class="text-center row g-4">
-
-      <div class="col-12 col-md-4 feature-item">
-        <div class="feature-icon-wrap">
-          <i style="color:white;font-size:22px;" class="fa-solid fa-truck-fast"></i>
-        </div>
-        <h6 class="m-0 feature-title">Free and Fast Delivery</h6>
-        <p class="feature-desc">Free delivery for all orders over $140</p>
-      </div>
-
-      <div class="col-12 col-md-4 feature-item">
-        <div class="feature-icon-wrap">
-          <i style="color:white;font-size:22px;" class="fa-solid fa-headset"></i>
-        </div>
-        <h6 class="m-0 feature-title">24/7 Customer Service</h6>
-        <p class="feature-desc">Friendly 24/7 customer support</p>
-      </div>
-
-      <div class="col-12 col-md-4 feature-item">
-        <div class="feature-icon-wrap">
-          <i style="color:white;font-size:22px;" class="fa-solid fa-shield-halved"></i>
-        </div>
-        <h6 class="m-0 feature-title">Money Back Guarantee</h6>
-        <p class="feature-desc">We return money within 30 days</p>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
     <?php if(Auth::id()): ?>
@@ -765,24 +824,23 @@
             const distance = targetDate - now;
 
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-            const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-            const seconds = Math.floor((distance % (1000*60)) / 1000);
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-            document.getElementById("flashsale-days").innerHTML = String(Math.max(days,0)).padStart(2,'0');
-            document.getElementById("flashsale-hours").innerHTML = String(Math.max(hours,0)).padStart(2,'0');
-            document.getElementById("flashsale-minutes").innerHTML = String(Math.max(minutes,0)).padStart(2,'0');
-            document.getElementById("flashsale-seconds").innerHTML = String(Math.max(seconds,0)).padStart(2,'0');
+            document.getElementById("flashsale-days").innerHTML = String(Math.max(days, 0)).padStart(2, '0');
+            document.getElementById("flashsale-hours").innerHTML = String(Math.max(hours, 0)).padStart(2, '0');
+            document.getElementById("flashsale-minutes").innerHTML = String(Math.max(minutes, 0)).padStart(2, '0');
+            document.getElementById("flashsale-seconds").innerHTML = String(Math.max(seconds, 0)).padStart(2, '0');
 
-            if(distance < 0){
+            if (distance < 0) {
                 clearInterval(timer);
             }
 
-        },1000);
+        }, 1000);
     </script>
 
 
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('webview.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/webview/content/maincontent.blade.php ENDPATH**/ ?>

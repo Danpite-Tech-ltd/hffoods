@@ -203,6 +203,7 @@ class WebviewController extends Controller
 
         $topproducts = Mainproduct::where('status', 'Active')->where('top_rated', '1')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->latest()->get();
         $bestselling = Mainproduct::where('status', 'Active')->where('bestselling', '1')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->latest()->get();
+        $allProducts = Mainproduct::where('status', 'Active')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->latest()->get();
 
         $our_products = Mainproduct::where('status', 'Active')->orderByRaw('ISNULL(`position`), `position` ASC')->select('id', 'ProductName', 'ProductSlug', 'ProductImage', 'ProductHoverImage', 'status', 'position', 'top_rated', 'RelatedProductIds')->inRandomOrder()->take(8)->get();
 
@@ -218,7 +219,7 @@ class WebviewController extends Controller
                 ->get();
         });
 
-        return view('webview.content.maincontent', ['video_galleries' => $video_galleries, 'categories' => $categories, 'sliders' => $sliders, 'adds' => $adds, 'addbottoms' => $addbottoms, 'topproducts' => $topproducts, 'categoryproducts' => $categoryproducts, 'bestselling' => $bestselling, 'our_products' => $our_products]);
+        return view('webview.content.maincontent', ['video_galleries' => $video_galleries, 'categories' => $categories, 'sliders' => $sliders, 'adds' => $adds, 'addbottoms' => $addbottoms, 'topproducts' => $topproducts, 'categoryproducts' => $categoryproducts, 'bestselling' => $bestselling, 'our_products' => $our_products, 'allProducts' => $allProducts]);
     }
 
     public function productdetailsnew($slug)
