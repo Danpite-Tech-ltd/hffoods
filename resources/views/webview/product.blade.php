@@ -144,16 +144,16 @@
 
             </div>
 
-            <div class="shop-category-box">
+            <!-- <div class="shop-category-box">
                 <h3 class="m-0 mb-2">Price</h3>
                 <form method="GET" id="priceForm">
                     <input type="number" name="min_price" placeholder="Min Price" value="{{ request('min_price') }}" class="mb-2 form-control">
                     <input type="number" name="max_price" placeholder="Max Price" value="{{ request('max_price') }}" class="mb-2 form-control">
                     <button type="submit" class="btn btn-primary w-100"> Apply Filter </button>
                 </form>
-            </div>
+            </div> -->
 
-            <div class="shop-category-box">
+            <!-- <div class="shop-category-box">
                 <h3 class="m-0 mb-2">Shop by Brand</h3>
                 @php
                     $brands = App\Models\Brand::where('status', 'Active')->get();
@@ -181,7 +181,7 @@
 
                 </form>
 
-            </div>
+            </div> -->
 
         </div>
 
@@ -189,7 +189,7 @@
 
         <div class="col-12 col-lg-9">
             <div style="display: flex;align-items: center;justify-content: space-between;">
-                <div style="text-align:right;font-size:14px;color:#666;font-weight:500;margin:20px 0;">
+                <div style="text-align:left;font-size:14px;color:#666;font-weight:500;margin:20px 0;">
                     Showing {{ $categoryproducts->firstItem() }}–{{ $categoryproducts->lastItem() }} of {{ $categoryproducts->total() }} results
                 </div>
                 <form method="GET" id="filterForm" style="margin-bottom:0">
@@ -243,118 +243,70 @@
 
                     @endphp
                     @if (isset($firstpro))
-                        <div class="col-6 col-lg-4 border-animation">
-                            <div class="products best-product">
-                                <div class="product">
-                                    <div class="product-micro">
-                                        <div class="row product-micro-row">
-                                            <div class="col-12">
-                                                <div class="product-image" style="position: relative;">
-                                                    <div class="text-center image">
-                                                        @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                            <div class="frs_discount">
-                                                                <span> -
-                                                                    {{ ($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0 }}%
-                                                                    <!-- <span class="pip_pip_1s">ছাড়</span>  -->
-                                                                </span>
+                                <div class="col-6 col-md-4" style="margin-top:10px;">
+                                    <div class="item" id="featuredproduct">
+                                        <div class="products best-product">
+                                            <div class="product">
+                                                <div class="product-micro">
+                                                    <div class="row product-micro-row">
+                                                        <div class="col-12">
+                                                            <div class="product-image" style="position: relative;">
+                                                                <div class="text-center image">
+
+
+                                                                    <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                                        <img src="{{ asset($promotional->ProductImage) }}"
+                                                                            style="padding:4px;">
+                                                                    </a>
+
+                                                                    {{-- <form>
+                                                                        <button class="addtocartbtn">
+                                                                            Add To Cart
+                                                                        </button>
+                                                                    </form> --}}
+                                                                </div>
                                                             </div>
-                                                        @endif
-                                                        <div class="wishlist-eye-btn">
-                                                        <form action="{{ route('wishlist.add') }}" method="POST"
-                                                                class="p-0 m-0 wishlist-form">
-                                                                @csrf
-                                                                <input type="hidden" name="product_id"
-                                                                    value="{{ $promotional->id }}">
+                                                            <!-- /.product-image -->
+                                                        </div>
+                                                        <!-- /.col -->
+                                                        <div class="col-12">
+                                                            <div class="p-2 infofe p-md-2"
+                                                                style="padding-bottom: 4px !important;background: white;">
+                                                                <div class="product-info text-center">
+                                                                    <h2 class="name text-truncate" id="f_name"><a
+                                                                            href="{{ url('view-product/' . $promotional->ProductSlug) }}"
+                                                                            id="f_pro_name">{{ $promotional->ProductName }}</a>
+                                                                    </h2>
+                                                                </div>
 
-                                                                <button type="submit" class="wishlist-btn">
-                                                                    @php
-                                                                        $wishlist = session()->get('wishlist', []);
-                                                                        $inWishlist = in_array($promotional->id, $wishlist);
-                                                                    @endphp
-
-                                                                    @if($inWishlist)
-                                                                        <i class="fa-solid fa-heart fs-5"
-                                                                            style="font-size:18px;color:black;"></i>
-                                                                    @else
-                                                                        <i class="fa-regular fa-heart fs-5"
-                                                                            style="font-size:18px;color:black;"></i>
+                                                                <div class="price-box text-center" style="padding: 8px 0;">
+                                                                    @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
+                                                                        <del class="old-product-price strong-400"
+                                                                            style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
                                                                     @endif
-                                                                </button>
-                                                            </form>
-                                                            <button class="quick-shop-btn" type="button"
-                                                                data-product-id="{{ $promotional->id }}">
-                                                                <i class="fa-regular fa-eye"
-                                                                    style="font-size: 18px;color:black;"></i>
-                                                            </button>
-                                                        </div>
-                                                        <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                            <img src="{{ asset($promotional->ProductImage) }}">
-                                                        </a>
+                                                                    <span class="product-price strong-600"
+                                                                        style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
+                                                                </div>
 
-                                                        {{-- <form>
-                                                            <button class="addtocartbtn">
-                                                                Add To Cart
-                                                            </button>
-                                                        </form> --}}
-                                                    </div>
-                                                </div>
-                                                <!-- /.product-image -->
-                                            </div>
-                                            <!-- /.col -->
-                                            <div class="col-12">
-                                                <div class="p-2 infofe p-md-2"
-                                                    style="padding-bottom: 4px !important;background: white;">
-                                                    <div class="product-info">
-                                                        <h2 class="name text-truncate" id="f_name"><a
-                                                                href="{{ url('view-product/' . $promotional->ProductSlug) }}"
-                                                                id="f_pro_name">{{ $promotional->ProductName }}</a>
-                                                        </h2>
-                                                    </div>
-
-                                                    <div class="price-box" style="padding-top: 5px;">
-                                                        @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                            <del class="old-product-price strong-400"
-                                                                style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
-                                                        @endif
-                                                        <span class="product-price strong-600"
-                                                        style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
-                                                    </div>
-
-                                                    <div class="d-flex" style="justify-content:space-between">
-                                                        <div class="star" style="padding-top: 5px;">
-
-                                                            <span class="fas fa-star" id="checked"></span>
-                                                            <span class="fas fa-star" id="checked"></span>
-                                                            <span class="fas fa-star" id="checked"></span>
-                                                            <span class="fas fa-star" id="checked"></span>
-                                                            <span class="fas fa-star" id="checked"></span>
-                                                            <span
-                                                                style="font-weight: bold;color:black;font-size:12px">({{ App\Models\Review::where('product_id', $promotional->id)->get()->count() }})</span>
+                                                            </div>
+                                                            <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                                <button class="mb-0 btn btn-danger btn-sm btn-block"
+                                                                    style="width: 100%;border-radius: 4px;padding: 8px 0; "
+                                                                    id="purcheseBtn">অর্ডার করুন</button>
+                                                            </a>
 
                                                         </div>
-
+                                                        <!-- /.col -->
                                                     </div>
-
-
-
+                                                    <!-- /.product-micro-row -->
                                                 </div>
-                                                <!-- <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                    <button class="mb-0 btn btn-danger btn-sm btn-block"
-                                                        style="width: 100%;border-radius: 0%;"
-                                                        id="purcheseBtn">অর্ডার করুন</button>
-                                                </a> -->
+                                                <!-- /.product-micro -->
 
                                             </div>
-                                            <!-- /.col -->
                                         </div>
-                                        <!-- /.product-micro-row -->
                                     </div>
-                                    <!-- /.product-micro -->
-
                                 </div>
-                            </div>
-                        </div>
-                    @endif
+                            @endif
                 @empty
                 @endforelse
             </div>

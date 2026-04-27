@@ -27,7 +27,7 @@
 <div class="pt-2 pb-2 row" id="cateoryPro" style="background:#efefef !important;">
 
     <div class="pb-2 bg-white">
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-12">
                 <div class="section-title">
                     <div class="title-top">
@@ -39,7 +39,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="row g-4">
             <!-- <div class="owl-carousel " id="promotionalofferSlide"> -->
             @forelse ($subcategoryproducts as $promotional)
@@ -57,121 +57,70 @@
 
                 @endphp
                 @if (isset($firstpro))
-                    <div class="col-6 col-lg-3 border-animation">
-                        <div class="products best-product">
-                            <div class="product">
-                                <div class="product-micro">
-                                    <div class="row product-micro-row">
-                                        <div class="col-12">
-                                            <div class="product-image" style="position: relative;">
-                                                <div class="text-center image">
-                                                    @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                        <div class="frs_discount">
-                                                            <span> -
-                                                                {{ ($firstpro->sizes[0]->RegularPrice > 0) ? round((($firstpro->sizes[0]->RegularPrice - $firstpro->sizes[0]->SalePrice) / $firstpro->sizes[0]->RegularPrice) * 100) : 0 }}%
-                                                                <!-- <span class="pip_pip_1s">ছাড়</span>  -->
-                                                            </span>
+                                <div class="col-6 col-md-3" style="margin-top:10px;">
+                                    <div class="item" id="featuredproduct">
+                                        <div class="products best-product">
+                                            <div class="product">
+                                                <div class="product-micro">
+                                                    <div class="row product-micro-row">
+                                                        <div class="col-12">
+                                                            <div class="product-image" style="position: relative;">
+                                                                <div class="text-center image">
+
+
+                                                                    <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                                        <img src="{{ asset($promotional->ProductImage) }}"
+                                                                            style="padding:4px;">
+                                                                    </a>
+
+                                                                    {{-- <form>
+                                                                        <button class="addtocartbtn">
+                                                                            Add To Cart
+                                                                        </button>
+                                                                    </form> --}}
+                                                                </div>
+                                                            </div>
+                                                            <!-- /.product-image -->
                                                         </div>
-                                                    @endif
-                                                    <div class="wishlist-eye-btn">
-                                                        <div class="product-wishlist">
-                                                            <form action="{{ route('wishlist.add') }}" method="POST"
-                                                                class="p-0 m-0 wishlist-form">
-                                                                @csrf
-                                                                <input type="hidden" name="product_id"
-                                                                    value="{{ $promotional->id }}">
+                                                        <!-- /.col -->
+                                                        <div class="col-12">
+                                                            <div class="p-2 infofe p-md-2"
+                                                                style="padding-bottom: 4px !important;background: white;">
+                                                                <div class="product-info text-center">
+                                                                    <h2 class="name text-truncate" id="f_name"><a
+                                                                            href="{{ url('view-product/' . $promotional->ProductSlug) }}"
+                                                                            id="f_pro_name">{{ $promotional->ProductName }}</a>
+                                                                    </h2>
+                                                                </div>
 
-                                                                <button type="submit" class="wishlist-btn">
-                                                                    @php
-                                                                        $wishlist = session()->get('wishlist', []);
-                                                                        $inWishlist = in_array($promotional->id, $wishlist);
-                                                                    @endphp
-
-                                                                    @if($inWishlist)
-                                                                        <i class="fa-solid fa-heart fs-5"
-                                                                            style="font-size:18px;color:black;"></i>
-                                                                    @else
-                                                                        <i class="fa-regular fa-heart fs-5"
-                                                                            style="font-size:18px;color:black;"></i>
+                                                                <div class="price-box text-center" style="padding: 8px 0;">
+                                                                    @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
+                                                                        <del class="old-product-price strong-400"
+                                                                            style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
                                                                     @endif
-                                                                </button>
-                                                            </form>
+                                                                    <span class="product-price strong-600"
+                                                                        style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
+                                                                </div>
+
+                                                            </div>
+                                                            <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                                <button class="mb-0 btn btn-danger btn-sm btn-block"
+                                                                    style="width: 100%;border-radius: 4px;padding: 8px 0; "
+                                                                    id="purcheseBtn">অর্ডার করুন</button>
+                                                            </a>
+
                                                         </div>
-
-                                                        <button class="quick-shop-btn" type="button"
-                                                            data-product-id="{{ $promotional->id }}">
-                                                            <i class="fa-regular fa-eye"
-                                                                style="font-size: 18px;color:black;"></i>
-                                                        </button>
+                                                        <!-- /.col -->
                                                     </div>
-                                                    <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                        <img src="{{ asset($promotional->ProductImage) }}">
-                                                    </a>
-
-                                                    {{-- <form>
-                                                        <button class="addtocartbtn">
-                                                            Add To Cart
-                                                        </button>
-                                                    </form> --}}
+                                                    <!-- /.product-micro-row -->
                                                 </div>
-                                            </div>
-                                            <!-- /.product-image -->
-                                        </div>
-                                        <!-- /.col -->
-                                        <div class="col-12">
-                                            <div class="p-2 infofe p-md-2"
-                                                style="padding-bottom: 4px !important;background: white;">
-                                                <div class="product-info">
-                                                    <h2 class="name text-truncate" id="f_name"><a
-                                                            href="{{ url('view-product/' . $promotional->ProductSlug) }}"
-                                                            id="f_pro_name">{{ $promotional->ProductName }}</a>
-                                                    </h2>
-                                                </div>
-
-                                                <div class="price-box" style="padding-top: 5px;">
-                                                    @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                        <del class="old-product-price strong-400"
-                                                            style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
-                                                    @endif
-                                                    <span class="product-price strong-600"
-                                                        style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
-                                                </div>
-
-                                                <div class="d-flex" style="justify-content:space-between">
-                                                    <div class="star" style="padding-top: 5px;">
-
-                                                        <span class="fas fa-star" id="checked"></span>
-                                                        <span class="fas fa-star" id="checked"></span>
-                                                        <span class="fas fa-star" id="checked"></span>
-                                                        <span class="fas fa-star" id="checked"></span>
-                                                        <span class="fas fa-star" id="checked"></span>
-                                                        <span
-                                                            style="font-weight: bold;color:black;font-size:12px">({{ App\Models\Review::where('product_id', $promotional->id)->get()->count() }})</span>
-
-                                                    </div>
-
-                                                </div>
-
-
+                                                <!-- /.product-micro -->
 
                                             </div>
-                                            <!-- <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                                    <button class="mb-0 btn btn-danger btn-sm btn-block"
-                                                                        style="width: 100%;border-radius: 0%;"
-                                                                        id="purcheseBtn">অর্ডার করুন</button>
-                                                                </a> -->
-
                                         </div>
-                                        <!-- /.col -->
                                     </div>
-                                    <!-- /.product-micro-row -->
                                 </div>
-                                <!-- /.product-micro -->
-
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                            @endif
             @empty
             @endforelse
             <!-- </div> -->

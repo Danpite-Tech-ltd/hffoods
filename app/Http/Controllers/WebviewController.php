@@ -664,7 +664,7 @@ class WebviewController extends Controller
             ->paginate(12)
             ->withQueryString();
 
-        $subcategories = Subcategory::where('status', 'Active')->get();
+        $subcategories = Subcategory::where('category_id', $categorysingle->id)->where('status', 'Active')->get();
 
         return view('webview.content.product.category', compact('categoryproducts', 'subcategories', 'categorysingle'));
         // $categoryproducts = Mainproduct::where('status', 'Active')->where('category_id', $categorysingle->id)->orderByRaw('ISNULL(`position`), `position` ASC')->latest()->paginate(12);
