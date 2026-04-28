@@ -439,14 +439,14 @@
                                             </div>
 
                                             <!-- Buy Now (mobile: full width below, desktop: middle col) -->
-                                            <div class="order-3 my-2 col-12 col-lg-6 order-lg-2">
-                                                <form name="form" action="<?php echo e(url('add-to-cart')); ?>" id="submitaddtocart"
+                                            <div class="order-3 my-2 col-12 col-lg-7 order-lg-2">
+                                                <form name="form" action="<?php echo e(url('add-to-buy')); ?>" id="submitaddtocart"
                                                     method="POST" enctype="multipart/form-data" style="text-align: center;">
                                                     <?php echo method_field('POST'); ?>
                                                     <?php echo csrf_field(); ?>
                                                     <input type="hidden" name="color" id="product_colororder"
                                                         value="<?php echo e($varients[0]->color); ?>">
-                                                    <input type="hidden" name="size" id="product_sizeordernew" value="">
+                                                    <input type="hidden" name="size" id="product_sizeorder" value="">
                                                     <input type="hidden" name="sigment" id="product_sigmentorder" value="">
                                                     <input type="hidden" name="price" id="product_priceorder" value="">
                                                     <input type="hidden" name="product_id" value="<?php echo e($productdetails->id); ?>"
@@ -455,14 +455,36 @@
 
                                                     <button type="submit"
                                                         class="mb-0 ml-2 btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow buy-now w-100"
-                                                        style="background:#db4444;color:white;font-size: 15px;">
-                                                        Buy Now
+                                                        style="background:#1ebc50 !important;color:white;font-size: 15px;border-radius:20px;">
+                                                        ক্যাশ অন ডেলিভারিতে অর্ডার করুন
+                                                    </button>
+                                                </form>
+                                            </div>
+                                            <!-- Add to cart (mobile: full width below, desktop: middle col) -->
+                                            <div class="order-3 my-2 col-6 col-lg-5 order-lg-2">
+                                                <form name="form" action="<?php echo e(url('add-to-cart')); ?>" id="submitaddtocart"
+                                                    method="POST" enctype="multipart/form-data" style="text-align: center;">
+                                                    <?php echo method_field('POST'); ?>
+                                                    <?php echo csrf_field(); ?>
+                                                    <input type="hidden" name="color" id="product_colororder"
+                                                        value="<?php echo e($varients[0]->color); ?>">
+                                                    <input type="hidden" name="size" id="product_sizeordernew" value="">
+                                                    <input type="hidden" name="sigment" id="product_sigmentorder" value="">
+                                                    <input type="hidden" name="price" id="product_priceneworder" value="">
+                                                    <input type="hidden" name="product_id" value="<?php echo e($productdetails->id); ?>"
+                                                        hidden>
+                                                    <input type="hidden" name="qty" value="1" id="qtyoror">
+
+                                                    <button type="submit"
+                                                        class="mb-0 ml-2 btn btn-styled btn-base-1 btn-icon-left strong-700 hov-bounce hov-shaddow buy-now w-100"
+                                                        style="background:#000 !important;color:white;font-size: 15px;border-radius:20px;">
+                                                        Add to Cart
                                                     </button>
                                                 </form>
                                             </div>
 
                                             <!-- Wishlist (mobile: col-6, desktop: col-lg-2) -->
-                                            <div class="order-2 my-2 col-6 col-lg-2 order-lg-3">
+                                            <div class="order-2 my-2 col-6 col-lg-2 order-lg-3 d-none">
                                                 <div class="d-flex justify-content-end">
                                                     <div class="product-wishlist">
                                                         <form action="<?php echo e(route('wishlist.add')); ?>" method="POST"

@@ -99,6 +99,7 @@ Route::get('multimedia', [WebviewController::class, 'rashi']);
 
 // cart
 Route::post('add-to-cart', [CartController::class, 'addtocart']);
+Route::post('add-to-buy', [CartController::class, 'addtobuy']);
 Route::post('add-to-cart-new', [CartController::class, 'addtocartnew']);
 Route::post('order-to-cart', [CartController::class, 'ordertocart']);
 Route::get('get-cart-content', [CartController::class, 'getcartcontent']);
