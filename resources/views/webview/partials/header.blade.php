@@ -155,19 +155,116 @@
                 </div>
                 <!-- /.logo-holder -->
 
-                <div class="col-md-2 col-lg-4 nav-items"
+                <div class="col-md-2 col-lg-6 nav-items"
                     style="display:flex;align-items:center;justify-content:space-around;" id="d-sm-none">
                     <!-- /.contact-row -->
                     <a href="{{ url('/') }}">Home</a>
-                    <a href="{{ url('venture/contact_us') }}">Contact</a>
-                    <a href="{{ url('about-us') }}">About</a>
-                    <a href="{{ url('video-gallery') }}">Video Gallery</a>
-                    <a href="{{ url('track-order') }}">Track Order</a>
+                    <div class="all-cat">
+                        <span class="all-cat-title">All Categories <i class="fa-solid fa-angle-down"></i></span>
+
+                        <div class="cat-nav">
+                            <ul class="mb-0 list-unstyled">
+                                @foreach ($categories as $category)
+                                    @php
+                                        $subcategories = App\Models\Subcategory::where('status', 'Active')
+                                            ->where('category_id', $category->id)->get();
+                                    @endphp
+
+                                    <li class="cat-item">
+                                        <a class="cat-link" href="{{ url('products/category/' . $category->slug) }}">
+                                            {{ $category->category_name }}
+                                        </a>
+
+                                        @if($subcategories->isNotEmpty())
+                                            <ul class="sub-list">
+                                                @foreach($subcategories as $value)
+                                                    <li>
+                                                        <a href="{{ url('products/sub/category/' . $value->slug) }}">
+                                                            {{ $value->sub_category_name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    @foreach ($headcategories->take(2) as $category)
+                        <a href="{{ url('products/category/' . $category->slug) }}">{{ $category->category_name }}</a>
+                    @endforeach
+
+                    <style>
+                        .all-cat {
+                            position: relative;
+                            display: inline-block;
+                        }
+
+                        .cat-nav {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 220px;
+                            background: #fff;
+                            border: 1px solid #ddd;
+                            display: none;
+                            z-index: 9999999;
+                        }
+
+                        /* hover করলে categories show হবে */
+                        .all-cat:hover .cat-nav {
+                            display: block;
+                        }
+
+                        /* category item */
+                        .cat-item {
+                            position: relative;
+                        }
+
+                        .cat-link {
+                            display: block;
+                            padding: 10px;
+                            color: #000;
+                            text-decoration: none;
+                        }
+
+                        .cat-link:hover {
+                            background: #f5f5f5;
+                        }
+
+                        /* subcategory (right side) */
+                        .sub-list {
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            width: 220px;
+                            background: #fff;
+                            border: 1px solid #ddd;
+                            display: none;
+                        }
+
+                        /* hover করলে right side এ show */
+                        .cat-item:hover .sub-list {
+                            display: block;
+                        }
+
+                        /* sub item */
+                        .sub-list li a {
+                            display: block;
+                            padding: 10px;
+                            color: #000;
+                        }
+
+                        .sub-list li a:hover {
+                            background: #f0f0f0;
+                        }
+                    </style>
 
                 </div>
                 <!-- /.top-search-holder -->
 
-                <div class="p-0 col-6 col-sm-6 col-md-6 col-lg-6 animate-dropdown top-cart-row top-search-holder"
+                <div class="p-0 col-6 col-sm-6 col-md-6 col-lg-4 animate-dropdown top-cart-row top-search-holder"
                     id="headcart">
 
                     <div class="search-area" id="d-sm-none" style="margin-top:-10px">
@@ -176,15 +273,14 @@
                             <form action="{{ url('search') }}" method="GET" style="margin-top:10px">
                                 <div class="control-group" style="display: flex;">
                                     <input class="m-0 search-field" name="search"
-                                        placeholder="What are you looking for?" style="width:384px">
+                                        placeholder="What are you looking for?" style="width:77%">
                                     <button class="search-button" type="submit"></button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
 
-                    <div class="">
+                    <div class="d-none">
                         <a href="{{ url('/wishlist') }}" class="d-none d-lg-block" id="iconhead"
                             style="margin-top:2px !important">
                             <i class="bi bi-heart" style="font-size:21px;color:black;"></i>
@@ -212,7 +308,7 @@
                         <!-- /.dropdown-menu-->
                     </div>
 
-                    <div class="d-none d-xl-inline-block" id="d-sm-none">
+                    <div class="d-none ">
 
                         @if (Auth::id())
                             <a href="{{ url('user/dashboard') }}" type="button" style="color: #212129;font-size:20px"><i
@@ -261,12 +357,6 @@
                     <a onclick="openNav()">
                         <i class="fa-solid fa-bars" style="font-size:24px;"></i>
                     </a>
-
-                    <a type="button" class="search-button" onclick="showser()" id="smsericon">
-                        <i class="bi bi-search" style="color:black;"></i>
-                    </a>
-
-                    <input type="text" id="valcheck" value="0" hidden>
                 </div>
 
                 <div class="middle-col d-flex align-items-center justify-content-center">
@@ -275,11 +365,17 @@
                     </a>
                 </div>
 
-                <div class="right-col d-flex align-items-center justify-content-around">
+                <div class="right-col d-flex align-items-center justify-content-end">
 
-                    <a href="{{ url('/wishlist') }}" id="iconhead">
+                    <a class="d-none" href="{{ url('/wishlist') }}" id="iconhead">
                         <i class="bi bi-heart" style="font-size:24px;color:black"></i>
                     </a>
+
+                    <a type="button" class="search-button" onclick="showser()" id="smsericon">
+                        <i class="bi bi-search" style="color:black;"></i>
+                    </a>
+
+                    <input type="text" id="valcheck" value="0" hidden>
 
                     <div class="dropdown-cart">
                         <div type="button" onclick="checkcartview()">

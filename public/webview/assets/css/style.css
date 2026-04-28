@@ -921,9 +921,9 @@ button#purcheseBtn {
         width: 75%;
         border-radius: 6px;
     }
-    #crossm {
+    /* #crossm {
         display: none !important;
-    }
+    } */
     .logo-holder {
         padding-right: 40px;
     }

@@ -161,19 +161,118 @@
                 </div>
                 <!-- /.logo-holder -->
 
-                <div class="col-md-2 col-lg-4 nav-items"
+                <div class="col-md-2 col-lg-6 nav-items"
                     style="display:flex;align-items:center;justify-content:space-around;" id="d-sm-none">
                     <!-- /.contact-row -->
                     <a href="<?php echo e(url('/')); ?>">Home</a>
-                    <a href="<?php echo e(url('venture/contact_us')); ?>">Contact</a>
-                    <a href="<?php echo e(url('about-us')); ?>">About</a>
-                    <a href="<?php echo e(url('video-gallery')); ?>">Video Gallery</a>
-                    <a href="<?php echo e(url('track-order')); ?>">Track Order</a>
+                    <div class="all-cat">
+                        <span class="all-cat-title">All Categories <i class="fa-solid fa-angle-down"></i></span>
+
+                        <div class="cat-nav">
+                            <ul class="mb-0 list-unstyled">
+                                <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php
+                                        $subcategories = App\Models\Subcategory::where('status', 'Active')
+                                            ->where('category_id', $category->id)->get();
+                                    ?>
+
+                                    <li class="cat-item">
+                                        <a class="cat-link" href="<?php echo e(url('products/category/' . $category->slug)); ?>">
+                                            <?php echo e($category->category_name); ?>
+
+                                        </a>
+
+                                        <?php if($subcategories->isNotEmpty()): ?>
+                                            <ul class="sub-list">
+                                                <?php $__currentLoopData = $subcategories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <li>
+                                                        <a href="<?php echo e(url('products/sub/category/' . $value->slug)); ?>">
+                                                            <?php echo e($value->sub_category_name); ?>
+
+                                                        </a>
+                                                    </li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            </ul>
+                                        <?php endif; ?>
+                                    </li>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </ul>
+                        </div>
+                    </div>
+                    <?php $__currentLoopData = $headcategories->take(2); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <a href="<?php echo e(url('products/category/' . $category->slug)); ?>"><?php echo e($category->category_name); ?></a>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                    <style>
+                        .all-cat {
+                            position: relative;
+                            display: inline-block;
+                        }
+
+                        .cat-nav {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 220px;
+                            background: #fff;
+                            border: 1px solid #ddd;
+                            display: none;
+                            z-index: 9999999;
+                        }
+
+                        /* hover করলে categories show হবে */
+                        .all-cat:hover .cat-nav {
+                            display: block;
+                        }
+
+                        /* category item */
+                        .cat-item {
+                            position: relative;
+                        }
+
+                        .cat-link {
+                            display: block;
+                            padding: 10px;
+                            color: #000;
+                            text-decoration: none;
+                        }
+
+                        .cat-link:hover {
+                            background: #f5f5f5;
+                        }
+
+                        /* subcategory (right side) */
+                        .sub-list {
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            width: 220px;
+                            background: #fff;
+                            border: 1px solid #ddd;
+                            display: none;
+                        }
+
+                        /* hover করলে right side এ show */
+                        .cat-item:hover .sub-list {
+                            display: block;
+                        }
+
+                        /* sub item */
+                        .sub-list li a {
+                            display: block;
+                            padding: 10px;
+                            color: #000;
+                        }
+
+                        .sub-list li a:hover {
+                            background: #f0f0f0;
+                        }
+                    </style>
 
                 </div>
                 <!-- /.top-search-holder -->
 
-                <div class="p-0 col-6 col-sm-6 col-md-6 col-lg-6 animate-dropdown top-cart-row top-search-holder"
+                <div class="p-0 col-6 col-sm-6 col-md-6 col-lg-4 animate-dropdown top-cart-row top-search-holder"
                     id="headcart">
 
                     <div class="search-area" id="d-sm-none" style="margin-top:-10px">
@@ -182,15 +281,14 @@
                             <form action="<?php echo e(url('search')); ?>" method="GET" style="margin-top:10px">
                                 <div class="control-group" style="display: flex;">
                                     <input class="m-0 search-field" name="search"
-                                        placeholder="What are you looking for?" style="width:384px">
+                                        placeholder="What are you looking for?" style="width:77%">
                                     <button class="search-button" type="submit"></button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
 
-                    <div class="">
+                    <div class="d-none">
                         <a href="<?php echo e(url('/wishlist')); ?>" class="d-none d-lg-block" id="iconhead"
                             style="margin-top:2px !important">
                             <i class="bi bi-heart" style="font-size:21px;color:black;"></i>
@@ -218,7 +316,7 @@
                         <!-- /.dropdown-menu-->
                     </div>
 
-                    <div class="d-none d-xl-inline-block" id="d-sm-none">
+                    <div class="d-none ">
 
                         <?php if(Auth::id()): ?>
                             <a href="<?php echo e(url('user/dashboard')); ?>" type="button" style="color: #212129;font-size:20px"><i
@@ -267,12 +365,6 @@
                     <a onclick="openNav()">
                         <i class="fa-solid fa-bars" style="font-size:24px;"></i>
                     </a>
-
-                    <a type="button" class="search-button" onclick="showser()" id="smsericon">
-                        <i class="bi bi-search" style="color:black;"></i>
-                    </a>
-
-                    <input type="text" id="valcheck" value="0" hidden>
                 </div>
 
                 <div class="middle-col d-flex align-items-center justify-content-center">
@@ -281,11 +373,17 @@
                     </a>
                 </div>
 
-                <div class="right-col d-flex align-items-center justify-content-around">
+                <div class="right-col d-flex align-items-center justify-content-end">
 
-                    <a href="<?php echo e(url('/wishlist')); ?>" id="iconhead">
+                    <a class="d-none" href="<?php echo e(url('/wishlist')); ?>" id="iconhead">
                         <i class="bi bi-heart" style="font-size:24px;color:black"></i>
                     </a>
+
+                    <a type="button" class="search-button" onclick="showser()" id="smsericon">
+                        <i class="bi bi-search" style="color:black;"></i>
+                    </a>
+
+                    <input type="text" id="valcheck" value="0" hidden>
 
                     <div class="dropdown-cart">
                         <div type="button" onclick="checkcartview()">

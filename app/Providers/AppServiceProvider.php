@@ -35,9 +35,11 @@ class AppServiceProvider extends ServiceProvider
         View()->composer('webview.partials.header', function ($view) {
 
             $categories = Category::where('status', 'Active')->select('id', 'category_name', 'slug')->get()->reverse();
+            $headcategories = Category::where('status', 'Active')->select('id', 'category_name', 'slug')->latest()->get();
 
             $view->with([
                 'categories' => $categories,
+                'headcategories' => $headcategories,
             ]);
         });
     }
