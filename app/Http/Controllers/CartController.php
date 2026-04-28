@@ -70,12 +70,14 @@ class CartController extends Controller
 
     public function addtocart(Request $request)
     {
+        // return $request->all();
         if ($request->size == '') {
             return redirect()->back()->with('error', 'Please Select Size!');
         }
 
         $pid = $request->product_id;
         $cartProduct = Product::find($pid);
+        $size = Size::where('id', $request->size)->first();
         if ($request->price > 0) {
             Cart::add([
                 'id' => $request->product_id,
@@ -86,7 +88,7 @@ class CartController extends Controller
                 'weight' => 1,
                 'image' => $cartProduct->ProductImage,
                 'options' => [
-                    'size' => $request->size,
+                    'size' => $size->size,
                     'color' => $request->color,
                     'sigment' => $request->sigment,
                 ],
@@ -123,6 +125,7 @@ class CartController extends Controller
 
         $pid = $request->product_id;
         $cartProduct = Product::find($pid);
+        $size = Size::where('id', $request->size)->first();
         if ($request->price > 0) {
             Cart::add([
                 'id' => $request->product_id,
@@ -133,7 +136,7 @@ class CartController extends Controller
                 'weight' => 1,
                 'image' => $cartProduct->ProductImage,
                 'options' => [
-                    'size' => $request->size,
+                    'size' => $size->size,
                     'color' => $request->color,
                     'sigment' => $request->sigment,
                 ],

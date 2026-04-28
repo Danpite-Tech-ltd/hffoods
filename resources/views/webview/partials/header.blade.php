@@ -1,17 +1,79 @@
 <style>
-.cat-nav { background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:8px 0; }
-.cat-item { position: relative; }
-.cat-row { display:flex; align-items:center; justify-content:space-between; padding:9px 16px; transition:background .15s; }
-.cat-row:hover { background:#f5f5f5; }
-.cat-link { color:#222; font-size:14px; text-decoration:none; flex:1; }
-.arrow-btn { background:none; border:none; padding:2px 6px; cursor:pointer; color:#888; font-size:12px; transition:transform .25s; }
-.arrow-btn.open { transform:rotate(180deg); color:#222; }
-.sub-list { list-style:none; padding:0; margin:0; background:#fafafa; border-top:1px solid #eee; display:none; }
-.sub-list.show { display:block; }
-.sub-list li a { display:block; padding:8px 16px 8px 70px; font-size:13px; color:#555; text-decoration:none; }
-.sub-list li a:hover { background:#f0f0f0; color:#111; }
-.divider { border-top:1px solid #f0f0f0; margin:2px 0; }
+    .cat-nav {
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 8px;
+        padding: 8px 0;
+    }
 
+    .cat-item {
+        position: relative;
+    }
+
+    .cat-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 9px 16px;
+        transition: background .15s;
+    }
+
+    .cat-row:hover {
+        background: #f5f5f5;
+    }
+
+    .cat-link {
+        color: #222;
+        font-size: 14px;
+        text-decoration: none;
+        flex: 1;
+    }
+
+    .arrow-btn {
+        background: none;
+        border: none;
+        padding: 2px 6px;
+        cursor: pointer;
+        color: #888;
+        font-size: 12px;
+        transition: transform .25s;
+    }
+
+    .arrow-btn.open {
+        transform: rotate(180deg);
+        color: #222;
+    }
+
+    .sub-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        background: #fafafa;
+        border-top: 1px solid #eee;
+        display: none;
+    }
+
+    .sub-list.show {
+        display: block;
+    }
+
+    .sub-list li a {
+        display: block;
+        padding: 8px 16px 8px 70px;
+        font-size: 13px;
+        color: #555;
+        text-decoration: none;
+    }
+
+    .sub-list li a:hover {
+        background: #f0f0f0;
+        color: #111;
+    }
+
+    .divider {
+        border-top: 1px solid #f0f0f0;
+        margin: 2px 0;
+    }
 </style>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <header class="header-style-1">
@@ -19,22 +81,57 @@
     <!-- ============================================== TOP MENU ============================================== -->
     <div class="top-barhead animate-dropdown" id="">
         <div class="header-top-inner">
-            <div class="container" style="display:flex; align-items:center;justify-content:space-between;">
-                <!--<p class="m-0" style="color: white;text-align:center;">-->
-                <!--    {{ $basicinfo->marquee_text }}-->
-                <!--    {{-- <a href="{{ url('/shop') }}" style="color:white; text-decoration:underline;font-size:17px; margin-left:20px">-->
-                <!--        Shop Now-->
-                <!--    </a> --}}-->
-                <!--</p>-->
-                <div>
-                    <p class="m-0 text-white">Contact: {{ $basicinfo->phone_one }}</p>
+            <div class="d-sm-none">
+                <div class="container" style="display:flex; align-items:center;justify-content:space-between;">
+
+                    <div class="d-flex" style="gap: 15px;align-items:center;">
+                        <p class="m-0 text-white" style="font-size:14px">
+                            {{ $basicinfo->marquee_text }}
+                        </p>
+                        <!-- Call link -->
+                        <a href="tel:{{ $basicinfo->phone_one }}" title="{{ $basicinfo->phone_one }}"
+                            class="m-0 text-white" style="font-size:14px">
+                            <i class="fa-solid fa-phone"></i> {{ $basicinfo->phone_one }}
+                        </a>
+                        <!-- WhatsApp link -->
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $basicinfo->wp_1) }}" target="_blank"
+                            title="{{ $basicinfo->wp_1 }}" class="m-0 text-white" style="font-size:14px">
+                            <i class="fa-brands fa-whatsapp" style="font-size:17px"></i> {{ $basicinfo->wp_1 }}
+                        </a>
+                    </div>
+
+                    <div class="gap-3 d-flex">
+                        <a href="{{ $basicinfo->facebook }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <!--<a href="{{ $basicinfo->twitter }}" class="text-white-50 fs-5"><i class="fa-brands fa-twitter"></i></a>-->
+                        <a href="{{ $basicinfo->linkedin }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="tel:{{ $basicinfo->phone_one }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-solid fa-phone"></i></a>
+                        <a href="{{ $basicinfo->youtube }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="mailto:{{ $basicinfo->email }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-solid fa-envelope"></i></a>
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $basicinfo->wp_1) }}" target="_blank"
+                            class="text-white fs-6"><i class="fa-brands fa-whatsapp" style="font-size:16px"></i></a>
+                    </div>
                 </div>
-                <div class="gap-3 d-flex ">
-                    <a href="{{ $basicinfo->facebook }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-facebook-f"></i></a>
-                    <!--<a href="{{ $basicinfo->twitter }}" class="text-white-50 fs-5"><i class="fa-brands fa-twitter"></i></a>-->
-                    <a href="{{ $basicinfo->linkedin }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="{{ $basicinfo->youtube }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-tiktok"></i></a>
-                    <a href="mailto:{{ $basicinfo->email }}" target="_blank" class="text-white fs-5"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div class="text-center d-lg-none">
+                <p class="m-0 text-white" style="font-size:14px">
+                    {{ $basicinfo->marquee_text }}
+                </p>
+                <!-- Call link -->
+                <div class="d-flex justify-content-center" style="gap: 15px;align-items:center;">
+                    <a href="tel:{{ $basicinfo->phone_one }}" title="{{ $basicinfo->phone_one }}" class="m-0 text-white"
+                        style="font-size:14px">
+                        <i class="fa-solid fa-phone"></i> {{ $basicinfo->phone_one }}
+                    </a>
+                    <!-- WhatsApp link -->
+                    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $basicinfo->wp_1) }}" target="_blank"
+                        title="{{ $basicinfo->wp_1 }}" class="m-0 text-white" style="font-size:14px">
+                        <i class="fa-brands fa-whatsapp" style="font-size:17px"></i> {{ $basicinfo->wp_1 }}
+                    </a>
                 </div>
             </div>
         </div>
@@ -50,8 +147,7 @@
                         </button> -->
 
                         <a href="{{ url('/') }}" id="logoimage">
-                            <img src="{{ asset($basicinfo->logo) }}" alt="" id="logosm"
-                                style="    width: 100%;">
+                            <img src="{{ asset($basicinfo->logo) }}" alt="" id="logosm" style="    width: 100%;">
                         </a>
                     </div>
                     <!-- /.logo -->
@@ -59,37 +155,135 @@
                 </div>
                 <!-- /.logo-holder -->
 
-                <div class="col-md-2 col-lg-4 nav-items" style="display:flex;align-items:center;justify-content:space-around;"
-                    id="d-sm-none">
+                <div class="col-md-2 col-lg-6 nav-items"
+                    style="display:flex;align-items:center;justify-content:space-around;" id="d-sm-none">
                     <!-- /.contact-row -->
-                        <a href="{{ url('/') }}">Home</a>
-                        <a href="{{ url('venture/contact_us') }}">Contact</a>
-                        <a href="{{ url('about-us') }}">About</a>
-                        <a href="{{ url('video-gallery') }}">Video Gallery</a>
-                        <a href="{{ url('track-order') }}">Track Order</a>
+                    <a href="{{ url('/') }}">Home</a>
+                    <div class="all-cat">
+                        <span class="all-cat-title">All Categories <i class="fa-solid fa-angle-down"></i></span>
+
+                        <div class="cat-nav">
+                            <ul class="mb-0 list-unstyled">
+                                @foreach ($categories as $category)
+                                    @php
+                                        $subcategories = App\Models\Subcategory::where('status', 'Active')
+                                            ->where('category_id', $category->id)->get();
+                                    @endphp
+
+                                    <li class="cat-item">
+                                        <a class="cat-link" href="{{ url('products/category/' . $category->slug) }}">
+                                            {{ $category->category_name }}
+                                        </a>
+
+                                        @if($subcategories->isNotEmpty())
+                                            <ul class="sub-list">
+                                                @foreach($subcategories as $value)
+                                                    <li>
+                                                        <a href="{{ url('products/sub/category/' . $value->slug) }}">
+                                                            {{ $value->sub_category_name }}
+                                                        </a>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    @foreach ($headcategories->take(2) as $category)
+                        <a href="{{ url('products/category/' . $category->slug) }}">{{ $category->category_name }}</a>
+                    @endforeach
+
+                    <style>
+                        .all-cat {
+                            position: relative;
+                            display: inline-block;
+                        }
+
+                        .cat-nav {
+                            position: absolute;
+                            top: 100%;
+                            left: 0;
+                            width: 220px;
+                            background: #fff;
+                            border: 1px solid #ddd;
+                            display: none;
+                            z-index: 9999999;
+                        }
+
+                        /* hover করলে categories show হবে */
+                        .all-cat:hover .cat-nav {
+                            display: block;
+                        }
+
+                        /* category item */
+                        .cat-item {
+                            position: relative;
+                        }
+
+                        .cat-link {
+                            display: block;
+                            padding: 10px;
+                            color: #000;
+                            text-decoration: none;
+                        }
+
+                        .cat-link:hover {
+                            background: #f5f5f5;
+                        }
+
+                        /* subcategory (right side) */
+                        .sub-list {
+                            position: absolute;
+                            top: 0;
+                            left: 100%;
+                            width: 220px;
+                            background: #fff;
+                            border: 1px solid #ddd;
+                            display: none;
+                        }
+
+                        /* hover করলে right side এ show */
+                        .cat-item:hover .sub-list {
+                            display: block;
+                        }
+
+                        /* sub item */
+                        .sub-list li a {
+                            display: block;
+                            padding: 10px;
+                            color: #000;
+                        }
+
+                        .sub-list li a:hover {
+                            background: #f0f0f0;
+                        }
+                    </style>
 
                 </div>
                 <!-- /.top-search-holder -->
 
-                <div class="p-0 col-6 col-sm-6 col-md-6 col-lg-6 animate-dropdown top-cart-row top-search-holder" id="headcart">
+                <div class="p-0 col-6 col-sm-6 col-md-6 col-lg-4 animate-dropdown top-cart-row top-search-holder"
+                    id="headcart">
 
                     <div class="search-area" id="d-sm-none" style="margin-top:-10px">
                         <div class="navbar">
 
                             <form action="{{ url('search') }}" method="GET" style="margin-top:10px">
                                 <div class="control-group" style="display: flex;">
-                                    <input class="m-0 search-field" name="search" placeholder="What are you looking for?"
-                                        style="width:384px">
+                                    <input class="m-0 search-field" name="search"
+                                        placeholder="What are you looking for?" style="width:77%">
                                     <button class="search-button" type="submit"></button>
                                 </div>
                             </form>
                         </div>
-
                     </div>
 
-                    <div class="">
-                        <a href="{{ url('/wishlist') }}" class="d-none d-lg-block" id="iconhead" style="margin-top:2px !important">
-                           <i class="bi bi-heart" style="font-size:21px;color:black;"></i>
+                    <div class="d-none">
+                        <a href="{{ url('/wishlist') }}" class="d-none d-lg-block" id="iconhead"
+                            style="margin-top:2px !important">
+                            <i class="bi bi-heart" style="font-size:21px;color:black;"></i>
                         </a>
                     </div>
 
@@ -99,9 +293,10 @@
                             <div class="items-cart-inner">
                                 <div class="basket" style="padding: 0;display:flex;">
                                     <span style="color: #212129;font-weight:bold;position:relative">
-                                        <span style="    position: absolute;right: -13px;top: -11px;">{{ intval(Cart::count()) }}</span>
+                                        <span
+                                            style="    position: absolute;right: -13px;top: -11px;">{{ intval(Cart::count()) }}</span>
                                         <i class="bi bi-bag-plus"
-                                        style="padding-top: 26px;font-size: 21px;color: #212129;"></i>
+                                            style="padding-top: 26px;font-size: 21px;color: #212129;"></i>
                                     </span>
                                 </div>
                             </div>
@@ -113,11 +308,11 @@
                         <!-- /.dropdown-menu-->
                     </div>
 
-                    <div class="d-none d-xl-inline-block" id="d-sm-none">
+                    <div class="d-none ">
 
                         @if (Auth::id())
-                            <a href="{{ url('user/dashboard') }}" type="button"
-                                style="color: #212129;font-size:20px"><i class="bi bi-person" color="#212129"></i></a>
+                            <a href="{{ url('user/dashboard') }}" type="button" style="color: #212129;font-size:20px"><i
+                                    class="bi bi-person" color="#212129"></i></a>
                         @else
                             <a href="{{ url('login') }}" id="iconhead" style="padding-right: 16px;font-size:23px">
                                 <i class="bi bi-person"></i></a>
@@ -128,7 +323,7 @@
                     <!--<a type="button" class="search-button d-lg-none" onclick="showser()"-->
                     <!--    style="float: right;font-size: 30px; color: #b9b9b9;    margin-right: 10px;" href="#"-->
                     <!--    id="smsericon">-->
-                        <!-- <img src="{{ asset('public/search.png') }}" style="width:25px"> -->
+                    <!-- <img src="{{ asset('public/search.png') }}" style="width:25px"> -->
                     <!--     <i style="color:black;" class="fa-solid fa-magnifying-glass"></i>-->
                     <!--</a>-->
                     <!-- ============================================================= SHOPPING CART DROPDOWN : END============================================================= -->
@@ -149,52 +344,51 @@
                     <!--                        style="padding-top:8px;font-size: 25px;color: #212129;"></i>-->
                     <!--        </span>-->
                     <!--    </div>-->
-                        <!-- /.dropdown-menu-->
+                    <!-- /.dropdown-menu-->
                     <!--</div>-->
                 </div>
                 <!-- /.top-cart-row -->
 
-                
+
             </div>
             <!-- /.row -->
             <div class="row mobile-view-show">
-               <div class="left-col d-flex align-items-center justify-content-between">
+                <div class="left-col d-flex align-items-center justify-content-between">
                     <a onclick="openNav()">
                         <i class="fa-solid fa-bars" style="font-size:24px;"></i>
                     </a>
-            
-                    <a type="button" class="search-button" onclick="showser()" id="smsericon">
-                        <i class="bi bi-search" style="color:black;"></i>
-                    </a>
-            
-                    <input type="text" id="valcheck" value="0" hidden>
                 </div>
-            
+
                 <div class="middle-col d-flex align-items-center justify-content-center">
                     <a href="{{ url('/') }}">
                         <img src="{{ asset($basicinfo->logo) }}" alt="" style="width:100%;">
                     </a>
                 </div>
-            
-                <div class="right-col d-flex align-items-center justify-content-around">
-            
-                    <a href="{{ url('/wishlist') }}" id="iconhead">
+
+                <div class="right-col d-flex align-items-center justify-content-end">
+
+                    <a class="d-none" href="{{ url('/wishlist') }}" id="iconhead">
                         <i class="bi bi-heart" style="font-size:24px;color:black"></i>
                     </a>
-            
+
+                    <a type="button" class="search-button" onclick="showser()" id="smsericon">
+                        <i class="bi bi-search" style="color:black;"></i>
+                    </a>
+
+                    <input type="text" id="valcheck" value="0" hidden>
+
                     <div class="dropdown-cart">
                         <div type="button" onclick="checkcartview()">
                             <span style="font-size:16px;line-height:50px;position:relative;">
                                 <span style="color:#000;position:absolute;top:-32px;right:-9px;">
                                     {{ count(Cart::content()) }}
                                 </span>
-            
-                                <i class="bi bi-bag-plus"
-                                   style="padding-top:8px;font-size:24px;color:#212129;"></i>
+
+                                <i class="bi bi-bag-plus" style="padding-top:8px;font-size:24px;color:#212129;"></i>
                             </span>
                         </div>
                     </div>
-            
+
                 </div>
                 <!-- search modal -->
                 <div class="mt-1 mb-1 text-left col-lg-6 col-12" id="hideser">
@@ -217,8 +411,8 @@
 
     </div>
 
-<!-- Live Search Dropdown -->
-<div id="live-search-results" style="
+    <!-- Live Search Dropdown -->
+    <div id="live-search-results" style="
     position: fixed;
     z-index: 99999;
     background: #fff;
@@ -230,8 +424,8 @@
     display: none;
     min-width: 320px;
 ">
-    <div id="live-search-inner"></div>
-</div>
+        <div id="live-search-inner"></div>
+    </div>
 
 
     <!-- side bar panel start -->
@@ -248,42 +442,42 @@
         <ul class="level1-styles collapse show" id="id0">
 
             <ul class="mb-0 list-unstyled">
-    @forelse ($categories as $category)
-        @php
-            $subcategories = App\Models\Subcategory::where('status','Active')
-                ->where('category_id', $category->id)->get();
-        @endphp
+                @forelse ($categories as $category)
+                    @php
+                        $subcategories = App\Models\Subcategory::where('status', 'Active')
+                            ->where('category_id', $category->id)->get();
+                    @endphp
 
-        <li class="cat-item">
-            <div class="cat-row">
-                <a class="cat-link" href="{{ url('products/category/' . $category->slug) }}">
-                    {{ $category->category_name }}
-                </a>
-
-                @if($subcategories->isNotEmpty())
-                    <button class="m-0 arrow-btn" onclick="toggleSub(this)">
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                @endif
-            </div>
-
-            @if($subcategories->isNotEmpty())
-                <ul class="sub-list">
-                    @foreach($subcategories as $value)
-                        <li>
-                            <a href="{{ url('products/sub/category/' . $value->slug) }}">
-                                {{ $value->sub_category_name }}
+                    <li class="cat-item">
+                        <div class="cat-row">
+                            <a class="cat-link" href="{{ url('products/category/' . $category->slug) }}">
+                                {{ $category->category_name }}
                             </a>
-                        </li>
-                    @endforeach
-                </ul>
-            @endif
-        </li>
-        <li class="divider"></li>
 
-    @empty
-    @endforelse
-</ul>
+                            @if($subcategories->isNotEmpty())
+                                <button class="m-0 arrow-btn" onclick="toggleSub(this)">
+                                    <i class="fa-solid fa-chevron-down"></i>
+                                </button>
+                            @endif
+                        </div>
+
+                        @if($subcategories->isNotEmpty())
+                            <ul class="sub-list">
+                                @foreach($subcategories as $value)
+                                    <li>
+                                        <a href="{{ url('products/sub/category/' . $value->slug) }}">
+                                            {{ $value->sub_category_name }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    </li>
+                    <li class="divider"></li>
+
+                @empty
+                @endforelse
+            </ul>
 
 
 
@@ -300,15 +494,16 @@
                 @if (Auth::guard('web')->check())
                     @if (Auth::guard('web')->user()->profile)
                         )
-                        <img src="{{ asset(Auth::guard('web')->user()->profile) }}" alt=""
-                            id="profileImage">
+                        <img src="{{ asset(Auth::guard('web')->user()->profile) }}" alt="" id="profileImage">
                     @else
                         <img src="{{ asset('public/backend/img/user.jpg') }}" alt="" id="profileImage">
                     @endif
                     <h4 class="m-0 text-left" style="color: white;font-size: 16px;text-transform: uppercase;">
-                        {{ Auth::guard('web')->user()->name }}</h4>
+                        {{ Auth::guard('web')->user()->name }}
+                    </h4>
                     <h4 class="m-0 text-left" style="color: white;font-size: 16px;">
-                        {{ Auth::guard('web')->user()->email }}</h4>
+                        {{ Auth::guard('web')->user()->email }}
+                    </h4>
                 @else
                 @endif
 
@@ -395,17 +590,21 @@
 </div>
 
 <style>
-.left-col{
-    flex: 0 0 29.16%;   /* 3.5 / 12 */
-}
+    .left-col {
+        flex: 0 0 29.16%;
+        /* 3.5 / 12 */
+    }
 
-.middle-col{
-    flex: 0 0 41.66%;   /* 5 / 12 */
-}
+    .middle-col {
+        flex: 0 0 41.66%;
+        /* 5 / 12 */
+    }
 
-.right-col{
-    flex: 0 0 29.16%;   /* 3.5 / 12 */
-}
+    .right-col {
+        flex: 0 0 29.16%;
+        /* 3.5 / 12 */
+    }
+
     #profileImage {
         border-radius: 50%;
         padding: 0px;
@@ -504,9 +703,10 @@
         line-height: 9px;
         vertical-align: middle;
     }
+
     @media only screen and (min-width: 600px) {
-        .pcview_margin{
-            margin-bottom:-13px
+        .pcview_margin {
+            margin-bottom: -13px
         }
     }
 </style>
@@ -529,45 +729,45 @@
 </script>
 <script>
     function toggleSub(btn) {
-    const subList = btn.closest('.cat-item').querySelector('.sub-list');
-    btn.classList.toggle('open');
-    subList.classList.toggle('show');
-}
+        const subList = btn.closest('.cat-item').querySelector('.sub-list');
+        btn.classList.toggle('open');
+        subList.classList.toggle('show');
+    }
 </script>
 
 
 <script>
-$(document).ready(function () {
+    $(document).ready(function () {
 
-    let searchTimeout = null;
+        let searchTimeout = null;
 
-    $('input[name="search"]').on('input', function () {
-        const $input = $(this);
-        const query = $input.val().trim();
+        $('input[name="search"]').on('input', function () {
+            const $input = $(this);
+            const query = $input.val().trim();
 
-        clearTimeout(searchTimeout);
-        $('#live-search-results').hide();
+            clearTimeout(searchTimeout);
+            $('#live-search-results').hide();
 
-        if (query.length < 1) return;
+            if (query.length < 1) return;
 
-        searchTimeout = setTimeout(function () {
+            searchTimeout = setTimeout(function () {
 
-            $.get('/live-search', { search: query }, function (data) {
-                let html = '';
+                $.get('/live-search', { search: query }, function (data) {
+                    let html = '';
 
-                if (!data.length) {
-                    html = '<div style="padding:16px;text-align:center;color:#999;">No products found.</div>';
-                } else {
-                    $.each(data, function (i, p) {
-                       const img = p.image
-                            ? `<img src="{{ asset('') }}${p.image}" style="width:50px;height:50px;object-fit:cover;border-radius:5px;">`
-                            : `<div style="width:50px;height:50px;background:#f0f0f0;border-radius:5px;"></div>`;
+                    if (!data.length) {
+                        html = '<div style="padding:16px;text-align:center;color:#999;">No products found.</div>';
+                    } else {
+                        $.each(data, function (i, p) {
+                            const img = p.image
+                                ? `<img src="{{ asset('') }}${p.image}" style="width:50px;height:50px;object-fit:cover;border-radius:5px;">`
+                                : `<div style="width:50px;height:50px;background:#f0f0f0;border-radius:5px;"></div>`;
 
-                        const price = p.SalePrice
-                            ? `<span style="color:#e33;">৳${p.SalePrice}</span> <del style="color:#aaa;font-size:12px;">৳${p.RegularPrice}</del>`
-                            : `<span style="color:#e33;">৳${p.SalePrice}</span>`;
+                            const price = p.SalePrice
+                                ? `<span style="color:#e33;">৳${p.SalePrice}</span> <del style="color:#aaa;font-size:12px;">৳${p.RegularPrice}</del>`
+                                : `<span style="color:#e33;">৳${p.SalePrice}</span>`;
 
-                        html += `
+                            html += `
                         <a href="/view-product/${p.slug}" style="display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid #f2f2f2;text-decoration:none;color:#222;">
                             ${img}
                             <div>
@@ -575,28 +775,28 @@ $(document).ready(function () {
                                 <div style="margin-top:3px;">${price}</div>
                             </div>
                         </a>`;
-                    });
-                }
+                        });
+                    }
 
-                const offset = $input.offset();
-                $('#live-search-results')
-                    .html(html)
-                    .css({
-                        top: offset.top + $input.outerHeight() + 4,
-                        left: offset.left,
-                        width: $input.closest('form').outerWidth() || $input.outerWidth()
-                    })
-                    .show();
-            });
+                    const offset = $input.offset();
+                    $('#live-search-results')
+                        .html(html)
+                        .css({
+                            top: offset.top + $input.outerHeight() + 4,
+                            left: offset.left,
+                            width: $input.closest('form').outerWidth() || $input.outerWidth()
+                        })
+                        .show();
+                });
 
-        }, 300);
+            }, 300);
+        });
+
+        $(document).on('click', function (e) {
+            if (!$(e.target).closest('input[name="search"], #live-search-results').length) {
+                $('#live-search-results').hide();
+            }
+        });
+
     });
-
-    $(document).on('click', function (e) {
-        if (!$(e.target).closest('input[name="search"], #live-search-results').length) {
-            $('#live-search-results').hide();
-        }
-    });
-
-});
 </script>

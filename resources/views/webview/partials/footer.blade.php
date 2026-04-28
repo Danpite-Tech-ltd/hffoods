@@ -96,11 +96,21 @@ input[type="email"]:focus{
                        <!--         <button type="submit">&#10148;</button>-->
                        <!--     </div>-->
                        <!-- </div>-->
-                        <div class="gap-3 pt-3 mt-3 d-flex ">
-                            <a href="{{ $basicinfo->facebook }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-facebook-f"></i></a>
-                            <!--<a href="{{ $basicinfo->twitter }}" class="text-white-50 fs-5"><i class="fa-brands fa-twitter"></i></a>-->
-                            <a href="{{ $basicinfo->linkedin }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="{{ $basicinfo->youtube }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-tiktok"></i></a>
+                        <p class="text-dark">Fresh, delicious food delivered to your doorstep.</p>
+                        <div class="gap-3 d-flex ">
+                            <a href="{{ $basicinfo->facebook }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <!--<a href="{{ $basicinfo->twitter }}" class="text-white-50 fs-5"><i class="fa-brands fa-twitter"></i></a>-->
+                        <a href="{{ $basicinfo->linkedin }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="tel:{{ $basicinfo->phone_one }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-solid fa-phone"></i></a>
+                        <a href="{{ $basicinfo->youtube }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a href="mailto:{{ $basicinfo->email }}" target="_blank" class="text-white fs-6"><i
+                                class="fa-solid fa-envelope"></i></a>
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $basicinfo->wp_1) }}" target="_blank"
+                            class="text-white fs-6"><i class="fa-brands fa-whatsapp" style="font-size:16px"></i></a>
                         </div>
                     </div>
 
@@ -145,7 +155,7 @@ input[type="email"]:focus{
                             <li><a class="info_text" href="{{ url('/login') }}"
                                     title="Terms & Conditions">Login / Register</a></li>
                             <div class="lineb"></div>
-                            <li><a class="info_text" href="{{ url('/cart') }}"
+                            <!-- <li><a class="info_text" href="{{ url('/cart') }}"
                                     title="shipping policy">Cart</a></li>
                             <div class="lineb"></div>
                             <li><a class="info_text" href="{{ url('/wishlist') }}"
@@ -153,7 +163,7 @@ input[type="email"]:focus{
                             <div class="lineb"></div>
                             <li><a class="info_text" href="{{ url('/shop') }}"
                                     title="Terms & Conditions">shop</a></li>
-                            <div class="lineb"></div>
+                            <div class="lineb"></div> -->
                             <li><a class="info_text" href="{{ url('/track-order') }}"
                                     title="Terms & Conditions">Track Order</a></li>
                             <div class="lineb"></div>
@@ -177,15 +187,15 @@ input[type="email"]:focus{
                             <li><a class="info_text" href="{{ url('venture/privacy_policy') }}"
                                     title="Terms & Conditions">Privacy Policy</a></li>
                             <div class="lineb"></div>
-                            <!-- <li><a class="info_text" href="{{ url('venture/refund_return_policy') }}"
+                            <li><a class="info_text" href="{{ url('venture/refund_return_policy') }}"
                                     title="Terms & Conditions">Refund Return Policy</a></li>
-                            <div class="lineb"></div> -->
-                            <!-- <li><a class="info_text" href="{{ url('venture/shipping_policy') }}"
+                            <div class="lineb"></div>
+                            <li><a class="info_text" href="{{ url('venture/shipping_policy') }}"
                                     title="shipping policy">Shipping Policy</a></li>
                             <div class="lineb"></div>
                             <li><a class="info_text" href="{{ url('venture/payment_policy') }}"
                                     title="shipping policy">Payment Policy</a></li>
-                            <div class="lineb"></div> -->
+                            <div class="lineb"></div>
                             <li><a class="info_text" href="{{ url('venture/terms_codition') }}"
                                     title="Terms & Conditions">Terms of Use</a></li>
                             <div class="lineb"></div>

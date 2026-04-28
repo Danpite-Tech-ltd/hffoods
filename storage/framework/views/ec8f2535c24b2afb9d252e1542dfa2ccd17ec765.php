@@ -211,7 +211,7 @@
     <?php echo $__env->make('webview.partials.footer', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <!-- === FOOTER : END === -->
     
-    <div class="mobnav-container-91x2">
+    <div class="mobnav-container-91x2 d-none">
 
         <a href="<?php echo e(url('/')); ?>" class="mobnav-item-91x2 active">
             <i class="bi bi-house" style="font-size:24px;"></i>
@@ -327,13 +327,13 @@
         </a>
     </div>
 
-    <a href="javascript:void(0);" class="d-none d-lg-block" onclick="showmessage()" id="showm"
+    <a href="javascript:void(0);" class="" onclick="showmessage()" id="showm"
         style="position: fixed;bottom: 10px;right: 6px;z-index:1111">
-        <img src="<?php echo e(asset('public/chat-whatsapp.png')); ?>" style="height:60px;" id="shimg">
+        <img src="<?php echo e(asset('public/chat.png')); ?>" style="height:60px;" id="shimg">
     </a>
     <a href="javascript:void(0);" onclick="hidemessage()" id="crossm"
         style="position: fixed;bottom: 10px;right: 6px;z-index:1111">
-        <img src="<?php echo e(asset('public/chat-whatsapp.png')); ?>" style="height:60px;" id="crimg">
+        <img src="<?php echo e(asset('public/chat.png')); ?>" style="height:60px;" id="crimg">
     </a>
 
     

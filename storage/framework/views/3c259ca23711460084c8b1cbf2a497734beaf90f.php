@@ -148,7 +148,7 @@
                 </form>
             </div>
         </div>
-        <div class="mb-4 col-sm-12 col-md-12 col-xl-12">
+        <div class="mb-4 col-sm-12 col-md-12 col-xl-12 d-none">
             <div class="p-4 rounded bg-secondary h-100">
                 <h2 class="mb-4" style="text-align: center;color:red">Flashsale and Banner Time and Content</h2>
                 <form action="<?php echo e(route('admin.flash-footer.update', $webinfo->id)); ?>" method="POST"
