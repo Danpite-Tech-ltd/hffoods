@@ -52,6 +52,11 @@
                 <!-- /.gallery-holder -->
                 <div class="col-sm-12 col-md-6 product-info-block" id="paddingnone">
                     <div class="product-info" id="productinfo">
+                        <div class="d-flex align-items-center" style="gap: 10px;font-size: 14px;">
+                            <a class="text-muted" href="<?php echo e(url('/')); ?>">Home /</a>
+                            <a class="text-muted"
+                                href="<?php echo e(url('products/category/' . $productdetails?->categories->slug)); ?>"><?php echo e($productdetails?->categories->category_name); ?></a>
+                        </div>
                         <h1 class="name"
                             style="margin-top:16px !important;padding-bottom: 6px;font-size: 20px !important; line-height: 25px;">
                             <?php echo e($productdetails->ProductName); ?>
@@ -284,7 +289,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <section>
+                            <section class="d-none">
                                 <div class="mt-3">
                                     <div class="delivery-box">
                                         <div class="delivery-item">
@@ -324,6 +329,23 @@
                             </section>
                         </div>
 
+                        <p>
+                            Categories :
+                            <a class="details-category" href="<?php echo e(url('products/category/' . $productdetails?->categories->slug)); ?>"
+                                ><?php echo e($productdetails?->categories->category_name); ?></a>
+                        </p>
+                        
+                        <div class="gap-3  d-flex ">
+                            <a href="<?php echo e($basicinfo->facebook); ?>" target="_blank" title="Facebook" class="details-social fs-5"><i
+                                    class="fa-brands fa-facebook-f"></i></a>
+                            <a href="<?php echo e($basicinfo->linkedin); ?>" target="_blank" title="Instagram" class="details-social fs-5"><i
+                                    class="fa-brands fa-instagram"></i></a>
+                            <a href="<?php echo e($basicinfo->email); ?>" target="_blank" title="Tiktok" class="details-social fs-5"><i
+                                    class="fa-brands fa-tiktok"></i></a>
+                            <a href="<?php echo e($basicinfo->email); ?>" target="_blank" title="Email" class="details-social fs-5">
+                                <i class="fa-solid fa-envelope"></i>
+                            </a>
+                        </div>
                     </div>
                     <!-- /.product-info -->
                 </div>

@@ -166,6 +166,19 @@
             border-radius: 5px;
             margin-right: 15px;
         }
+
+        .details-category {
+            font-size: 14px;
+            color: #000;
+        }
+
+        .details-category:hover {
+            color: #f9b500;
+        }
+
+        .details-social{
+            color: #000;
+        }
     </style>
     <!-- Body -->
 
@@ -267,6 +280,11 @@
                             <!-- /.gallery-holder -->
                             <div class="col-sm-12 col-md-6 product-info-block" id="paddingnone">
                                 <div class="product-info" id="productinfo">
+                                    <div class="d-flex align-items-center" style="gap: 10px;font-size: 14px;">
+                                        <a class="text-muted" href="{{ url('/') }}">Home /</a>
+                                        <a class="text-muted"
+                                            href="{{ url('products/category/' . $productdetails?->categories->slug) }}">{{ $productdetails?->categories->category_name }}</a>
+                                    </div>
                                     <h1 class="name"
                                         style="margin-top:16px !important;padding-bottom: 6px;font-size: 20px !important; line-height: 25px;">
                                         {{ $productdetails->ProductName }}
@@ -304,10 +322,10 @@
 
                                     <div class="mt-2 mb-2 row">
                                         <!-- <div class=" col-12 col-md-12 colorpart">
-                                            <div id="breaftext">
-                                                {!! $productdetails->ProductBreaf !!}
-                                            </div>
-                                        </div> -->
+                                                        <div id="breaftext">
+                                                            {!! $productdetails->ProductBreaf !!}
+                                                        </div>
+                                                    </div> -->
 
                                         @if (empty(json_decode($singlemain->RelatedProductIds)))
                                         @else
@@ -516,7 +534,7 @@
 
 
 
-                                        <section>
+                                        <section class="d-none">
                                             <div class="mt-3">
                                                 <div class="delivery-box">
                                                     <div class="delivery-item">
@@ -555,6 +573,24 @@
 
                                             </div>
                                         </section>
+                                    </div>
+
+                                    <p>
+                                        Categories :
+                                        <a class="details-category"
+                                            href="{{ url('products/category/' . $productdetails?->categories->slug) }}">{{ $productdetails?->categories->category_name }}</a>
+                                    </p>
+
+                                    <div class="gap-3  d-flex ">
+                                        <a href="{{ $basicinfo->facebook }}" target="_blank" title="Facebook" class="details-social fs-5"><i
+                                                class="fa-brands fa-facebook-f"></i></a>
+                                        <a href="{{ $basicinfo->linkedin }}" target="_blank" title="Instagram" class="details-social fs-5"><i
+                                                class="fa-brands fa-instagram"></i></a>
+                                        <a href="{{ $basicinfo->youtube }}" target="_blank" title="Tiktok" class="details-social fs-5"><i
+                                                class="fa-brands fa-tiktok"></i></a>
+                                        <a href="mailto:{{ $basicinfo->email }}" target="_blank" title="Email" class="details-social fs-5">
+                                            <i class="fa-solid fa-envelope"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <!-- /.product-info -->
@@ -979,84 +1015,85 @@
                                         <div class="products best-product">
                                             <div class="product">
                                                 <div class="product-micro">
-                                                <div class="row product-micro-row">
-                                                    <div class="col-12">
-                                                        <div class="product-image" style="position: relative;">
-                                                            <div class="text-center image">
-                                                                <div class="wishlist-eye-btn">
-                                                                    <form action="{{ route('wishlist.add') }}" method="POST"
-                                                                        class="p-0 m-0">
-                                                                        @csrf
-                                                                        <input type="hidden" name="product_id"
-                                                                            value="{{ $promotional->id }}">
+                                                    <div class="row product-micro-row">
+                                                        <div class="col-12">
+                                                            <div class="product-image" style="position: relative;">
+                                                                <div class="text-center image">
+                                                                    <div class="wishlist-eye-btn">
+                                                                        <form action="{{ route('wishlist.add') }}" method="POST"
+                                                                            class="p-0 m-0">
+                                                                            @csrf
+                                                                            <input type="hidden" name="product_id"
+                                                                                value="{{ $promotional->id }}">
 
-                                                                        <button type="submit">
-                                                                            @php
-                                                                                $wishlist = session()->get('wishlist', []);
-                                                                                $inWishlist = in_array($promotional->id, $wishlist);
-                                                                            @endphp
+                                                                            <button type="submit">
+                                                                                @php
+                                                                                    $wishlist = session()->get('wishlist', []);
+                                                                                    $inWishlist = in_array($promotional->id, $wishlist);
+                                                                                @endphp
 
-                                                                            @if($inWishlist)
-                                                                                <i class="fa-solid fa-heart fs-5"
-                                                                                    style="font-size: 18px;color:black;"></i>
-                                                                            @else
-                                                                                <i class="fa-regular fa-heart fs-5"
-                                                                                    style="font-size: 18px;color:black;"></i>
-                                                                            @endif
-                                                                        </button><br>
-                                                                    </form>
-                                                                    <button class="quick-shop-btn" type="button"
-                                                                        data-product-id="{{ $promotional->id }}">
-                                                                        <i class="fa-regular fa-eye"
-                                                                            style="font-size: 18px;color:black;"></i>
-                                                                    </button>
+                                                                                @if($inWishlist)
+                                                                                    <i class="fa-solid fa-heart fs-5"
+                                                                                        style="font-size: 18px;color:black;"></i>
+                                                                                @else
+                                                                                    <i class="fa-regular fa-heart fs-5"
+                                                                                        style="font-size: 18px;color:black;"></i>
+                                                                                @endif
+                                                                            </button><br>
+                                                                        </form>
+                                                                        <button class="quick-shop-btn" type="button"
+                                                                            data-product-id="{{ $promotional->id }}">
+                                                                            <i class="fa-regular fa-eye"
+                                                                                style="font-size: 18px;color:black;"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <a
+                                                                        href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                                        <img src="{{ asset($promotional->ProductImage) }}"
+                                                                            style="padding:4px;">
+                                                                    </a>
+
+                                                                    {{-- <form>
+                                                                        <button class="addtocartbtn">
+                                                                            Add To Cart
+                                                                        </button>
+                                                                    </form> --}}
                                                                 </div>
-                                                                <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                                    <img src="{{ asset($promotional->ProductImage) }}"
-                                                                        style="padding:4px;">
-                                                                </a>
-
-                                                                {{-- <form>
-                                                                    <button class="addtocartbtn">
-                                                                        Add To Cart
-                                                                    </button>
-                                                                </form> --}}
                                                             </div>
+                                                            <!-- /.product-image -->
                                                         </div>
-                                                        <!-- /.product-image -->
-                                                    </div>
-                                                    <!-- /.col -->
-                                                    <div class="col-12">
-                                                        <div class="p-2 infofe p-md-2"
-                                                            style="padding-bottom: 4px !important;background: white;">
-                                                            <div class="product-info text-center">
-                                                                <h2 class="name text-truncate" id="f_name"><a
-                                                                        href="{{ url('view-product/' . $promotional->ProductSlug) }}"
-                                                                        id="f_pro_name">{{ $promotional->ProductName }}</a>
-                                                                </h2>
-                                                            </div>
+                                                        <!-- /.col -->
+                                                        <div class="col-12">
+                                                            <div class="p-2 infofe p-md-2"
+                                                                style="padding-bottom: 4px !important;background: white;">
+                                                                <div class="product-info text-center">
+                                                                    <h2 class="name text-truncate" id="f_name"><a
+                                                                            href="{{ url('view-product/' . $promotional->ProductSlug) }}"
+                                                                            id="f_pro_name">{{ $promotional->ProductName }}</a>
+                                                                    </h2>
+                                                                </div>
 
-                                                            <div class="price-box text-center" style="padding: 8px 0;">
-                                                                @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
-                                                                    <del class="old-product-price strong-400"
-                                                                        style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
-                                                                @endif
-                                                                <span class="product-price strong-600"
-                                                                    style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
+                                                                <div class="price-box text-center" style="padding: 8px 0;">
+                                                                    @if($firstpro->sizes[0]->RegularPrice > $firstpro->sizes[0]->SalePrice)
+                                                                        <del class="old-product-price strong-400"
+                                                                            style="color:#db4444">৳{{ round($firstpro->sizes[0]->RegularPrice) }}</del>
+                                                                    @endif
+                                                                    <span class="product-price strong-600"
+                                                                        style="color:black;margin-left:7px;">৳{{ round($firstpro->sizes[0]->SalePrice) }}</span>
+                                                                </div>
+
                                                             </div>
+                                                            <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
+                                                                <button class="mb-0 btn btn-danger btn-sm btn-block"
+                                                                    style="width: 100%;border-radius: 4px;padding: 8px 0; "
+                                                                    id="purcheseBtn">অর্ডার করুন</button>
+                                                            </a>
 
                                                         </div>
-                                                        <a href="{{ url('view-product/' . $promotional->ProductSlug) }}">
-                                                            <button class="mb-0 btn btn-danger btn-sm btn-block"
-                                                                style="width: 100%;border-radius: 4px;padding: 8px 0; "
-                                                                id="purcheseBtn">অর্ডার করুন</button>
-                                                        </a>
-
+                                                        <!-- /.col -->
                                                     </div>
-                                                    <!-- /.col -->
+                                                    <!-- /.product-micro-row -->
                                                 </div>
-                                                <!-- /.product-micro-row -->
-                                            </div>
                                                 <!-- /.product-micro -->
 
                                             </div>
