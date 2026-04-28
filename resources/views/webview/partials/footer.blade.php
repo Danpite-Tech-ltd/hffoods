@@ -96,7 +96,7 @@ input[type="email"]:focus{
                        <!--         <button type="submit">&#10148;</button>-->
                        <!--     </div>-->
                        <!-- </div>-->
-                        <p class="text-white">Fresh, delicious food delivered to your doorstep.</p>
+                        <p class="text-dark">Fresh, delicious food delivered to your doorstep.</p>
                         <div class="gap-3 d-flex ">
                             <a href="{{ $basicinfo->facebook }}" target="_blank" class="text-white fs-6"><i
                                 class="fa-brands fa-facebook-f"></i></a>
