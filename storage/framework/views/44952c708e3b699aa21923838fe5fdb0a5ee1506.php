@@ -340,9 +340,9 @@
                                     class="fa-brands fa-facebook-f"></i></a>
                             <a href="<?php echo e($basicinfo->linkedin); ?>" target="_blank" title="Instagram" class="details-social fs-5"><i
                                     class="fa-brands fa-instagram"></i></a>
-                            <a href="<?php echo e($basicinfo->email); ?>" target="_blank" title="Tiktok" class="details-social fs-5"><i
+                            <a href="<?php echo e($basicinfo->youtube); ?>" target="_blank" title="Tiktok" class="details-social fs-5"><i
                                     class="fa-brands fa-tiktok"></i></a>
-                            <a href="<?php echo e($basicinfo->email); ?>" target="_blank" title="Email" class="details-social fs-5">
+                            <a href="mailto:<?php echo e($basicinfo->email); ?>" target="_blank" title="Email" class="details-social fs-5">
                                 <i class="fa-solid fa-envelope"></i>
                             </a>
                         </div>
