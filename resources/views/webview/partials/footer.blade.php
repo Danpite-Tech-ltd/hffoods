@@ -100,7 +100,7 @@ input[type="email"]:focus{
                             <a href="{{ $basicinfo->facebook }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-facebook-f"></i></a>
                             <!--<a href="{{ $basicinfo->twitter }}" class="text-white-50 fs-5"><i class="fa-brands fa-twitter"></i></a>-->
                             <a href="{{ $basicinfo->linkedin }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-instagram"></i></a>
-                            <a href="{{ $basicinfo->email }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-tiktok"></i></a>
+                            <a href="{{ $basicinfo->youtube }}" target="_blank" class="text-white fs-5"><i class="fa-brands fa-tiktok"></i></a>
                         </div>
                     </div>
 

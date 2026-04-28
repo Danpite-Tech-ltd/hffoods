@@ -112,6 +112,53 @@ class CartController extends Controller
             ]);
         }
 
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+        // return response()->json('success',200);
+    }
+    public function addtobuy(Request $request)
+    {
+        if ($request->size == '') {
+            return redirect()->back()->with('error', 'Please Select Size!');
+        }
+
+        $pid = $request->product_id;
+        $cartProduct = Product::find($pid);
+        if ($request->price > 0) {
+            Cart::add([
+                'id' => $request->product_id,
+                'name' => $cartProduct->ProductName,
+                'code' => $cartProduct->ProductSku,
+                'price' => $request->price,
+                'qty' => $request->qty,
+                'weight' => 1,
+                'image' => $cartProduct->ProductImage,
+                'options' => [
+                    'size' => $request->size,
+                    'color' => $request->color,
+                    'sigment' => $request->sigment,
+                ],
+
+            ]);
+        } else {
+            $size = Size::where('product_id', $cartProduct->id)->first();
+            $price = $size->SalePrice;
+            Cart::add([
+                'id' => $request->product_id,
+                'name' => $cartProduct->ProductName,
+                'code' => $cartProduct->ProductSku,
+                'price' => $price,
+                'qty' => $request->qty,
+                'weight' => 1,
+                'image' => $cartProduct->ProductImage,
+                'options' => [
+                    'size' => $size->size,
+                    'color' => $request->color,
+                    'sigment' => $request->sigment,
+                ],
+
+            ]);
+        }
+
         return redirect('checkout');
         // return response()->json('success',200);
     }
