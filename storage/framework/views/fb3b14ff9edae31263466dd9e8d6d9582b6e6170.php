@@ -60,6 +60,14 @@ $admin = App\Models\Admin::where('id', Auth::guard('admin')->user()->id)->first(
                 </div>
 
                 <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Landingpage</a>
+                    <div class="bg-transparent border-0 dropdown-menu">
+                        <a href="<?php echo e(route('admin.campaigns.create')); ?>" class="dropdown-item">Create Landingpage</a>
+                        <a href="<?php echo e(route('admin.campaigns.index')); ?>" class="dropdown-item">Landingpage List</a>
+                    </div>
+                </div>
+
+                <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Orders</a>
                     <div class="bg-transparent border-0 dropdown-menu">
                         <a href="<?php echo e(url('admin/create/order')); ?>" class="dropdown-item">Create Order</a>
