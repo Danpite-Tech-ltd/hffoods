@@ -80,6 +80,10 @@
                         <label class="form-label">Image2</label>
                         <input type="file" class="form-control" name="image2">
                     </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Review Images</label>
+                        <input type="file" class="form-control" name="review_images[]" multiple>
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Old Price Title</label>

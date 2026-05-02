@@ -48,6 +48,9 @@ class CampaignController extends Controller
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'review_images' => 'nullable|array',
+            'review_images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'oldprice_title' => 'nullable|string|max:255',
             'price_title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
@@ -68,20 +71,31 @@ class CampaignController extends Controller
         if ($request->file('image')) {
             $image = $request->file('image');
 
-            $imageName          = microtime('.') . '.' . $image->getClientOriginalExtension();
-            $imagePath          = 'public/images/campaign/';
+            $imageName = microtime('.') . '.' . $image->getClientOriginalExtension();
+            $imagePath = 'public/images/campaign/';
             $image->move($imagePath, $imageName);
 
-            $campaign->image   = $imagePath . $imageName;
+            $campaign->image = $imagePath . $imageName;
         }
         if ($request->file('image2')) {
             $image2 = $request->file('image2');
 
-            $image2Name          = microtime('.') . '.' . $image2->getClientOriginalExtension();
-            $image2Path          = 'public/images/campaign/';
+            $image2Name = microtime('.') . '.' . $image2->getClientOriginalExtension();
+            $image2Path = 'public/images/campaign/';
             $image2->move($image2Path, $image2Name);
 
-            $campaign->image2   = $image2Path . $image2Name;
+            $campaign->image2 = $image2Path . $image2Name;
+        }
+
+        if ($request->hasFile('review_images')) {
+            $reviewImagePaths = [];
+            foreach ($request->file('review_images') as $reviewImage) {
+                $reviewImageName = time() . '_' . uniqid() . '.' . $reviewImage->getClientOriginalExtension();
+                $reviewImagePath = 'public/images/campaign/reviews/';
+                $reviewImage->move($reviewImagePath, $reviewImageName);
+                $reviewImagePaths[] = $reviewImagePath . $reviewImageName;
+            }
+            $campaign->review_images = json_encode($reviewImagePaths);
         }
 
         $campaign->save();
@@ -127,6 +141,9 @@ class CampaignController extends Controller
             'title' => 'required|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'image2' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'review_images' => 'nullable|array',
+            'review_images.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
             'oldprice_title' => 'nullable|string|max:255',
             'price_title' => 'nullable|string|max:255',
             'description' => 'nullable|string',
@@ -170,6 +187,26 @@ class CampaignController extends Controller
             $image2->move($image2Path, $image2Name);
 
             $campaign->image2 = $image2Path . $image2Name;
+        }
+
+        if ($request->hasFile('review_images')) {
+            if ($campaign->review_images) {
+                $oldReviewImages = json_decode($campaign->review_images, true);
+                foreach ($oldReviewImages as $oldReviewImage) {
+                    if ($oldReviewImage && file_exists($oldReviewImage)) {
+                        unlink($oldReviewImage);
+                    }
+                }
+            }
+
+            $reviewImagePaths = [];
+            foreach ($request->file('review_images') as $reviewImage) {
+                $reviewImageName = time() . '_' . uniqid() . '.' . $reviewImage->getClientOriginalExtension();
+                $reviewImagePath = 'public/images/campaign/reviews/';
+                $reviewImage->move($reviewImagePath, $reviewImageName);
+                $reviewImagePaths[] = $reviewImagePath . $reviewImageName;
+            }
+            $campaign->review_images = json_encode($reviewImagePaths);
         }
 
         $campaign->save();

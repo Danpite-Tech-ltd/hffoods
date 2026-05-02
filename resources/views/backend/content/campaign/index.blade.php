@@ -46,7 +46,9 @@
 
                                 <td>
                                     @php
-                                        $products = json_decode($campaign->product_id, true);
+                                        $products = is_array($campaign->product_id)
+                                            ? $campaign->product_id
+                                            : json_decode($campaign->product_id, true);
                                     @endphp
 
                                     @if($products)
@@ -65,8 +67,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('campaign', $campaign->slug) }}"
-                                        class="btn btn-sm btn-info">Show</a>
+                                    <a href="{{ route('campaign', $campaign->slug) }}" class="btn btn-sm btn-info">Show</a>
 
                                     <a href="{{ route('admin.campaigns.edit', $campaign->id) }}"
                                         class="btn btn-sm btn-warning">Edit</a>

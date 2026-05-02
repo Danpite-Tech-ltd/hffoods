@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Campaign extends Model
 {
     use HasFactory;
+
+    protected $casts = [
+        'product_id' => 'array',
+        'review_images' => 'array',
+    ];
 }

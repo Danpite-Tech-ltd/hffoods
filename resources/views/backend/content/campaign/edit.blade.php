@@ -100,6 +100,28 @@
 
                         <input type="file" class="form-control" name="image2">
                     </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Review Images</label><br>
+
+                        @if($campaign->review_images)
+                            @php
+                                $reviewImages = is_array($campaign->review_images)
+                                    ? $campaign->review_images
+                                    : json_decode($campaign->review_images, true);
+                            @endphp
+
+                            @if(is_array($reviewImages))
+                                @foreach($reviewImages as $reviewImage)
+                                    @if($reviewImage)
+                                        <img src="{{ asset($reviewImage) }}" width="80" class="mb-2 me-2">
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endif
+
+                        <input type="file" class="form-control" name="review_images[]" multiple>
+                        <small class="text-muted">Upload new review images to replace the existing ones.</small>
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Old Price Title</label>

@@ -98,6 +98,28 @@
 
                         <input type="file" class="form-control" name="image2">
                     </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Review Images</label><br>
+
+                        <?php if($campaign->review_images): ?>
+                            <?php
+                                $reviewImages = is_array($campaign->review_images)
+                                    ? $campaign->review_images
+                                    : json_decode($campaign->review_images, true);
+                            ?>
+
+                            <?php if(is_array($reviewImages)): ?>
+                                <?php $__currentLoopData = $reviewImages; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $reviewImage): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($reviewImage): ?>
+                                        <img src="<?php echo e(asset($reviewImage)); ?>" width="80" class="mb-2 me-2">
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
+
+                        <input type="file" class="form-control" name="review_images[]" multiple>
+                        <small class="text-muted">Upload new review images to replace the existing ones.</small>
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Old Price Title</label>
