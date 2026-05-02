@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\InformationController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\ExpenseController;
+use App\Http\Controllers\Backend\CampaignController;
 use App\Http\Controllers\Backend\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ZoneController;
 use App\Http\Controllers\CityController;
@@ -89,6 +90,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth.admin:admin']], functi
     Route::get('stock/get/{stage}', [ProductController::class, 'stockdata']);
     Route::get('stock-by/product', [ProductController::class, 'stockby']);
     Route::get('stock-by/product/data', [ProductController::class, 'stockbydata']);
+
+    // campaign
+    Route::resource('campaigns', CampaignController::class, ['names' => 'admin.campaigns']);
 
     // block user
     Route::get('unblock/{id}', [UserController::class, 'unblock']);
