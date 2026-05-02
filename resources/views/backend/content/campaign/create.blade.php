@@ -60,26 +60,26 @@
 
                 <div class="row">
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Landingpage Name</label>
+                        <label class="form-label">Landingpage Title</label>
                         <input type="text" class="form-control" name="name">
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Title</label>
+                        <label class="form-label">Subtitle</label>
                         <input type="text" class="form-control" name="title">
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Subtitle</label>
+                        <label class="form-label">Subtitle Two</label>
                         <input type="text" class="form-control" name="subtitle">
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Image</label>
+                        <label class="form-label">Description Image</label>
                         <input type="file" class="form-control" name="image">
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Image2</label>
+                        <label class="form-label">Why Choose Us Image</label>
                         <input type="file" class="form-control" name="image2">
                     </div>
                     <div class="mb-3 col-md-12">
@@ -88,14 +88,14 @@
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Old Price Title</label>
+                        <label class="form-label">Middle Title</label>
                         <input type="text" class="form-control" name="oldprice_title">
                     </div>
 
-                    <div class="mb-3 col-md-12">
+                    <!-- <div class="mb-3 col-md-12">
                         <label class="form-label">Price Title</label>
                         <input type="text" class="form-control" name="price_title">
-                    </div>
+                    </div> -->
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Select Products</label>

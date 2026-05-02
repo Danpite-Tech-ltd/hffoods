@@ -64,22 +64,22 @@
                 <div class="row">
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Landingpage Name</label>
+                        <label class="form-label">Landingpage Title</label>
                         <input type="text" class="form-control" name="name" value="<?php echo e($campaign->name); ?>">
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Title</label>
+                        <label class="form-label">Subtitle</label>
                         <input type="text" class="form-control" name="title" value="<?php echo e($campaign->title); ?>">
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Subtitle</label>
+                        <label class="form-label">Subtitle Two</label>
                         <input type="text" class="form-control" name="subtitle" value="<?php echo e($campaign->subtitle); ?>">
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Image</label><br>
+                        <label class="form-label">Description Image</label><br>
 
                         <!-- Old Image -->
                         <?php if($campaign->image): ?>
@@ -89,7 +89,7 @@
                         <input type="file" class="form-control" name="image">
                     </div>
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Image2</label><br>
+                        <label class="form-label">Why Choose Us Image</label><br>
 
                         <!-- Old Image -->
                         <?php if($campaign->image2): ?>
@@ -122,15 +122,15 @@
                     </div>
 
                     <div class="mb-3 col-md-12">
-                        <label class="form-label">Old Price Title</label>
+                        <label class="form-label">Middle Title</label>
                         <input type="text" class="form-control" name="oldprice_title"
                             value="<?php echo e($campaign->oldprice_title); ?>">
                     </div>
 
-                    <div class="mb-3 col-md-12">
+                    <!-- <div class="mb-3 col-md-12">
                         <label class="form-label">Price Title</label>
                         <input type="text" class="form-control" name="price_title" value="<?php echo e($campaign->price_title); ?>">
-                    </div>
+                    </div> -->
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Select Products</label>
