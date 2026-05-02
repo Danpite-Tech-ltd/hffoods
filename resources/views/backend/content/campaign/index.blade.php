@@ -65,7 +65,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('admin.campaigns.show', $campaign->slug) }}"
+                                    <a href="{{ route('campaign', $campaign->slug) }}"
                                         class="btn btn-sm btn-info">Show</a>
 
                                     <a href="{{ route('admin.campaigns.edit', $campaign->id) }}"

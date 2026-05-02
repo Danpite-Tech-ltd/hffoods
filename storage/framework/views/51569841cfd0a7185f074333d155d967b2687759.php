@@ -64,7 +64,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="<?php echo e(route('admin.campaigns.show', $campaign->slug)); ?>"
+                                    <a href="<?php echo e(route('campaign', $campaign->slug)); ?>"
                                         class="btn btn-sm btn-info">Show</a>
 
                                     <a href="<?php echo e(route('admin.campaigns.edit', $campaign->id)); ?>"

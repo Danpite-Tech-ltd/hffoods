@@ -28,6 +28,8 @@ Route::get('/cc', function () {
 });
 
 Route::get('/', [WebviewController::class, 'mainview']);
+Route::get('/campaign/{slug}', [WebviewController::class, 'campaign'])->name('campaign');
+Route::post('/campaign/submit', [WebviewController::class, 'campaign_submit'])->name('campaign.submit');
 
 // register otp
 Route::post('/send-otp', [WebviewController::class, 'sendCustomerOtp'])->name('sendcustomer.otp');

@@ -1,0 +1,387 @@
+@import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+* {
+    margin: 0;
+    font-family: "Hind Siliguri", sans-serif;
+}
+
+.hero-section {
+    background: linear-gradient(180deg, #ffd898 0%, #f0e5bb 62%);
+    padding: 40px 0;
+    position: relative;
+    text-align: center;
+}
+
+.landing-main-title {
+    color: red;
+    font-weight: bold;
+    font-size: 35px;
+}
+.landing-sub-title {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.landing-order-btn {
+    padding: 10px 30px;
+    text-decoration: none;
+    background-color: #000000;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #c9a24d;
+    border-radius: 100px;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+.campaign-banner-img {
+    border: 3px solid #c9a24d;
+    width: 75%;
+}
+
+.price-section {
+    margin-top: 15px;
+}
+
+.campaign-old-price {
+    color: red;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.campaign-new-price {
+    color: #523f0f;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/*  ======= product section ========= */
+.landing-product-card {
+    border: 2px solid #f4b400;
+    border-radius: 12px;
+    padding: 8px;
+    background: #fff;
+}
+
+.landing-product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #5c4500;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.landing-productorder-btn {
+    margin-top: 10px;
+}
+
+.landing-productorder-btn .btn {
+    background: #000;
+    color: #f4b400;
+    border-radius: 8px;
+    padding: 5px;
+    font-size: 24px;
+}
+.landing-order-btn2 {
+    padding: 10px 30px;
+    text-decoration: none;
+    background-color: #fc5a5a;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #c9a24d;
+    border-radius: 100px;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+}
+
+/* ========= details ========== */
+.product-details {
+    padding: 40px 0;
+    background: #dfdfdf;
+}
+.landing-productdetails-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 32px;
+}
+.details-line {
+    position: absolute;
+    background: #ffbe00;
+    width: 125px;
+    height: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.landing-product-description {
+    width: 80%;
+    margin: auto;
+}
+
+.landing-emergency-contact h2 {
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+}
+.landing-emergency-info {
+    width: 70%;
+    margin: auto;
+}
+.landing-contact-phone {
+    text-decoration: none;
+    background: #000;
+    color: #fff;
+    padding: 6px 60px;
+    font-size: 30px;
+    border-radius: 5px;
+}
+.contact-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    transition: 0.3s ease;
+}
+
+.phone-box {
+    background: #000;
+}
+
+.whatsapp-box {
+    background: #166534; /* dark green */
+}
+
+.contact-box:hover {
+    opacity: 0.9;
+}
+
+.contact-box .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-box .text {
+    letter-spacing: 0.5px;
+}
+
+/* ========= order form ========== */
+.landing-box {
+    border: 2px solid #d4af37;
+    padding: 20px;
+    background: #fff;
+}
+
+/* PRODUCT */
+.landing-product-item {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.landing-product-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* ЁЯФе radio + image same рж▓рж╛ржЗржирзЗ */
+.landing-product-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.landing-product-left img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/* radio button рж╕рзБржирзНржжрж░ржнрж╛ржмрзЗ align */
+.landing-product-item input[type="radio"] {
+    margin-right: 8px;
+}
+
+.landing-qty {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.landing-qty button {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: #f8f8f8;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.landing-qty .qty {
+    width: 35px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.landing-qty button:first-child {
+    border-right: 1px solid #ccc;
+}
+
+.landing-qty button:last-child {
+    border-left: 1px solid #ccc;
+}
+
+.landing-radio {
+    display: block;
+    cursor: pointer;
+}
+
+.landing-shipping {
+    border: 1px solid #ddd;
+}
+
+.landing-ship-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.landing-ship-row div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* SUMMARY */
+.landing-summary {
+    background: #fafafa;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+.landing-summary-product img {
+    width: 40px;
+}
+
+.landing-cash-box {
+    background: #eee;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.landing-btn {
+    width: 100%;
+    background: #000;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    font-weight: bold;
+}
+
+/* =================== Responsive =================== */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 25px 0;
+    }
+    .landing-main-title {
+        font-size: 22px;
+        line-height: 32px;
+    }
+    .landing-sub-title {
+        font-size: 20px;
+    }
+    .campaign-banner-img {
+        width: 100%;
+    }
+    .landing-order-btn {
+        font-size: 20px;
+    }
+    .campaign-old-price {
+        font-size: 22px;
+    }
+    .campaign-new-price {
+        color: #523f0f;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .landing-productdetails-title {
+        font-size: 22px;
+    }
+    .landing-product-description {
+        width: 100%;
+    }
+    .landing-emergency-info {
+        width: 100%;
+    }
+    .contact-box {
+        font-size: 16px;
+        padding: 12px;
+    }
+    .landing-productorder-btn .btn{
+        font-size:16px;
+    }
+
+    .landing-qty {
+        flex-direction: column;
+        width: 50px;
+    }
+
+    .landing-qty button {
+        width: 100%;
+        height: 25px;
+    }
+
+    .landing-qty .qty {
+        width: 100%;
+        text-align: center;
+        padding: 3px 0;
+    }
+
+    .landing-qty button:first-child {
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .landing-qty button:last-child {
+        border-left: none;
+        border-top: 1px solid #ccc;
+    }
+}
