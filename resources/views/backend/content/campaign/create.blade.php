@@ -78,6 +78,10 @@
                         <label class="form-label">Image</label>
                         <input type="file" class="form-control" name="image">
                     </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Image2</label>
+                        <input type="file" class="form-control" name="image2">
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Old Price Title</label>
@@ -103,6 +107,10 @@
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Description</label>
                         <textarea id="description" name="description"></textarea>
+                    </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Why Choose Us</label>
+                        <textarea id="why_choose" name="why_choose"></textarea>
                     </div>
 
                 </div>
@@ -136,6 +144,11 @@
 
             // Summernote init
             $('#description').summernote({
+                placeholder: 'Write description here...',
+                tabsize: 2,
+                height: 200
+            });
+            $('#why_choose').summernote({
                 placeholder: 'Write description here...',
                 tabsize: 2,
                 height: 200

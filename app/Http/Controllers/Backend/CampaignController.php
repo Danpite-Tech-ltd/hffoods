@@ -62,6 +62,7 @@ class CampaignController extends Controller
         $campaign->oldprice_title = $request->oldprice_title;
         $campaign->price_title = $request->price_title;
         $campaign->description = $request->description;
+        $campaign->why_choose = $request->why_choose;
         $campaign->product_id = json_encode($request->product_id);
 
         if ($request->file('image')) {
@@ -72,6 +73,15 @@ class CampaignController extends Controller
             $image->move($imagePath, $imageName);
 
             $campaign->image   = $imagePath . $imageName;
+        }
+        if ($request->file('image2')) {
+            $image2 = $request->file('image2');
+
+            $image2Name          = microtime('.') . '.' . $image2->getClientOriginalExtension();
+            $image2Path          = 'public/images/campaign/';
+            $image2->move($image2Path, $image2Name);
+
+            $campaign->image2   = $image2Path . $image2Name;
         }
 
         $campaign->save();
