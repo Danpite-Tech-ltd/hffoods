@@ -90,6 +90,16 @@
 
                         <input type="file" class="form-control" name="image">
                     </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Image2</label><br>
+
+                        <!-- Old Image -->
+                        @if($campaign->image2)
+                            <img src="{{ asset($campaign->image2) }}" width="80" class="mb-2">
+                        @endif
+
+                        <input type="file" class="form-control" name="image2">
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Old Price Title</label>
@@ -116,6 +126,10 @@
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Description</label>
                         <textarea id="description" name="description">{!! $campaign->description !!}</textarea>
+                    </div>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Why choose Us</label>
+                        <textarea id="why_choose" name="why_choose">{!! $campaign->why_choose !!}</textarea>
                     </div>
 
                 </div>
@@ -150,6 +164,11 @@
 
             // Summernote init
             $('#description').summernote({
+                placeholder: 'Write description here...',
+                tabsize: 2,
+                height: 200
+            });
+            $('#why_choose').summernote({
                 placeholder: 'Write description here...',
                 tabsize: 2,
                 height: 200
