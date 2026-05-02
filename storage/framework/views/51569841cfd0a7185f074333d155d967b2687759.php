@@ -64,7 +64,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="<?php echo e(route('campaign', $campaign->slug)); ?>"
+                                    <a href="<?php echo e(route('admin.campaigns.show', $campaign->slug)); ?>"
                                         class="btn btn-sm btn-info">Show</a>
 
                                     <a href="<?php echo e(route('admin.campaigns.edit', $campaign->id)); ?>"
@@ -91,5 +91,4 @@
     </div>
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('backend.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\xampp\htdocs\premium\hffoods\resources\views/backend/content/campaign/index.blade.php ENDPATH**/ ?>
