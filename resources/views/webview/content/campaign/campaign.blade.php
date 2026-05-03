@@ -12,7 +12,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
-    
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <!-- jQuery (required) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .sale-discount-badge{
             display: flex;
@@ -55,33 +59,15 @@
     {{-- ===================== product section start ====================== --}}
     <section class="py-4 landing-product-section">
         <div class="container">
-            <div class="row g-3">
-                
-                @foreach ($products as $value)
-                    <div class="col-6 col-lg-4">
-                        <div class="landing-product-card position-relative">
-                            <div class="sale-discount-badge">
-                                    {{ round((($value->sizes[0]->RegularPrice - $value->sizes[0]->SalePrice) / $value->sizes[0]->RegularPrice) * 100) }}% ছাড়
-                                </div>
-                            <img src="{{ asset($value->ProductImage) }}" class="rounded img-fluid" alt="">
-                            <div>
-                                <p style="font-size:20px;margin-bottom: 4px;text-align: left;color: #000;font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{ $value->ProductName }}</p>
-                                <div style="font-size: 24px;color: #000;text-align: left;font-weight: bold;">
-                                   ৳ {{ round($value->sizes[0]->SalePrice) }}
-                                        <del style="font-size: 18px;color: #888;margin-left: 5px;">৳{{ round($value->sizes[0]->RegularPrice) }}</del>
-                                </div>
-                            </div>
-                            <div class="landing-productorder-btn">
-                                <a class="btn w-100" href="#order_form">
-                                    🛒 অর্ডার করতে চাই
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <iframe width="100%" class="video_height"
+                src="https://www.youtube.com/embed/{{ $campaign->price_title }}" 
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
             <div class="mt-4 text-center">
-                <a href="#order_form" class="landing-order-btn2">🛒 অর্ডার করতে চাই</a>
+                <a href="#order_form" class="landing-order-btn2">🛒 এখানে অর্ডার করুন </a>
             </div>
         </div>
     </section>
@@ -89,17 +75,70 @@
     {{-- ====================product details section start ================ --}}
     <section class="product-details">
         <div class="container">
-            <h2 class="landing-productdetails-title">আমাদের পণ্যের ডিটেইলস</h2>
-            <span class="details-line"></span>
-            <div class="mt-4">
-                <div class="landing-product-description">
-                    {!! $campaign->description !!}
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <img src="{{ asset($campaign->image) }}" class="w-100" style="border: 5px solid #fb862d;border-radius: 8px;">
                 </div>
+                <div class="col-12 col-md-6">
+                    <div>
+                        {!! $campaign->description !!}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Middle -->
+     <div style="background:#577735">
+        <div class="container py-4">
+            <h1 class="text-white text-center fw-bold">
+                {{ $campaign->oldprice_title }}
+            </h1>
+
+        </div>
+     </div>
+    <section class="product-details">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <img src="{{ asset($campaign->image2) }}" class="w-100" style="border: 5px solid #fb862d;border-radius: 8px;">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div>
+                        {!! $campaign->why_choose !!}
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
     <div class="mt-4 text-center">
         <a href="#order_form" class="landing-order-btn2">🛒 অর্ডার করতে চাই</a>
+    </div>
+
+    <div class="container my-4">
+        <div class="py-3" style="background:#ee5c43; border-radius: 8px;">
+            <h3 class="text-white text-center fw-bold m-0 review-title">
+                আমাদের সম্মানিত কাস্টমারদের রিভিউ:
+            </h3>
+        </div>
+
+        @php
+            $images = json_decode($campaign->review_images, true);
+        @endphp
+
+        <div class="owl-carousel review-carousel mt-3">
+            @if($images)
+                @foreach($images as $img)
+                    <div class="item">
+                        <img src="{{ asset($img) }}" alt="review image" style="width:100%; height:100%; object-fit:cover;border-radius: 8px;">
+                    </div>
+                @endforeach
+            @endif
+        </div>
+
+
     </div>
 
     <div class="container mt-5">
@@ -295,6 +334,27 @@
 </section>
 
 {{-- ================= SCRIPT ================= --}}
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.review-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive:{
+                0:{ items:2 },
+                600:{ items:2 },
+                1000:{ items:3 }
+            }
+        });
+    });
+</script>
+
+
 <script>
     let selectedProduct = null;
     let selectedSize = null;

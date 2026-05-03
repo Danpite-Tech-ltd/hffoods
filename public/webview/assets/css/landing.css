@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@100..800&family=Arimo:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 * {
     margin: 0;
-    font-family: "Hind Siliguri", sans-serif;
+    font-family: "Anek Bangla", sans-serif;
 }
 body {
     background: #e3fff1;
@@ -56,36 +58,11 @@ body {
     }
 }
 
-/*  ======= product section ========= */
-.landing-product-card {
-    border: 2px solid #f4b400;
-    border-radius: 12px;
-    padding: 8px;
-    background: #fff;
+/* Youtube */
+.video_height{
+    height: 600px;
 }
 
-.landing-product-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #5c4500;
-    color: #fff;
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 14px;
-}
-
-.landing-productorder-btn {
-    margin-top: 10px;
-}
-
-.landing-productorder-btn .btn {
-    background: #000;
-    color: #f4b400;
-    border-radius: 8px;
-    padding: 5px;
-    font-size: 24px;
-}
 .landing-order-btn2 {
     padding: 10px 30px;
     text-decoration: none;
@@ -104,7 +81,6 @@ body {
 /* ========= details ========== */
 .product-details {
     padding: 40px 0;
-    background: #dfdfdf;
 }
 .landing-productdetails-title {
     text-align: center;
@@ -368,5 +344,11 @@ body {
     .landing-qty button:last-child {
         border-left: none;
         border-top: 1px solid #ccc;
+    }
+    .video_height{
+        height: 375px;
+    }
+    .review-title{
+        font-size: 18px;
     }
 }
