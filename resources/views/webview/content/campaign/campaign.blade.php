@@ -12,7 +12,14 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
         rel="stylesheet">
-    
+    <!-- Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <!-- jQuery (required) -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         .sale-discount-badge{
             display: flex;
@@ -38,60 +45,50 @@
 
     {{-- ========================== hero section start ====================== --}}
     <section class="hero-section">
-        <div class="container">
+        <div class="container-fluid">
             <h2 class="landing-main-title">
-                {{ $campaign->title }}
+                {{ $campaign->name }}
             </h2>
 
-            <p class="landing-sub-title">২ বছর থেকে ৯ বছরের বাচ্চাদের জন্য (ছেলে এবং মেয়ে উভয়ই)</p>
+            <p class="landing-sub-title"> {{ $campaign->title }} </p>
+            <div class="container">
+                <div class="d-grid gap-2 p-3 text-center" style="background-color: #5a7a3a; grid-template-columns: repeat(3, 1fr);">
 
-            <a href="#order_form" class="landing-order-btn">🛒 অর্ডার করতে চাই</a>
+                    <div class="bg-white rounded-3 text-center py-3 px-1">
+                        <div id="hours" class="fw-bold" style="font-size: clamp(1.5rem, 6vw, 3rem); color: #4a7c2f; line-height: 1;">00</div>
+                        <div class="text-muted" style="font-size: clamp(10px, 2.5vw, 14px);">Hours</div>
+                    </div>
 
-            <div class="mt-4 row">
-                <div class="mb-3 col-md-12">
-                    <img src="{{ asset($campaign->image) }}" class="rounded img-fluid campaign-banner-img">
+                    <div class="bg-white rounded-3 text-center py-3 px-1">
+                        <div id="minutes" class="fw-bold" style="font-size: clamp(1.5rem, 6vw, 3rem); color: #4a7c2f; line-height: 1;">00</div>
+                        <div class="text-muted" style="font-size: clamp(10px, 2.5vw, 14px);">Minutes</div>
+                    </div>
+
+                    <div class="bg-white rounded-3 text-center py-3 px-1">
+                        <div id="seconds" class="fw-bold" style="font-size: clamp(1.5rem, 6vw, 3rem); color: #4a7c2f; line-height: 1;">00</div>
+                        <div class="text-muted" style="font-size: clamp(10px, 2.5vw, 14px);">Seconds</div>
+                    </div>
+
                 </div>
             </div>
 
-            <div class="price-section">
-                <p class="campaign-old-price">পূর্বের মূল্য – {{ $campaign->oldprice_title }}</p>
-                <p class="campaign-new-price">আজকের অফার মূল্য —
-                    <span class="text-dark">{{ $campaign->price_title }}</span>
-                </p>
-            </div>
+            <p class="landing-sub-title"> {{ $campaign->subtitle }} </p>
+
         </div>
     </section>
     {{-- ========================== hero section end ====================== --}}
     {{-- ===================== product section start ====================== --}}
     <section class="py-4 landing-product-section">
         <div class="container">
-            <div class="row g-3">
-                
-                @foreach ($products as $value)
-                    <div class="col-6 col-lg-4">
-                        <div class="landing-product-card position-relative">
-                            <div class="sale-discount-badge">
-                                    {{ round((($value->sizes[0]->RegularPrice - $value->sizes[0]->SalePrice) / $value->sizes[0]->RegularPrice) * 100) }}% ছাড়
-                                </div>
-                            <img src="{{ asset($value->ProductImage) }}" class="rounded img-fluid" alt="">
-                            <div>
-                                <p style="font-size:20px;margin-bottom: 4px;text-align: left;color: #000;font-weight: bold;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;">{{ $value->ProductName }}</p>
-                                <div style="font-size: 24px;color: #000;text-align: left;font-weight: bold;">
-                                   ৳ {{ round($value->sizes[0]->SalePrice) }}
-                                        <del style="font-size: 18px;color: #888;margin-left: 5px;">৳{{ round($value->sizes[0]->RegularPrice) }}</del>
-                                </div>
-                            </div>
-                            <div class="landing-productorder-btn">
-                                <a class="btn w-100" href="#order_form">
-                                    🛒 অর্ডার করতে চাই
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+            <iframe width="100%" class="video_height"
+                src="https://www.youtube.com/embed/{{ $campaign->price_title }}" 
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
             <div class="mt-4 text-center">
-                <a href="#order_form" class="landing-order-btn2">🛒 অর্ডার করতে চাই</a>
+                <a href="#order_form" class="landing-order-btn2">🛒 এখানে অর্ডার করুন </a>
             </div>
         </div>
     </section>
@@ -99,17 +96,70 @@
     {{-- ====================product details section start ================ --}}
     <section class="product-details">
         <div class="container">
-            <h2 class="landing-productdetails-title">আমাদের পণ্যের ডিটেইলস</h2>
-            <span class="details-line"></span>
-            <div class="mt-4">
-                <div class="landing-product-description">
-                    {!! $campaign->description !!}
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <img src="{{ asset($campaign->image) }}" class="w-100" style="border: 5px solid #fb862d;border-radius: 8px;">
                 </div>
+                <div class="col-12 col-md-6">
+                    <div>
+                        {!! $campaign->description !!}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Middle -->
+     <div style="background:#577735">
+        <div class="container py-4">
+            <h1 class="text-white text-center fw-bold">
+                {{ $campaign->oldprice_title }}
+            </h1>
+
+        </div>
+     </div>
+    <section class="product-details">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <img src="{{ asset($campaign->image2) }}" class="w-100" style="border: 5px solid #fb862d;border-radius: 8px;">
+                </div>
+                <div class="col-12 col-md-6">
+                    <div>
+                        {!! $campaign->why_choose !!}
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
     <div class="mt-4 text-center">
         <a href="#order_form" class="landing-order-btn2">🛒 অর্ডার করতে চাই</a>
+    </div>
+
+    <div class="container my-4">
+        <div class="py-3" style="background:#ee5c43; border-radius: 8px;">
+            <h3 class="text-white text-center fw-bold m-0 review-title">
+                আমাদের সম্মানিত কাস্টমারদের রিভিউ:
+            </h3>
+        </div>
+
+        @php
+            $images = json_decode($campaign->review_images, true);
+        @endphp
+
+        <div class="owl-carousel review-carousel mt-3">
+            @if($images)
+                @foreach($images as $img)
+                    <div class="item">
+                        <img src="{{ asset($img) }}" alt="review image" style="width:100%; height:100%; object-fit:cover;border-radius: 8px;">
+                    </div>
+                @endforeach
+            @endif
+        </div>
+
+
     </div>
 
     <div class="container mt-5">
@@ -195,8 +245,8 @@
                                     <span class="qty">1</span>
                                     <button type="button" class="qty-plus">+</button>
                                 </div>
-
                                 <div class="landing-price price-box">0৳</div>
+
 
                             </div>
 
@@ -304,7 +354,100 @@
     </div>
 </section>
 
+<footer style="background:#0b0b0b; color:#ccc; padding:60px 0;">
+    <div class="container">
+        <div class="row">
+
+            <!-- About -->
+            <div class="col-md-5">
+                <h4 style="color:#ffc107; font-weight:700;">আমাদের সম্পর্কে</h4>
+
+                <p style="margin-top:15px; line-height:1.8;">
+                    উত্তরবঙ্গের স্বাদ, সংস্কৃতি ও গ্রামীণ ঐতিহ্য সবার ঘরে পৌঁছে দিতে আমাদের উদ্যোগ – Aranno।
+                    এখানে পাবেন উত্তরবঙ্গের বিভিন্ন অঞ্চলের প্রিমিয়াম পণ্য, মসলা ও কৃষিজাত দ্রব্য।
+                </p>
+
+                <!-- Social Icons -->
+                <div style="margin-top:25px;">
+                    <a href="{{ $basicinfo->facebook }}" target="_blank" style="display:inline-block; width:45px; height:45px; line-height:45px; text-align:center; border-radius:50%; background:#1a1a1a; color:#fff; margin-right:10px;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="{{ $basicinfo->linkedin }}" target="_blank" style="display:inline-block; width:45px; height:45px; line-height:45px; text-align:center; border-radius:50%; background:#1a1a1a; color:#fff; margin-right:10px;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="{{ $basicinfo->youtube }}" target="_blank" style="display:inline-block; width:45px; height:45px; line-height:45px; text-align:center; border-radius:50%; background:#1a1a1a; color:#fff;">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-md-4">
+                <h4 style="color:#ffc107; font-weight:700;">যোগাযোগ করুন</h4>
+                    <a href="tel:{{ $basicinfo->phone_one }}" target="_blank" style="display:block; margin-top:15px; color:#ccc; text-decoration:none;">
+                        <i class="fas fa-phone" style="margin-right:10px;"></i> ফোন: {{ $basicinfo->phone_one }}
+                    </a>
+
+                    <a href="https://wa.me/88{{ $basicinfo->wp_1 }}" target="_blank" style="display:block; color:#ccc; text-decoration:none;">
+                        <i class="fab fa-whatsapp" style="margin-right:10px;"></i> WhatsApp: {{ $basicinfo->wp_1 }}
+                    </a>
+
+                    <a href="mailto:{{ $basicinfo->email }}" target="_blank" style="display:block; color:#ccc; text-decoration:none;">
+                        <i class="fas fa-envelope" style="margin-right:10px;"></i> ইমেইল: {{ $basicinfo->email }}
+                    </a>
+            </div>
+
+            <!-- Right Side -->
+            <div class="col-md-3 d-flex align-items-end justify-content-md-end mt-4 mt-md-0">
+                <p style="font-size:14px; color:#aaa; text-align:right;">
+                    © {{ env('APP_NAME') }} © 2025. All Rights Reserved.<br>
+                    <span style="color:#ffc107;">Designed by <a href="https://danpitetech.com/" target="_blank">danpitetech.com</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
 {{-- ================= SCRIPT ================= --}}
+<!-- Owl Carousel JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.review-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive:{
+                0:{ items:2 },
+                600:{ items:2 },
+                1000:{ items:3 }
+            }
+        });
+    });
+</script>
+<!-- timer -->
+<script>
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+    const now = new Date(), target = new Date();
+    target.setHours(4, 0, 0, 0);
+    if (now >= target) target.setDate(target.getDate() + 1);
+    let diff = Math.floor((target - now) / 1000);
+    const h = Math.floor(diff / 3600); diff %= 3600;
+    const m = Math.floor(diff / 60), s = diff % 60;
+    document.getElementById('hours').textContent = pad(h);
+    document.getElementById('minutes').textContent = pad(m);
+    document.getElementById('seconds').textContent = pad(s);
+    }
+    tick(); setInterval(tick, 1000);
+</script>
+
+
 <script>
     let selectedProduct = null;
     let selectedSize = null;
