@@ -229,10 +229,11 @@ class WebviewController extends Controller
         public function campaign($slug)
     {
         $campaign = Campaign::where('slug', $slug)->first();
+        $mainproducts = Mainproduct::where('category_id', $campaign->category_id)->select('id', 'category_id', 'ProductName', 'ProductSlug', 'ProductImage', 'RelatedProductIds')->latest()->get();
 
         $productIds = json_decode($campaign->product_id, true);
         $products = Product::with(['sizes', 'variants'])->whereIn('id', $productIds)->get();
-        return view('webview.content.campaign.campaign', compact('campaign', 'products'));
+        return view('webview.content.campaign.campaign', compact('campaign', 'products', 'mainproducts'));
     }
 
     public function campaign_submit(Request $request)

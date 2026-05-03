@@ -42,7 +42,6 @@
 </head>
 
 <body>
-
     {{-- ========================== hero section start ====================== --}}
     <section class="hero-section">
         <div class="container-fluid">
@@ -353,6 +352,54 @@
 
     </div>
 </section>
+<!-- related products -->
+ <section class="container">
+     <h3>Related Products</h3>
+    <div class="owl-carousel related-carousel mt-3">
+        @foreach($mainproducts as $product)
+        @php
+            $product_ids = json_decode($product->RelatedProductIds, true);
+
+            $singleproduct = null;
+            if (!empty($product_ids) && isset($product_ids[0])) {
+                $singleproduct = App\Models\Product::find($product_ids[0]);
+            }
+
+            $size = App\Models\Size::where('product_id',$singleproduct->first()->id)->first();
+        @endphp
+            <div class="item">
+                <a href="{{ url('/view-product', $product->ProductSlug) }}" 
+                style="text-decoration:none; color:inherit; display:block;">
+
+                    <img class="product-img" src="{{ asset($product->ProductImage) }}" 
+                        alt="related product image"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+
+                    <p  style="margin-top:8px; margin-bottom: 0; font-size:16px; font-weight:500;">
+                        {{ $product->ProductName }}
+                    </p>
+
+                    <div style="margin-top:5px;">
+                        <span style="color:#28a745; font-weight:bold;font-size:20px;">
+                            {{ $size->SalePrice ?? '' }}
+                        </span>
+                        <del style="color:#999; font-size:18px;">
+                            {{ $size->RegularPrice ?? '' }}
+                        </del>
+                    </div>
+
+                </a>
+
+            </div>
+            @endforeach
+        </div>
+    </section>
+<style>
+    .product-img:hover {
+        transform: scale(1.05);
+        transition: 0.3s;
+    }
+</style>
 
 <footer style="background:#0b0b0b; color:#ccc; padding:60px 0;">
     <div class="container">
@@ -418,7 +465,7 @@
         $('.review-carousel').owlCarousel({
             loop: true,
             margin: 10,
-            nav: true,
+            nav: false,
             dots: true,
             autoplay: true,
             autoplayTimeout: 3000,
@@ -426,6 +473,21 @@
                 0:{ items:2 },
                 600:{ items:2 },
                 1000:{ items:3 }
+            }
+        });
+    });
+    $(document).ready(function(){
+        $('.related-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive:{
+                0:{ items:2 },
+                600:{ items:2 },
+                1000:{ items:4 }
             }
         });
     });
