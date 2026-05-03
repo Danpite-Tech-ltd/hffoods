@@ -38,28 +38,18 @@
 
     
     <section class="hero-section">
-        <div class="container">
+        <div class="container-fluid">
             <h2 class="landing-main-title">
-                <?php echo e($campaign->title); ?>
+                <?php echo e($campaign->name); ?>
 
             </h2>
 
-            <p class="landing-sub-title">২ বছর থেকে ৯ বছরের বাচ্চাদের জন্য (ছেলে এবং মেয়ে উভয়ই)</p>
+            <p class="landing-sub-title"> <?php echo e($campaign->title); ?> </p>
 
-            <a href="#order_form" class="landing-order-btn">🛒 অর্ডার করতে চাই</a>
+            <a href="#order_form" class="landing-order-btn">Timer</a>
 
-            <div class="mt-4 row">
-                <div class="mb-3 col-md-12">
-                    <img src="<?php echo e(asset($campaign->image)); ?>" class="rounded img-fluid campaign-banner-img">
-                </div>
-            </div>
+            <p class="landing-sub-title"> <?php echo e($campaign->subtitle); ?> </p>
 
-            <div class="price-section">
-                <p class="campaign-old-price">পূর্বের মূল্য – <?php echo e($campaign->oldprice_title); ?></p>
-                <p class="campaign-new-price">আজকের অফার মূল্য —
-                    <span class="text-dark"><?php echo e($campaign->price_title); ?></span>
-                </p>
-            </div>
         </div>
     </section>
     

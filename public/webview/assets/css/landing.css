@@ -3,22 +3,26 @@
     margin: 0;
     font-family: "Hind Siliguri", sans-serif;
 }
+body {
+    background: #e3fff1;
+}
 
 .hero-section {
-    background: linear-gradient(180deg, #ffd898 0%, #f0e5bb 62%);
+    background: #577735;
     padding: 40px 0;
     position: relative;
     text-align: center;
 }
 
 .landing-main-title {
-    color: red;
+    color: #fff;
     font-weight: bold;
     font-size: 35px;
 }
 .landing-sub-title {
-    font-size: 25px;
+    font-size: 28px;
     font-weight: bold;
+    color: #f1ff03;
 }
 
 .landing-order-btn {
@@ -36,26 +40,7 @@
     animation: pulse 1.5s infinite;
 }
 
-.campaign-banner-img {
-    border: 3px solid #c9a24d;
-    width: 75%;
-}
 
-.price-section {
-    margin-top: 15px;
-}
-
-.campaign-old-price {
-    color: red;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.campaign-new-price {
-    color: #523f0f;
-    font-size: 32px;
-    font-weight: bold;
-}
 
 @keyframes pulse {
     0% {

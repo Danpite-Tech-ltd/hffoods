@@ -92,10 +92,11 @@
                         <input type="text" class="form-control" name="oldprice_title">
                     </div>
 
-                    <!-- <div class="mb-3 col-md-12">
-                        <label class="form-label">Price Title</label>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Youtube Video</label>
                         <input type="text" class="form-control" name="price_title">
-                    </div> -->
+                        <small class="text-muted">Only Youtube Video Id</small>
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Select Products</label>
