@@ -81,6 +81,18 @@
                     </div>
 
                     <div class="mb-3 col-md-12">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category_id" style="background: #fff; color: #000;">
+                            <option value="">Select Category</option>
+                            @foreach ($categories as $value)
+                                <option value="{{ $value->id }}" class="text-dark"  {{ $campaign->category_id == $value->id ? 'selected' : '' }}>
+                                    {{ $value->category_name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-md-12">
                         <label class="form-label">Description Image</label><br>
 
                         <!-- Old Image -->

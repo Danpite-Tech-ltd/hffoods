@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -30,7 +31,8 @@ class CampaignController extends Controller
     public function create()
     {
         $products = Product::where('status', 'Active')->get();
-        return view('backend.content.campaign.create', compact('products'));
+        $categories = Category::where('status', 'Active')->get();
+        return view('backend.content.campaign.create', compact('products', 'categories'));
     }
 
     /**
@@ -66,6 +68,7 @@ class CampaignController extends Controller
         $campaign->price_title = $request->price_title;
         $campaign->description = $request->description;
         $campaign->why_choose = $request->why_choose;
+        $campaign->category_id = $request->category_id;
         $campaign->product_id = json_encode($request->product_id);
 
         if ($request->file('image')) {
@@ -124,7 +127,8 @@ class CampaignController extends Controller
     {
         $campaign = Campaign::findOrFail($id);
         $products = Product::where('status', 'Active')->get();
-        return view('backend.content.campaign.edit', compact('campaign', 'products'));
+        $categories = Category::where('status', 'Active')->get();
+        return view('backend.content.campaign.edit', compact('campaign', 'products', 'categories'));
     }
 
     /**
@@ -160,6 +164,7 @@ class CampaignController extends Controller
         $campaign->price_title = $request->price_title;
         $campaign->description = $request->description;
         $campaign->why_choose = $request->why_choose;
+        $campaign->category_id = $request->category_id;
         $campaign->product_id = json_encode($request->product_id);
 
         if ($request->file('image')) {

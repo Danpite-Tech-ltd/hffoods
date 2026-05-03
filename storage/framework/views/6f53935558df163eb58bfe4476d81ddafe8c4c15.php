@@ -79,6 +79,19 @@
                     </div>
 
                     <div class="mb-3 col-md-12">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category_id" style="background: #fff; color: #000;">
+                            <option value="">Select Category</option>
+                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($value->id); ?>" class="text-dark"  <?php echo e($campaign->category_id == $value->id ? 'selected' : ''); ?>>
+                                    <?php echo e($value->category_name); ?>
+
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-md-12">
                         <label class="form-label">Description Image</label><br>
 
                         <!-- Old Image -->

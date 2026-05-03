@@ -73,6 +73,18 @@
                     </div>
 
                     <div class="mb-3 col-md-12">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" name="category_id" style="background: #fff; color: #000;">
+                            <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <option value="<?php echo e($value->id); ?>" class="text-dark">
+                                    <?php echo e($value->category_name); ?>
+
+                                </option>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        </select>
+                    </div>
+
+                    <div class="mb-3 col-md-12">
                         <label class="form-label">Description Image</label>
                         <input type="file" class="form-control" name="image">
                     </div>
@@ -90,10 +102,11 @@
                         <input type="text" class="form-control" name="oldprice_title">
                     </div>
 
-                    <!-- <div class="mb-3 col-md-12">
-                        <label class="form-label">Price Title</label>
+                    <div class="mb-3 col-md-12">
+                        <label class="form-label">Youtube Video</label>
                         <input type="text" class="form-control" name="price_title">
-                    </div> -->
+                        <small class="text-muted">Only Youtube Video Id</small>
+                    </div>
 
                     <div class="mb-3 col-md-12">
                         <label class="form-label">Select Products</label>
