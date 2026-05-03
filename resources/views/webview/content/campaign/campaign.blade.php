@@ -15,6 +15,9 @@
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <!-- FontAwesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
     <!-- jQuery (required) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
@@ -48,8 +51,26 @@
             </h2>
 
             <p class="landing-sub-title"> {{ $campaign->title }} </p>
+            <div class="container">
+                <div class="d-grid gap-2 p-3 text-center" style="background-color: #5a7a3a; grid-template-columns: repeat(3, 1fr);">
 
-            <a href="#order_form" class="landing-order-btn">Timer</a>
+                    <div class="bg-white rounded-3 text-center py-3 px-1">
+                        <div id="hours" class="fw-bold" style="font-size: clamp(1.5rem, 6vw, 3rem); color: #4a7c2f; line-height: 1;">00</div>
+                        <div class="text-muted" style="font-size: clamp(10px, 2.5vw, 14px);">Hours</div>
+                    </div>
+
+                    <div class="bg-white rounded-3 text-center py-3 px-1">
+                        <div id="minutes" class="fw-bold" style="font-size: clamp(1.5rem, 6vw, 3rem); color: #4a7c2f; line-height: 1;">00</div>
+                        <div class="text-muted" style="font-size: clamp(10px, 2.5vw, 14px);">Minutes</div>
+                    </div>
+
+                    <div class="bg-white rounded-3 text-center py-3 px-1">
+                        <div id="seconds" class="fw-bold" style="font-size: clamp(1.5rem, 6vw, 3rem); color: #4a7c2f; line-height: 1;">00</div>
+                        <div class="text-muted" style="font-size: clamp(10px, 2.5vw, 14px);">Seconds</div>
+                    </div>
+
+                </div>
+            </div>
 
             <p class="landing-sub-title"> {{ $campaign->subtitle }} </p>
 
@@ -224,8 +245,8 @@
                                     <span class="qty">1</span>
                                     <button type="button" class="qty-plus">+</button>
                                 </div>
-
                                 <div class="landing-price price-box">0৳</div>
+
 
                             </div>
 
@@ -333,6 +354,62 @@
     </div>
 </section>
 
+<footer style="background:#0b0b0b; color:#ccc; padding:60px 0;">
+    <div class="container">
+        <div class="row">
+
+            <!-- About -->
+            <div class="col-md-5">
+                <h4 style="color:#ffc107; font-weight:700;">আমাদের সম্পর্কে</h4>
+
+                <p style="margin-top:15px; line-height:1.8;">
+                    উত্তরবঙ্গের স্বাদ, সংস্কৃতি ও গ্রামীণ ঐতিহ্য সবার ঘরে পৌঁছে দিতে আমাদের উদ্যোগ – Aranno।
+                    এখানে পাবেন উত্তরবঙ্গের বিভিন্ন অঞ্চলের প্রিমিয়াম পণ্য, মসলা ও কৃষিজাত দ্রব্য।
+                </p>
+
+                <!-- Social Icons -->
+                <div style="margin-top:25px;">
+                    <a href="{{ $basicinfo->facebook }}" target="_blank" style="display:inline-block; width:45px; height:45px; line-height:45px; text-align:center; border-radius:50%; background:#1a1a1a; color:#fff; margin-right:10px;">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="{{ $basicinfo->linkedin }}" target="_blank" style="display:inline-block; width:45px; height:45px; line-height:45px; text-align:center; border-radius:50%; background:#1a1a1a; color:#fff; margin-right:10px;">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="{{ $basicinfo->youtube }}" target="_blank" style="display:inline-block; width:45px; height:45px; line-height:45px; text-align:center; border-radius:50%; background:#1a1a1a; color:#fff;">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <div class="col-md-4">
+                <h4 style="color:#ffc107; font-weight:700;">যোগাযোগ করুন</h4>
+                    <a href="tel:{{ $basicinfo->phone_one }}" target="_blank" style="display:block; margin-top:15px; color:#ccc; text-decoration:none;">
+                        <i class="fas fa-phone" style="margin-right:10px;"></i> ফোন: {{ $basicinfo->phone_one }}
+                    </a>
+
+                    <a href="https://wa.me/88{{ $basicinfo->wp_1 }}" target="_blank" style="display:block; color:#ccc; text-decoration:none;">
+                        <i class="fab fa-whatsapp" style="margin-right:10px;"></i> WhatsApp: {{ $basicinfo->wp_1 }}
+                    </a>
+
+                    <a href="mailto:{{ $basicinfo->email }}" target="_blank" style="display:block; color:#ccc; text-decoration:none;">
+                        <i class="fas fa-envelope" style="margin-right:10px;"></i> ইমেইল: {{ $basicinfo->email }}
+                    </a>
+            </div>
+
+            <!-- Right Side -->
+            <div class="col-md-3 d-flex align-items-end justify-content-md-end mt-4 mt-md-0">
+                <p style="font-size:14px; color:#aaa; text-align:right;">
+                    © {{ env('APP_NAME') }} © 2025. All Rights Reserved.<br>
+                    <span style="color:#ffc107;">Designed by <a href="https://danpitetech.com/" target="_blank">danpitetech.com</span>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+
 {{-- ================= SCRIPT ================= --}}
 <!-- Owl Carousel JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
@@ -352,6 +429,22 @@
             }
         });
     });
+</script>
+<!-- timer -->
+<script>
+    function pad(n) { return String(n).padStart(2, '0'); }
+    function tick() {
+    const now = new Date(), target = new Date();
+    target.setHours(4, 0, 0, 0);
+    if (now >= target) target.setDate(target.getDate() + 1);
+    let diff = Math.floor((target - now) / 1000);
+    const h = Math.floor(diff / 3600); diff %= 3600;
+    const m = Math.floor(diff / 60), s = diff % 60;
+    document.getElementById('hours').textContent = pad(h);
+    document.getElementById('minutes').textContent = pad(m);
+    document.getElementById('seconds').textContent = pad(s);
+    }
+    tick(); setInterval(tick, 1000);
 </script>
 
 
