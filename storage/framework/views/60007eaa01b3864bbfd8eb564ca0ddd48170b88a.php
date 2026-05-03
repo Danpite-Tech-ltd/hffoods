@@ -42,7 +42,6 @@
 </head>
 
 <body>
-
     
     <section class="hero-section">
         <div class="container-fluid">
@@ -358,6 +357,57 @@
 
     </div>
 </section>
+<!-- related products -->
+ <section class="container">
+     <h3>Related Products</h3>
+    <div class="owl-carousel related-carousel mt-3">
+        <?php $__currentLoopData = $mainproducts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <?php
+            $product_ids = json_decode($product->RelatedProductIds, true);
+
+            $singleproduct = null;
+            if (!empty($product_ids) && isset($product_ids[0])) {
+                $singleproduct = App\Models\Product::find($product_ids[0]);
+            }
+
+            $size = App\Models\Size::where('product_id',$singleproduct->first()->id)->first();
+        ?>
+            <div class="item">
+                <a href="<?php echo e(url('/view-product', $product->ProductSlug)); ?>" 
+                style="text-decoration:none; color:inherit; display:block;">
+
+                    <img class="product-img" src="<?php echo e(asset($product->ProductImage)); ?>" 
+                        alt="related product image"
+                        style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+
+                    <p  style="margin-top:8px; margin-bottom: 0; font-size:16px; font-weight:500;">
+                        <?php echo e($product->ProductName); ?>
+
+                    </p>
+
+                    <div style="margin-top:5px;">
+                        <span style="color:#28a745; font-weight:bold;font-size:20px;">
+                            <?php echo e($size->SalePrice ?? ''); ?>
+
+                        </span>
+                        <del style="color:#999; font-size:18px;">
+                            <?php echo e($size->RegularPrice ?? ''); ?>
+
+                        </del>
+                    </div>
+
+                </a>
+
+            </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        </div>
+    </section>
+<style>
+    .product-img:hover {
+        transform: scale(1.05);
+        transition: 0.3s;
+    }
+</style>
 
 <footer style="background:#0b0b0b; color:#ccc; padding:60px 0;">
     <div class="container">
@@ -426,7 +476,7 @@
         $('.review-carousel').owlCarousel({
             loop: true,
             margin: 10,
-            nav: true,
+            nav: false,
             dots: true,
             autoplay: true,
             autoplayTimeout: 3000,
@@ -434,6 +484,21 @@
                 0:{ items:2 },
                 600:{ items:2 },
                 1000:{ items:3 }
+            }
+        });
+    });
+    $(document).ready(function(){
+        $('.related-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            dots: true,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            responsive:{
+                0:{ items:2 },
+                600:{ items:2 },
+                1000:{ items:4 }
             }
         });
     });
